@@ -3,5 +3,5 @@
 meta_product_name: "NextStop"
 meta_title: "NextStop - Chaque bonne journée commence par un bon trajet : sociabilisez facilement dans les transports en commun"
 meta_description: "Relevant description"
-meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_image: "cover.png" # should exist in `app/assets/images/` and do 1200x630px
 twitter_account: "@tinderfrance"   # required for Twitter Cards
