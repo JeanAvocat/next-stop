@@ -1,0 +1,7 @@
+# config/meta.yml POUR TOUS LES TAGS DE LA HEAD
+
+meta_product_name: "NextStop"
+meta_title: "NextStop - Chaque bonne journée commence par un bon trajet : sociabilisez facilement dans les transports en commun"
+meta_description: "Défiez anonymement vos voisins de rame durant vos trajets quotidiens. Matchez, jouez ensemble et discutez par messages. Vous êtes arrivés à destination ? C'est le moment de révéler vos profils pour se rencontrer en vrai !"
+meta_image: "cover.png" # should exist in `app/assets/images/` and do 1200x630px
+twitter_account: "@tinderfrance" # required for Twitter Cards
