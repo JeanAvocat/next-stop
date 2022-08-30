@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_140250) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
-  
+
   create_table "game_matches", force: :cascade do |t|
     t.string "winner"
     t.string "matchable_type", null: false
