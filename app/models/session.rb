@@ -4,4 +4,8 @@ class Session < ApplicationRecord
   has_many :game_matches
   has_many :requests
   has_many :messages
+
+  STATUS = ["waiting joiner", "in Game", "close"]
+  validates :status, inclusion: { in: STATUS, message: "doit correspondre à la liste déroulante" }
+  validates :status, presence: true
 end
