@@ -6,5 +6,7 @@ class TripSession < ApplicationRecord
   has_many :messages
 
   STATUS = ["waiting for joiner", "in game", "closed"]
+  
   validates :status, presence: true, inclusion: { in: STATUS }
+
 end
