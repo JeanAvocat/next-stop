@@ -9,6 +9,11 @@ section {
   margin: 10px auto;
 }
 
+.game--container > a {
+  text-decoration: none;
+  color: black;
+}
+
 .cell {
   font-family: "Permanent Marker", cursive;
   width: 100px;
