@@ -5,7 +5,7 @@ class Session < ApplicationRecord
   has_many :requests
   has_many :messages
 
-  STATUS = ["waiting for joiner", "in Game", "closed"]
+  STATUS = ["waiting for joiner", "in game", "closed"]
   validates :status, inclusion: { in: STATUS }
   validates :status, presence: true
 end
