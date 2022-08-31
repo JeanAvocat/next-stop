@@ -1,20 +1,27 @@
-<h2>Resend confirmation instructions</h2>
+<%# RENVOYER LES INSTRUCTIONS PAGE%>
+
+<div class="session-new-general-div">
+  <h3>Renvoyer les instructions</h3>
+
+  <div class="session-new-line">
+    <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
+  </div>
 
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
   <%= f.full_error :confirmation_token %>
 
-  <div class="form-inputs">
+  <div class="formulaire">
     <%= f.input :email,
+                placeholder: 'email',
                 required: true,
                 autofocus: true,
                 value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
                 input_html: { autocomplete: "email" } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
+  <button id="submit-btn" type="button"><%= f.button :submit, "Renvoyer les instructions de confirmation" %></button>
 <% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="session-new-links">Ou<%= render "devise/shared/links" %></div>
+</div>
