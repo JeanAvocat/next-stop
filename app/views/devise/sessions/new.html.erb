@@ -1,22 +1,30 @@
-<h2>Connexion</h2>
+<%# CREATION DE SESSION PAGE %>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                :label => "Email :",
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                :label => "Mot de passe :",
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, :label => "Rester connecté :", as: :boolean if devise_mapping.rememberable? %>
+<div class="session-new-general-div">
+  <h1>Next Stop</h2>
+  <h2>Connexion</h2>
+
+  <div class="session-new-line">
+    <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Connexion" %>
-  </div>
-<% end %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+    <div class="formulaire">
+      <%= f.input :email,
+                  placeholder: 'email',
+                  required: false,
+                  :label => false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  placeholder: 'mot de passe',
+                  required: false,
+                  :label => false,
+                  input_html: { autocomplete: "current-password" } %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <button id="submit-btn" type="button"><%= f.button :submit, "Se \n connecter" %></button>
+  <% end %>
+
+  <div class="session-new-links">Ou s'<%= render "devise/shared/links" %></div>
+</div>

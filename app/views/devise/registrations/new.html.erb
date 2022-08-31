@@ -1,38 +1,48 @@
-<h2>S'inscrire</h2>
+<%# PAGE D'INSCRIPTION %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
+<div class="session-new-general-div">
+  <h3>Inscription</h3>
 
-  <div class="form-inputs">
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                :label => "Prénom :",
-                input_html: { autocomplete: "Prénom :" }%>
-    <%= f.input :social_media,
-                required: true,
-                autofocus: true,
-                :label => "Comment me contacter :",
-                input_html: { autocomplete: "Comment me contacter :" }%>
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                :label => "Email :",
-                input_html: { autocomplete: "Email :" }%>
-    <%= f.input :password,
-                required: true,
-                :label => "Mot de passe :",
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                :label => "Confirmation mot de passe :",
-                input_html: { autocomplete: "new-password" } %>
+  <div class="session-new-line">
+    <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "S'inscrire" %>
-  </div>
-<% end %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+    <%= f.error_notification %>
 
-<%= render "devise/shared/links" %>
+    <div class="formulaire">
+      <%= f.input :first_name,
+                  placeholder: 'prénom',
+                  required: true,
+                  autofocus: true,
+                  :label => false,
+                  input_html: { autocomplete: "Prénom :" }%>
+      <%= f.input :social_media,
+                  placeholder: 'réseau sociaux',
+                  required: true,
+                  autofocus: true,
+                  :label => false,
+                  input_html: { autocomplete: "Comment me contacter :" }%>
+      <%= f.input :email,
+                  placeholder: 'email',
+                  required: false,
+                  autofocus: true,
+                  :label => false,
+                  input_html: { autocomplete: "Email :" }%>
+      <%= f.input :password,
+                  placeholder: 'mot de passe',
+                  required: true,
+                  :label => false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  placeholder: 'confirmer le mot de passe',
+                  required: true,
+                  :label => false,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+
+    <button id="submit-btn" type="button"><%= f.button :submit, "S'inscrire" %></button>
+  <% end %>
+
+  <div class="session-new-links">Ou<%= render "devise/shared/links" %></div>
+</div>
