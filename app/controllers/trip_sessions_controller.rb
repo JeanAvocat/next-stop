@@ -4,6 +4,5 @@ class TripSessionsController < ApplicationController
 
 
   def waiting_room
-    
   end
 end
