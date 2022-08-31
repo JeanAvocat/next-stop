@@ -28,6 +28,39 @@
   font-size: 16px;
 }
 
+#user_first_name {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 28px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
+}
+
+#user_social_media {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 28px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
+}
+
+#user_password_confirmation {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 28px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
+}
+
 .form-control:focus {
   color: #000000;
   background-color: #FDFDFD;
