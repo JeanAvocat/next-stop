@@ -32,7 +32,11 @@ class TripSessionsController < ApplicationController
     redirect_to counter_game_match_path(@game_match)
   end
 
-
   def waiting_room
+    @trip_session = TripSession.find(params[:id])
+    @game_match = GameMatch.find_by trip_session_id: @trip_session.id
+    if @trip_session.joiner_id? # WARNING : check if 
+      redirect_to counter_game_match_path(@game_match)
+    end
   end
 end
