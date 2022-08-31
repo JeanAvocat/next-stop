@@ -1,0 +1,54 @@
+.formulaire {
+  padding: 20px 20px 40px 20px;
+}
+
+#new_user {
+  background-color: white;
+}
+
+#user_email {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 28px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
+}
+
+#user_password {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 28px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
+}
+
+.form-control:focus {
+  color: #000000;
+  background-color: #FDFDFD;
+  border: 1px solid black;
+  outline: 0;
+  box-shadow: 0 0 0 0;
+}
+
+#submit-btn {
+  font-family: $my-font;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: white;
+  height: 56px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px;
+}
+
+.btn {
+  padding: 0px 10px 0px 10px;
+  line-height: 20px;
+}
