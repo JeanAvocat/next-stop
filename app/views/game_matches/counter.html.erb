@@ -1,3 +1,5 @@
-<div data-controller="gamematches">
-<p data-gamematches-target="counter">aaa</p>
+<div data-controller="game-matches" data-sessionid = "<%= @game_match.id %>" >
+  <p data-game-matches-target="counter"><%= @counter %></p>
+  <% redirect_to game_match_path(@game_match) if @counter.zero?%>
+  <p>aaa</p>
 </div>
