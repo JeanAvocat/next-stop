@@ -1,0 +1,39 @@
+// TRIP SESSION NEW PAGE
+.trip-session-new {
+  padding: 20px 10px;
+}
+
+.trip-session-new-inside-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trip-session-new-profile-text {
+  text-align: right;
+  padding: 10px 0px 0px 0px;
+}
+
+.trip-session-new-profil-picture {
+  padding: 0px 10px;
+}
+
+.trip-session-new-profile-div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+}
+
+.trip-session-new-line {
+  padding: 0px 0px 0px 0px;
+}
+
+.trip-session-new-infos-div {
+  background-color: red; //#FFFFFF;
+  width: 220px;
+  height: 100px;
+  text-align: center;
+  display: inline-block;
+  margin: 30px;
+}

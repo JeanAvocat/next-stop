@@ -1,9 +1,32 @@
-<h1>TripSessions#new</h1>
-<p>Find me in app/views/trip_sessions/new.html.erb</p>
-<p>ici il y aura la possibilité de créer ou rejoindre une partie de tic tac toe dans un premier temps.</p>
-<p>Nombre de personnes connectés : <%= @active_people  %></p>
-<% if @trip_session != nil  %>
-  <p><%= button_to("rejoindre", join_trip_session_path(@trip_session), method: :patch) %></p>
-<% else %>
-  <p><%= link_to "Créer", trip_sessions_path, data: {turbo_method: :post}%></p>
-<% end %>
+<%# PAGE DE JEUX %>
+<div class="trip-session-new">
+
+  <div class="trip-session-new-profile-div">
+    <div class="trip-session-new-profile-text"><h6>Bienvenue <br> Doucecracotte!</h6></div>
+    <div class="trip-session-new-profil-picture">
+      <%= image_tag "svg/profil.svg", class: "session-new-ligne", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
+    </div>
+  </div>
+
+  <div class="trip-session-new-inside-profile">
+  <div class="trip-session-new-line">
+    <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
+  </div>
+
+  <div class="trip-session-new-infos-div">
+    <div class="trip-session-new-bus">
+      <%= image_tag "svg/bus.svg", class: "session-new-ligne", data: { inject: { svg: "svg/bus.svg" } }, :width => 60 %>
+    </div>
+    <p>Bus ligne 9</p>
+    <p><%= @active_people  %> personnes connectées</p>
+  </div>
+
+  <p>ici il y aura la possibilité de créer ou rejoindre une partie de tic tac toe dans un premier temps.</p>
+  <p>Nombre de personnes connectés : <%= @active_people  %></p>
+  <% if @trip_session != nil  %>
+    <p><%= button_to("rejoindre", join_trip_session_path(@trip_session), method: :patch) %></p>
+  <% else %>
+    <p><%= link_to "Créer", trip_sessions_path, data: {turbo_method: :post}%></p>
+  <% end %>
+</div>
+</div>
