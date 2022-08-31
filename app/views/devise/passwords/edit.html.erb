@@ -1,4 +1,11 @@
-<h2>Change your password</h2>
+<%# PAGE EDIT DU MOT DE PASSE %>
+
+<div class="session-new-general-div">
+  <h3>Change ton mot de passe</h3>
+
+  <div class="session-new-line">
+    <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
+  </div>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -6,22 +13,22 @@
   <%= f.input :reset_password_token, as: :hidden %>
   <%= f.full_error :reset_password_token %>
 
-  <div class="form-inputs">
+  <div class="formulaire">
     <%= f.input :password,
-                label: "New password",
+                placeholder: 'nouveau mot de passe',
+                label: false,
                 required: true,
                 autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
-                label: "Confirm your new password",
+                placeholder: 'confirmer mon mot de passe',
+                label: false,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
-  </div>
-<% end %>
+    <button id="submit-btn" type="button"><%= f.button :submit, "Changer mon mot de passe" %></button>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="session-new-links">Ou<%= render "devise/shared/links" %></div>
+</div>
