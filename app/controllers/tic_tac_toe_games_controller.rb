@@ -13,7 +13,13 @@ class TicTacToeGamesController < ApplicationController
 
   private
 
-  def tic_tac_toe_game_params
-    params.require(:tile).permit(:tile)
-  end
 end
+
+# winning_pattern = "1.2.3"
+# winning_pattern = "1.4.7"
+# winning_pattern = "1.5.9"
+# winning_pattern = "2.5.8"
+# winning_pattern = "3.5.7"
+# winning_pattern = "3.6.9"
+# winning_pattern = "4.5.6"
+# winning_pattern = "7.8.9"

@@ -4,32 +4,10 @@
   <p>tu joues contre</p>
   <p>petit cactus</p>
   <div class="game--container">
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_1"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="1" class="cell"><p><%= @tic_tac_toe_game.position_1 %></p></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_2"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="2" class="cell"><p><%= @tic_tac_toe_game.position_2 %></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_3"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="3" class="cell"><p><%= @tic_tac_toe_game.position_3 %></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_4"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="4" class="cell"><p><%= @tic_tac_toe_game.position_4 %></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_5"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="5" class="cell"><p><%= @tic_tac_toe_game.position_5 %></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_6"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="6" class="cell"><p><%= @tic_tac_toe_game.position_6 %></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_7"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="7" class="cell"><p><%= @tic_tac_toe_game.position_7 %></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_8"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="8" class="cell"><p><%= @tic_tac_toe_game.position_8 %></div>
-      <% end %>
-      <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_9"), data: {turbo_method: :patch}) do %>
-        <div data-cell-index="9" class="cell"><p><%= @tic_tac_toe_game.position_9 %></div>
+      <% (1..9).each do |n| %>
+        <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_#{n}"), data: {turbo_method: :patch}) do %>
+          <div data-cell-index=<%= n %> class="cell"><p><%= @tic_tac_toe_game.send("position_#{n}") %></p></div>
+        <% end %>
       <% end %>
   </div>
   <h2 class="game--status"></h2>
