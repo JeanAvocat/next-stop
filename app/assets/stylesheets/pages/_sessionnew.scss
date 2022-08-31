@@ -1,12 +1,12 @@
 // HOME PAGE CSS
 
-.landing-page-general-div {
+.session-new-general-div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   text-align: center;
   padding: 20px 20px 20px 20px;
   position: fixed;
@@ -18,12 +18,32 @@
 
   h1 {
     font-size: 80px;
-    padding: 0px 20px 30px 20px;
+    padding: 0px 20px 10px 20px;
     line-height: 64px;
+  }
+
+  h2 {
+    font-family: "Barlow";
+    font-size: 20px;
+    padding: 0px 20px 20px 20px;
   }
 
   p {
     font-style: italic;
     padding: 0px 45px 60px 45px;
+    color: $gray;
   }
+}
+
+.session-new-line {
+  padding: 0px 0px 40px 0px;
+}
+
+.session-new-links {
+  color: $lightgray;
+  line-height: 20px;
+}
+
+a {
+  color: $lightgray;
 }
