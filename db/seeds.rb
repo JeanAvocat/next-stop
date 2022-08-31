@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "open-uri"
 
-Puts "Deleting all previous seeds..."
+puts "Deleting all previous seeds..."
 
 Request.destroy_all
 Message.destroy_all
@@ -16,13 +16,13 @@ TicTacToeGame.destroy_all
 TripSession.destroy_all
 User.destroy_all
 
-Puts "All clean. Ready to create new seeds."
+puts "All clean. Ready to create new seeds."
 
 
 
 # USERS
 
-Puts "Saving method implementation..."
+puts "Saving method implementation..."
 
 def attach_user_photo (instance, url, filename)
   file = URI.open(url)
@@ -30,9 +30,9 @@ def attach_user_photo (instance, url, filename)
   instance.save
 end
 
-Puts "Done."
+puts "Done."
 
-Puts "1) Creating Users"
+puts "1) Creating Users"
 
 bobby = User.new(first_name: "Bobby",
                 random_nickname: "GrosSaucisson",
@@ -131,7 +131,7 @@ attach_user_photo(jean, "https://img.freepik.com/photos-premium/garcon-adolescen
 
 # SESSIONS
 
-Puts "2) Creating TripSessions"
+puts "2) Creating TripSessions"
 
 
 session1 = TripSession.create(status: "closed",
@@ -166,12 +166,12 @@ session8 = TripSession.create(status: "waiting for joiner",
                     creator_id: marguerite.id)
 
 
-Puts "3) Creating TripSession details"
+puts "3) Creating TripSession details"
 
 
 # SESSION 1
 
-Puts "details session 1"
+puts "details session 1"
 
 play1session1 = TicTacToeGame.create(position_1:"cross",
                         position_2:"circle",
@@ -190,37 +190,38 @@ play2session1 = TicTacToeGame.create(position_1:"cross",
                         circle_player_id: session1.joiner_id)
 
 
-gamematch1session1 = GameMatch.create(winner:play1session1.cross_player_id.random_nickname,
+gamematch1session1 = GameMatch.create(winner:User.find(play1session1.cross_player_id).random_nickname,
                       matchable_type:"TicTacToeGame",
                       matchable_id: play1session1.id,
-                      session_id: session1.id)
+                      trip_session_id: session1.id)
 
-gamematch2session1 = GameMatch.create(winner:play2session1.cross_player_id.random_nickname,
+
+gamematch2session1 = GameMatch.create(winner:User.find(play2session1.cross_player_id).random_nickname,
                       matchable_type:"TicTacToeGame",
                       matchable_id:play2session1.id,
-                      session_id:session1.id)
+                      trip_session_id:session1.id)
 
 
 Message.create(content: "Holaaaa",
-                      session_id: session1.id,
+                      trip_session_id: session1.id,
                       user_id: session1.creator_id)
 
 request = Request.create(status:"pending",
                       sender_id:session1.creator_id,
-                      session_id:session1.id)
+                      trip_session_id:session1.id)
 
 Message.create(content: "T'as vu le bus ? Trop bizarre, pourquoi il s'est arrêté ?",
-                      session_id: session1.id,
+                      trip_session_id: session1.id,
                       user_id: session1.joiner_id)
 
 Message.create(content: "Aucune idée ahah, au moins je peux te battre une nouvelle fois",
-                      session_id: session1.id,
+                      trip_session_id: session1.id,
                       user_id: session1.creator_id)
 
 request.status = "refused"
 
 Message.create(content: "Je dois filer",
-              session_id: session1.id,
+              trip_session_id: session1.id,
               user_id: session1.creator_id)
 
 
@@ -229,7 +230,7 @@ Message.create(content: "Je dois filer",
 
 # SESSION 2
 
-Puts "details session 2"
+puts "details session 2"
 
 play1session2 = TicTacToeGame.create(position_1:"circle",
                         position_2:"circle",
@@ -241,16 +242,16 @@ play1session2 = TicTacToeGame.create(position_1:"circle",
                         cross_player_id: session2.creator_id,
                         circle_player_id: session2.joiner_id)
 
-gamematch1session2 = GameMatch.create(winner:play1session2.circle_player_id.random_nickname,
+gamematch1session2 = GameMatch.create(winner:User.find(play1session2.circle_player_id).random_nickname,
                       matchable_type:"TicTacToeGame",
                       matchable_id: play1session2.id,
-                      session_id: session2.id)
+                      trip_session_id: session2.id)
 
 
 
 # SESSION 3
 
-Puts "details session 3"
+puts "details session 3"
 
 play1session3 = TicTacToeGame.create(position_1:"cross",
                         position_2:"cross",
@@ -262,35 +263,36 @@ play1session3 = TicTacToeGame.create(position_1:"cross",
                         cross_player_id: session3.creator_id,
                         circle_player_id: session3.joiner_id)
 
-gamematch1session3 = GameMatch.create(winner:play1session3.circle_player_id.random_nickname,
+
+gamematch1session3 = GameMatch.create(winner:User.find(play1session3.circle_player_id).random_nickname,
                       matchable_type:"TicTacToeGame",
                       matchable_id: play1session3.id,
-                      session_id: session3.id)
+                      trip_session_id: session3.id)
 
 
 Message.create(content: "Gogogooo",
-                      session_id: session3.id,
-                      user_id: session3.joigner_id)
+                      trip_session_id: session3.id,
+                      user_id: session3.joiner_id)
 
 Message.create(content: "On fait juste une partie, si tu gagnes on fait la belle!",
-                      session_id: session3.id,
+                      trip_session_id: session3.id,
                       user_id: session3.creator_id)
 
 Message.create(content: "Oh nooon je vais perdre là!",
-                      session_id: session3.id,
+                      trip_session_id: session3.id,
                       user_id: session3.creator_id)
 
 request = Request.create(status:"pending",
                       sender_id:session3.creator_id,
-                      session_id:session3.id)
+                      trip_session_id:session3.id)
 
 Message.create(content: "Revanche du coup ?",
-                      session_id: session3.id,
+                      trip_session_id: session3.id,
                       user_id: session3.creator_id)
 
 Message.create(content: "Désolé je dois filer:)",
-                      session_id: session3.id,
-                      user_id: session3.joigner_id)
+                      trip_session_id: session3.id,
+                      user_id: session3.joiner_id)
 
 request.status = "accepted"
 
@@ -299,7 +301,7 @@ request.status = "accepted"
 
 # SESSION 4
 
-Puts "details session 4"
+puts "details session 4"
 
 play1session4 = TicTacToeGame.create(position_1:"circle",
                         position_2:"circle",
@@ -339,60 +341,60 @@ play5session4 = TicTacToeGame.create(position_1:"cross",
                         cross_player_id: session4.creator_id,
                         circle_player_id: session4.joiner_id)
 
-gamematch1session4 = GameMatch.create(winner:play1session4.circle_player_id.random_nickname,
+gamematch1session4 = GameMatch.create(winner:User.find(play1session4.circle_player_id).random_nickname,
                       matchable_type:"TicTacToeGame",
                       matchable_id: play1session4.id,
-                      session_id: session4.id)
+                      trip_session_id: session4.id)
 
-gamematch2session4 = GameMatch.create(winner:play2session4.cross_player_id.random_nickname,
+gamematch2session4 = GameMatch.create(winner:User.find(play2session4.cross_player_id).random_nickname,
                     matchable_type:"TicTacToeGame",
                     matchable_id: play2session4.id,
-                    session_id: session4.id)
+                    trip_session_id: session4.id)
 
-gamematch3session4 = GameMatch.create(winner:play3session4.circle_player_id.random_nickname,
+gamematch3session4 = GameMatch.create(winner:User.find(play3session4.circle_player_id).random_nickname,
                     matchable_type:"TicTacToeGame",
                     matchable_id: play3session4.id,
-                    session_id: session4.id)
+                    trip_session_id: session4.id)
 
-gamematch4session4 = GameMatch.create(winner:play4session4.circle_player_id.random_nickname,
+gamematch4session4 = GameMatch.create(winner:User.find(play4session4.circle_player_id).random_nickname,
                   matchable_type:"TicTacToeGame",
                   matchable_id: play4session4.id,
-                  session_id: session4.id)
+                  trip_session_id: session4.id)
 
 gamematch5session4 = GameMatch.create(matchable_type:"TicTacToeGame",
                   matchable_id: play5session4.id,
-                  session_id: session4.id)
+                  trip_session_id: session4.id)
 
 
 
 Message.create(content: "Hello ! Prêt à en découdre ?",
-                  session_id: session4.id,
+                  trip_session_id: session4.id,
                   user_id: session4.creator_id)
 
 Message.create(content: "T'as l'air chaud !!",
-                  session_id: session4.id,
+                  trip_session_id: session4.id,
                   user_id: session4.joiner_id)
 
 Message.create(content: "Ahah oui, je prends ce bus tous les jours depuis 4 mois",
-                  session_id: session4.id,
+                  trip_session_id: session4.id,
                   user_id: session4.creator_id)
 
 Message.create(content: "Moi aussi !",
-                  session_id: session4.id,
+                  trip_session_id: session4.id,
                   user_id: session4.joiner_id)
 
 Message.create(content: "On essai de se retrouver ? Je descends à Trois Suisses",
-                  session_id: session4.id,
+                  trip_session_id: session4.id,
                   user_id: session4.creator_id)
 
 Message.create(content: "Je descends à la prochaine mais on peut se retrouver ce soir. Je t'envoie une demande:)",
-                  session_id: session4.id,
+                  trip_session_id: session4.id,
                   user_id: session4.joiner_id)
 
 
 Request.create(status:"pending",
-              sender_id:session4.joigner_id,
-              session_id:session4.id)
+              sender_id:session4.joiner_id,
+              trip_session_id:session4.id)
 
 
 
@@ -400,7 +402,7 @@ Request.create(status:"pending",
 
 # SESSION 5
 
-Puts "details session 5"
+puts "details session 5"
 
 play1session5 = TicTacToeGame.create(position_6:"cross",
                         position_9:"circle",
@@ -409,13 +411,13 @@ play1session5 = TicTacToeGame.create(position_6:"cross",
 
 gamematch1session5 = GameMatch.create(matchable_type:"TicTacToeGame",
                       matchable_id: play1session5.id,
-                      session_id: session5.id)
+                      trip_session_id: session5.id)
 
 
 
 # SESSION 6
 
-Puts "details session 6"
+puts "details session 6"
 
 play1session6 = TicTacToeGame.create(position_1:"cross",
                         position_2:"cross",
@@ -441,50 +443,50 @@ play2session6 = TicTacToeGame.create(position_1:"cross",
 gamematch1session6 = GameMatch.create(winner:"draw",
                       matchable_type:"TicTacToeGame",
                       matchable_id: play1session6.id,
-                      session_id: session6.id)
+                      trip_session_id: session6.id)
 
 gamematch2session6 = GameMatch.create(matchable_type:"TicTacToeGame",
                   matchable_id: play2session6.id,
-                  session_id: session6.id)
+                  trip_session_id: session6.id)
 
 
 Message.create(content: "Bien joué pour ta victoire",
-                  session_id: session6.id,
-                  user_id: session6.joigner_id)
+                  trip_session_id: session6.id,
+                  user_id: session6.joiner_id)
 
 Message.create(content: "Et le trajet n'est même pas fini",
-                  session_id: session6.id,
+                  trip_session_id: session6.id,
                   user_id: session6.creator_id)
 
 Message.create(content: "Attends de voir ma botte secrète:)",
-                  session_id: session6.id,
+                  trip_session_id: session6.id,
                   user_id: session6.creator_id)
 
 Message.create(content: "Oulaaa t'as pris la confiance ahah",
-                  session_id: session6.id,
+                  trip_session_id: session6.id,
                   user_id: session6.joiner_id)
 
 Message.create(content: "Je suis pas comme ça dans la vraie vie, promis hehe",
-                  session_id: session6.id,
+                  trip_session_id: session6.id,
                   user_id: session6.creator_id)
 
 Message.create(content: "ça mérite vérifications!",
-                  session_id: session6.id,
+                  trip_session_id: session6.id,
                   user_id: session6.joiner_id)
 
 
 request = Request.create(status:"pending",
-              sender_id:session6.joigner_id,
-              session_id:session6.id)
+              sender_id:session6.joiner_id,
+              trip_session_id:session6.id)
 
 Message.create(content: "N'oublie pas de jouer quand même",
-              session_id: session6.id,
+              trip_session_id: session6.id,
               user_id: session6.creator_id)
 
 request.status = "accepted"
 
 Message.create(content: "Aaah bonjour Daniel:) Top photo",
-              session_id: session6.id,
+              trip_session_id: session6.id,
               user_id: session6.creator_id)
 
 
@@ -492,7 +494,7 @@ Message.create(content: "Aaah bonjour Daniel:) Top photo",
 
 # SESSION 7
 
-Puts "details session 7"
+puts "details session 7"
 
 play1session7 = TicTacToeGame.create(position_1:"cross",
                         position_2:"cross",
@@ -525,68 +527,69 @@ play3session7 = TicTacToeGame.create(position_1:"cross",
 play4session7 = TicTacToeGame.create(cross_player_id: session7.creator_id,
                         circle_player_id: session7.joiner_id)
 
+
 gamematch1session7 = GameMatch.create(winner:"draw",
                       matchable_type:"TicTacToeGame",
                       matchable_id: play1session7.id,
-                      session_id: session7.id)
+                      trip_session_id: session7.id)
 
-gamematch2session7 = GameMatch.create(winner:play2session7.joigner_id.random_nickname,
+gamematch2session7 = GameMatch.create(winner:User.find(play2session7.circle_player_id).random_nickname,
                       matchable_type:"TicTacToeGame",
                       matchable_id: play2session7.id,
-                      session_id: session7.id)
+                      trip_session_id: session7.id)
 
-gamematch3session7 = GameMatch.create(winner:play3session7.creator_id.random_nickname,
+gamematch3session7 = GameMatch.create(winner:User.find(play3session7.cross_player_id).random_nickname,
                       matchable_type:"TicTacToeGame",
                       matchable_id: play3session7.id,
-                      session_id: session7.id)
+                      trip_session_id: session7.id)
 
 gamematch4session7 = GameMatch.create(matchable_type:"TicTacToeGame",
                   matchable_id: play4session7.id,
-                  session_id: session7.id)
+                  trip_session_id: session7.id)
 
 
 Message.create(content: "Pas mal, tu joue souvent ?",
-                  session_id: session7.id,
-                  user_id: session7.joigner_id)
+                  trip_session_id: session7.id,
+                  user_id: session7.joiner_id)
 
 Message.create(content: "Oui, c'est ma ligne de métro quotidienne ahah",
-                  session_id: session7.id,
+                  trip_session_id: session7.id,
                   user_id: session7.creator_id)
 
 Message.create(content: "ok",
-                  session_id: session7.id,
+                  trip_session_id: session7.id,
                   user_id: session7.creator_id)
 
 request = Request.create(status:"pending",
               sender_id:session7.creator_id,
-              session_id:session7.id)
+              trip_session_id:session7.id)
 
 Message.create(content: "Je préfère rester anonyme, sorry",
-              session_id: session7.id,
-              user_id: session7.joigner_id)
+              trip_session_id: session7.id,
+              user_id: session7.joiner_id)
 
 request.status = "refused"
 
 Message.create(content: "okok dommage",
-              session_id: session7.id,
+              trip_session_id: session7.id,
               user_id: session7.creator_id)
 
 
 
 # SESSION 8
 
-Puts "details session 8"
+puts "details session 8"
 
 play1session8 = TicTacToeGame.create(cross_player_id: session8.creator_id)
 
 gamematch1session8 = GameMatch.create(matchable_type:"TicTacToeGame",
                       matchable_id: play1session8.id,
-                      session_id: session8.id)
+                      trip_session_id: session8.id)
 
 
 
 
-Puts "Finished! All the seeds has been created."
+puts "Finished! All the seeds has been created."
 
 
 
