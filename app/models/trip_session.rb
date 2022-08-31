@@ -1,11 +1,12 @@
 class TripSession < ApplicationRecord
   belongs_to :creator, class_name: "User"
-  belongs_to :joiner, class_name: "User"
+  belongs_to :joiner, class_name: "User", optional: true
   has_many :game_matches
   has_many :requests
   has_many :messages
 
   STATUS = ["waiting for joiner", "in game", "closed"]
-  validates :status, inclusion: { in: STATUS }
-  validates :status, presence: true
+  
+  validates :status, presence: true, inclusion: { in: STATUS }
+
 end
