@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_140250) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_163214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,41 +46,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_140250) do
     t.string "winner"
     t.string "matchable_type", null: false
     t.bigint "matchable_id", null: false
-    t.bigint "session_id", null: false
+    t.bigint "trip_session_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["matchable_type", "matchable_id"], name: "index_game_matches_on_matchable"
-    t.index ["session_id"], name: "index_game_matches_on_session_id"
+    t.index ["trip_session_id"], name: "index_game_matches_on_trip_session_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.bigint "session_id", null: false
+    t.bigint "trip_session_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["session_id"], name: "index_messages_on_session_id"
+    t.index ["trip_session_id"], name: "index_messages_on_trip_session_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
     t.string "status"
     t.bigint "sender_id", null: false
-    t.bigint "session_id", null: false
+    t.bigint "trip_session_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sender_id"], name: "index_requests_on_sender_id"
-    t.index ["session_id"], name: "index_requests_on_session_id"
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.string "status"
-    t.bigint "creator_id", null: false
-    t.bigint "joiner_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_sessions_on_creator_id"
-    t.index ["joiner_id"], name: "index_sessions_on_joiner_id"
+    t.index ["trip_session_id"], name: "index_requests_on_trip_session_id"
   end
 
   create_table "tic_tac_toe_games", force: :cascade do |t|
@@ -101,6 +91,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_140250) do
     t.index ["cross_player_id"], name: "index_tic_tac_toe_games_on_cross_player_id"
   end
 
+  create_table "trip_sessions", force: :cascade do |t|
+    t.string "status"
+    t.bigint "creator_id", null: false
+    t.bigint "joiner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_trip_sessions_on_creator_id"
+    t.index ["joiner_id"], name: "index_trip_sessions_on_joiner_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -119,13 +119,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_140250) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "game_matches", "sessions"
-  add_foreign_key "messages", "sessions"
+  add_foreign_key "game_matches", "trip_sessions"
+  add_foreign_key "messages", "trip_sessions"
   add_foreign_key "messages", "users"
-  add_foreign_key "requests", "sessions"
+  add_foreign_key "requests", "trip_sessions"
   add_foreign_key "requests", "users", column: "sender_id"
-  add_foreign_key "sessions", "users", column: "creator_id"
-  add_foreign_key "sessions", "users", column: "joiner_id"
   add_foreign_key "tic_tac_toe_games", "users", column: "circle_player_id"
   add_foreign_key "tic_tac_toe_games", "users", column: "cross_player_id"
+  add_foreign_key "trip_sessions", "users", column: "creator_id"
+  add_foreign_key "trip_sessions", "users", column: "joiner_id"
 end

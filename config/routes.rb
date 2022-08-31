@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "sessions#new"
+  root to: "trip_sessions#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :sessions, only: %i[show create] do
+  resources :trip_sessions, only: %i[show create] do
     member do
       patch :join
       patch :leave

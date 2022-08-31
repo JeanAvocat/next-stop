@@ -1,4 +1,4 @@
-class Session < ApplicationRecord
+class TripSession < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :joiner, class_name: "User"
   has_many :game_matches
