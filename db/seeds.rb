@@ -195,7 +195,7 @@ gamematch1session1 = Game_match.create(winner:play1session1.cross_player_id.rand
                       matchable_id: play1session1.id,
                       session_id: session1.id)
 
-gamematch2session1 = Game_match.create(winner:play1session1.cross_player_id.random_nickname,
+gamematch2session1 = Game_match.create(winner:play2session1.cross_player_id.random_nickname,
                       matchable_type:"Tic_tac_toe_game",
                       matchable_id:play2session1.id,
                       session_id:session1.id)
@@ -344,17 +344,17 @@ gamematch1session4 = Game_match.create(winner:play1session4.circle_player_id.ran
                       matchable_id: play1session4.id,
                       session_id: session4.id)
 
-gamematch2session4 = Game_match.create(winner:play1session4.cross_player_id.random_nickname,
+gamematch2session4 = Game_match.create(winner:play2session4.cross_player_id.random_nickname,
                     matchable_type:"Tic_tac_toe_game",
                     matchable_id: play2session4.id,
                     session_id: session4.id)
 
-gamematch3session4 = Game_match.create(winner:play1session4.circle_player_id.random_nickname,
+gamematch3session4 = Game_match.create(winner:play3session4.circle_player_id.random_nickname,
                     matchable_type:"Tic_tac_toe_game",
                     matchable_id: play3session4.id,
                     session_id: session4.id)
 
-gamematch4session4 = Game_match.create(winner:play1session4.circle_player_id.random_nickname,
+gamematch4session4 = Game_match.create(winner:play4session4.circle_player_id.random_nickname,
                   matchable_type:"Tic_tac_toe_game",
                   matchable_id: play4session4.id,
                   session_id: session4.id)
