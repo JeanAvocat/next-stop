@@ -26,7 +26,7 @@ Puts "Saving method implementation..."
 
 def attach_user_photo (instance, url, filename)
   file = URI.open(url)
-  instance.photo.attach(io: file, filename:, content_type: "image/png")
+  instance.user_photo.attach(io: file, filename:, content_type: "image/png")
   instance.save
 end
 
