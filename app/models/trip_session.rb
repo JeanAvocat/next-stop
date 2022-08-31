@@ -5,7 +5,10 @@ class TripSession < ApplicationRecord
   has_many :requests
   has_many :messages
 
-  STATUS = ["waiting for joiner", "in Game", "closed"]
-  validates :status, inclusion: { in: STATUS }
-  validates :status, presence: true
+  STATUS = ["waiting for joiner", "in game", "closed"]
+  validates :status, presence: true, inclusion: { in: STATUS }
+
+  def available_for_joiner?
+    status == "Waiting for joiner"
+  end
 end

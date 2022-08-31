@@ -1,11 +1,10 @@
 class TripSessionsController < ApplicationController
   def new
-    if @tripsession != nil
-      @tripsession = TripSession.all
-      countpeople
+    if TripSession.last != nil
+      @trip_session = TripSession.last if TripSession.last.available_for_joiner?
+      @active_people = TripSession.where(status: "in game").count * 2 + TripSession.where(status: "waiting for joiner").count
     else
-      @numberconnected = 0
-      @tripsession = []
+      @active_people = 0
     end
   end
 
@@ -14,28 +13,21 @@ class TripSessionsController < ApplicationController
     @tripsession.status = "waiting for joiner"
     @tripsession.creator = current_user
     @tripsession.save
-    redirect_to trip_session_path(@tripsession)
+    redirect_to waiting_room_trip_session_path(@tripsession)
   end
 
   def join
-    @tripsessions = TripSession.all
-    @tripsession = @tripsessions.last
+    @tripsession = TripSession.find[params[:id]]
     @tripsession.joiner = current_user
-    @tripsession.status = "waiting for joiner"
+    @tripsession.status = "in game"
+    @tripsession.save
+    @gamematch = GameMatch.new
+    @gamematch.trip_session = @tripsession
+    @gamematch.matchable = @tictactoegame
     redirect_to trip_session_path(@tripsession)
   end
 
   private
 
   # méthode pour compter le nb de personnes connectés
-  def countpeople
-    @numberconnected = 0
-    @tripsession.each do |session|
-      if (session.creator != []) && (session.joiner != [])
-        @numberconnected += 2
-      else
-        @numberconnected += 1
-      end
-    end
-  end
 end
