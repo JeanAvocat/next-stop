@@ -205,7 +205,7 @@ Message.create(content: "Holaaaa",
                       session_id: session1.id,
                       user_id: session1.creator_id)
 
-request = Request.create(status:"Pending",
+request = Request.create(status:"pending",
                       sender_id:session1.creator_id,
                       session_id:session1.id)
 
@@ -217,7 +217,7 @@ Message.create(content: "Aucune idée ahah, au moins je peux te battre une nouve
                       session_id: session1.id,
                       user_id: session1.creator_id)
 
-request.status = "Refused"
+request.status = "refused"
 
 Message.create(content: "Je dois filer",
               session_id: session1.id,
@@ -280,7 +280,7 @@ Message.create(content: "Oh nooon je vais perdre là!",
                       session_id: session3.id,
                       user_id: session3.creator_id)
 
-request = Request.create(status:"Pending",
+request = Request.create(status:"pending",
                       sender_id:session3.creator_id,
                       session_id:session3.id)
 
@@ -292,7 +292,7 @@ Message.create(content: "Désolé je dois filer:)",
                       session_id: session3.id,
                       user_id: session3.joigner_id)
 
-request.status = "Accepted"
+request.status = "accepted"
 
 
 
@@ -390,7 +390,7 @@ Message.create(content: "Je descends à la prochaine mais on peut se retrouver c
                   user_id: session4.joiner_id)
 
 
-Request.create(status:"Pending",
+Request.create(status:"pending",
               sender_id:session4.joigner_id,
               session_id:session4.id)
 
@@ -473,7 +473,7 @@ Message.create(content: "ça mérite vérifications!",
                   user_id: session6.joiner_id)
 
 
-request = Request.create(status:"Pending",
+request = Request.create(status:"pending",
               sender_id:session6.joigner_id,
               session_id:session6.id)
 
@@ -481,7 +481,7 @@ Message.create(content: "N'oublie pas de jouer quand même",
               session_id: session6.id,
               user_id: session6.creator_id)
 
-request.status = "Accepted"
+request.status = "accepted"
 
 Message.create(content: "Aaah bonjour Daniel:) Top photo",
               session_id: session6.id,
@@ -557,7 +557,7 @@ Message.create(content: "ok",
                   session_id: session7.id,
                   user_id: session7.creator_id)
 
-request = Request.create(status:"Pending",
+request = Request.create(status:"pending",
               sender_id:session7.creator_id,
               session_id:session7.id)
 
@@ -565,7 +565,7 @@ Message.create(content: "Je préfère rester anonyme, sorry",
               session_id: session7.id,
               user_id: session7.joigner_id)
 
-request.status = "Refused"
+request.status = "refused"
 
 Message.create(content: "okok dommage",
               session_id: session7.id,
