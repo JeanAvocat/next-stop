@@ -1,0 +1,64 @@
+/* Copyright 2017 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+
+/* Don't use the main frame div when the error is in a subframe. */
+
+// /* Background color */
+// a {
+//   color: rgb(88, 88, 88);
+// }
+
+body {
+  // background-color: rgb(247, 247, 247);
+  // color: rgb(100, 100, 100);
+  // font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Day & Night */
+.offline {
+  transition: -webkit-filter 1.5s cubic-bezier(0.65, 0.05, 0.36, 1),
+              background-color 1.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+  will-change: -webkit-filter, background-color;
+}
+
+/* Color Invert */
+.offline.inverted {
+  -webkit-filter: invert(100%);
+  background-color: #000;
+}
+
+.offline #main-message > p {
+  display: none;
+}
+
+/* Laius pagutus */
+.offline .interstitial-wrapper {
+  color: #2b2b2b;
+  font-size: 1em;
+  line-height: 1.55;
+  margin: Auto;
+  max-width: 600px;
+  padding-top: 100px;
+  width: 100%;
+}
+
+/* Kõrgus paigutus */
+.offline .runner-container {
+  direction: ltr;
+  height: 150px;
+  max-width: 600px;
+  overflow: hidden;
+  position: absolute;
+  top: 220px;/* Top */
+  width: 44px;
+}
+/* Mängu leierid */
+#main-content {
+  display: none;
+}
