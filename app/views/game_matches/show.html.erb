@@ -17,3 +17,30 @@
     <h2 class="game--status">The winner is <strong><%= @tic_tac_toe_game.result %></strong></h2>
   <% end %>
 </section>
+
+
+<div class="container chatroom">
+  <h1>#<%= @trip_session.id %></h1>
+
+  <div class="messages">
+    <% @trip_session.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <small>
+          <strong><%= message.user.random_nickname %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= simple_form_for [@message],
+      html: {class: "d-flex"} do |f| %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Ecrivez à ##{current_user.id}",
+        wrapper_html: {class: "flex-grow-1"} %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
+</div>
