@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
+  get "profil", to: "pages#profil"
   resources :trip_sessions, only: %i[show create new] do
     member do
       patch :join
