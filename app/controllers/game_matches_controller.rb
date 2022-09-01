@@ -5,5 +5,7 @@ class GameMatchesController < ApplicationController
   end
 
   def counter
+    @counter = 5
+    @game_match = GameMatch.find(params[:id])
   end
 end

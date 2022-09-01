@@ -574,8 +574,6 @@ Message.create(content: "okok dommage",
               trip_session_id: session7.id,
               user_id: session7.creator_id)
 
-
-
 # SESSION 8
 
 puts "details session 8"
@@ -586,10 +584,13 @@ gamematch1session8 = GameMatch.create(matchable_type:"TicTacToeGame",
                       matchable_id: play1session8.id,
                       trip_session_id: session8.id)
 
-
-
-
-puts "Finished! All the seeds has been created."
+puts ""
+puts "******************************************"
+puts " "
+puts "Finished! All the seeds have been created."
+puts " "
+puts "******************************************"
+puts " "
 
 
 
