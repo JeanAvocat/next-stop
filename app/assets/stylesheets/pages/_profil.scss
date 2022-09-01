@@ -1,2 +1,25 @@
 // PROFIL PAGE CSS
 
+//HEADER
+.profil-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profil-header-return {
+  margin: 15px 8px;
+}
+
+.profil-number-points {
+  margin: 15px 8px;
+}
+
+
+// PICTURE
+.profil-picture {
+  text-align: center;
+  margin: 10px 0px 30px 0px;
+}
+
+// INFORMATION
