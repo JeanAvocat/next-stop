@@ -6,6 +6,8 @@ class GameMatchesController < ApplicationController
     # Chatroom
     @trip_session = @game_match.trip_session
     @message = Message.new
+    @buddy = current_user.id == @trip_session.creator_id ? @trip_session.joiner_id : @trip_session.creator_id
+    @buddy = User.find(@buddy).random_nickname
   end
 
   def counter

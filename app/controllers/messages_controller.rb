@@ -1,13 +1,16 @@
 class MessagesController < ApplicationController
   def create
-    @game_match = current_user.trip_sessions.last.game_matches.last
+    @game_match = GameMatch.find(params[:game_match_id])
     @message = Message.new(message_params)
-    @message.trip_session_id = current_user.trip_sessions.last.id
+    @message.trip_session_id = @game_match.trip_session_id
     @message.user_id = current_user.id
     if @message.save
-      redirect_to game_match_path(@game_match)
+      ChatroomChannel.broadcast_to(
+        @game_match,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
+      head :ok
     else
-      render "chatrooms/show", status: :unprocessable_entity
     end
   end
 
