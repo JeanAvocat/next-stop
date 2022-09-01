@@ -4,11 +4,11 @@
   <p>petit cactus</p>
   <div class="game--container">
       <% (1..9).each do |n| %>
-        <% if @tic_tac_toe_game.send("position_#{n}") || @tic_tac_toe_game.end_of_a_game? %>
-          <div data-cell-index=<%= n %> class="cell"><p><%= @tic_tac_toe_game.send("position_#{n}") %></p></div>
+        <% if @tic_tac_toe_game.position(n) || @tic_tac_toe_game.end_of_a_game? %>
+          <div data-cell-index=<%= n %> class="cell"><p><%= @tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
         <% else %>
-          <%= link_to(select_tile_tic_tac_toe_game_path(tile: "position_#{n}"), data: {turbo_method: :patch}) do %>
-            <div data-cell-index=<%= n %> class="cell"><p><%= @tic_tac_toe_game.send("position_#{n}") %></p></div>
+          <%= link_to(select_tile_tic_tac_toe_game_path(tile: n), data: {turbo_method: :patch}) do %>
+            <div data-cell-index=<%= n %> class="cell"><p><%= @tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
           <% end %>
         <% end %>
       <% end %>
