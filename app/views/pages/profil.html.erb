@@ -12,9 +12,16 @@
   <%= image_tag "svg/profil.svg", class: "profil-picture", data: { inject: { svg: "svg/profil.svg" } }, :width => 200 %>
 </div>
 
+<div class="profil-welcome-message">
+  <h2>Bonjour DOUCECRACOTTE</h2>
+</div>
+
 <div class="profil-informations-div">
-<h2>Bonjour DOUCECRACOTTE</h2>
-<h2>tu es 200e au classement</h2>
-<h2><%= current_user.email %></h2>
-<h2><%= current_user.social_media %></h2>
-<button class = "white-btn">Changer mes informations</button>
+  <p>tu es 200e au classement</p>
+  <p><%= current_user.email %></p>
+  <p><%= current_user.social_media %></p>
+</div>
+
+<div class="profil-modification-bouton">
+  <button class = "white-btn">Changer mes informations</button>
+</div>
