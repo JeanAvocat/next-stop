@@ -2,16 +2,8 @@
 <section>
   <p>tu joues contre</p>
   <p>petit cactus</p>
-  <div class="game--container">
-      <% (1..9).each do |n| %>
-        <% if @tic_tac_toe_game.position(n) || @tic_tac_toe_game.end_of_a_game? %>
-          <div data-cell-index=<%= n %> class="cell"><p><%= @tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
-        <% else %>
-          <%= link_to(select_tile_tic_tac_toe_game_path(tile: n), data: {turbo_method: :patch}) do %>
-            <div data-cell-index=<%= n %> class="cell"><p><%= @tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
-          <% end %>
-        <% end %>
-      <% end %>
+  <div class="game--container" data-controller="tic-tac-toe-game-subscription"  data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>">
+    <%= render "shared/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game %>
   </div>
   <% if @tic_tac_toe_game.end_of_a_game? %>
     <h2 class="game--status">The winner is <strong><%= @tic_tac_toe_game.result %></strong></h2>

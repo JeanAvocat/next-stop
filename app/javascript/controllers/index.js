@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TicTacToeGameSubscriptionController from "./tic_tac_toe_game_subscription_controller"
+application.register("tic-tac-toe-game-subscription", TicTacToeGameSubscriptionController)

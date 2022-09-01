@@ -9,6 +9,11 @@ class TicTacToeGamesController < ApplicationController
     end
 
     @tic_tac_toe_game.end_of_a_game?
-    redirect_to game_match_path
+
+    TicTacToeGameChannel.broadcast_to(
+      @game_match,
+      render_to_string(partial: "shared/tic_tac_toe_game", locals: { tic_tac_toe_game: @tic_tac_toe_game })
+    )
+    head :ok
   end
 end
