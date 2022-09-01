@@ -1,6 +1,7 @@
 // TRIP SESSION NEW PAGE
 .trip-session-new {
   padding: 20px 10px;
+  height: 300px;
 }
 
 // HEADER
@@ -84,7 +85,7 @@
   width: 140px;
   position: relative;
   top: -384px;
-  left: -83px;
+  left: -153px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -114,15 +115,17 @@
 }
 
 .trip-session-new-create {
-  width: 120px;
+  width: 130px;
+  height: 270px;
   position: relative;
-  top: -474px;
-  left: 80px;
+  top: -254px;
+  left: 15px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  text-decoration: none;
+  justify-content: flex-end;
 
   p {
     line-height: 14px;
@@ -141,5 +144,18 @@
     margin: 0px;
     width: 100px;
     text-align: center;
+    text-decoration: none;
   }
+}
+
+.bouton-relou {
+  border: none;
+  background-color: white;
+  height: 0px;
+  width: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

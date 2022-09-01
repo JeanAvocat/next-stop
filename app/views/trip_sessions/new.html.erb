@@ -42,7 +42,7 @@
   </div>
 
    <% if @trip_session != nil  %>
-      <%= button_to join_trip_session_path(@trip_session), method: :patch do %>
+      <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
         <div class="trip-session-new-join">
           <%= image_tag "svg/gamer_bonhomme.svg", class: "trip-session-new-gamer-bonhomme", data: { inject: { svg: "svg/gamer_bonhomme.svg" } }, :height => 120 %>
           <div class="trip-session-new-button-join">
@@ -53,15 +53,11 @@
 
 
   <% else %>
-    <%= link_to(trip_sessions_path, data: {turbo_method: :post}) do %>
+  <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
     <div class="trip-session-new-create">
       <p>Aucune partie de Chifumi en attente</p>
       <h2>Creer une partie!</h2>
     </div>
     <% end %>
   <% end %>
-
-
-
-</div>
 </div>
