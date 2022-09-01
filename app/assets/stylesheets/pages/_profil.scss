@@ -1,2 +1,43 @@
 // PROFIL PAGE CSS
 
+//HEADER
+.profil-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profil-header-return {
+  margin: 15px 8px;
+}
+
+.profil-number-points {
+  margin: 15px 8px;
+}
+
+
+// PICTURE
+.profil-picture {
+  text-align: center;
+  margin: 10px 0px 30px 0px;
+}
+
+//PSEUDO
+.profil-welcome-message {
+  text-align: center;
+  margin: 0px 60px;
+}
+
+// INFORMATION
+.profil-informations-div {
+  text-align: center;
+  font-family: "Barlow";
+  line-height: 10px;
+  margin: 40px 0px;
+}
+
+// BOUTON
+.profil-modification-bouton {
+  text-align: center;
+  margin: 50px;
+}

@@ -1,7 +1,27 @@
 <%# PROFIL PAGE %>
+<div class="profil-header">
+  <div class="profil-header-back-button">
+    <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+  </div>
+  <div class="profil-number-points">
+    <h6>Nombre de points</h6>
+  </div>
+</div>
 
-<h2>Bonjour DOUCECRACOTTE</h2>
-<h2>tu es 200e au classement</h2>
-<h2><%= current_user.email %></h2>
-<h2><%= current_user.social_media %></h2>
-<button class = "white-btn">Changer mes informations</button>
+<div class="profil-picture">
+  <%= image_tag "svg/profil.svg", class: "profil-picture", data: { inject: { svg: "svg/profil.svg" } }, :width => 200 %>
+</div>
+
+<div class="profil-welcome-message">
+  <h2>Bonjour DOUCECRACOTTE</h2>
+</div>
+
+<div class="profil-informations-div">
+  <p>tu es 200e au classement</p>
+  <p><%= current_user.email %></p>
+  <p><%= current_user.social_media %></p>
+</div>
+
+<div class="profil-modification-bouton">
+  <button class = "white-btn">Changer mes informations</button>
+</div>
