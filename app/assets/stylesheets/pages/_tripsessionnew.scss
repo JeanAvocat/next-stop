@@ -1,0 +1,127 @@
+// TRIP SESSION NEW PAGE
+.trip-session-new {
+  padding: 20px 10px;
+}
+
+.trip-session-new-inside-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trip-session-new-profile-text {
+  text-align: right;
+  padding: 10px 0px 0px 0px;
+}
+
+.trip-session-new-profil-picture {
+  padding: 0px 10px;
+}
+
+.trip-session-new-profile-div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+}
+
+.trip-session-new-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 0px 5px 25px;
+
+  .trip-session-new-bus {
+    padding: 0px 0px 6px 0px;
+  }
+}
+
+.trip-session-new-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 25px 0px 0px 20px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 15px;
+  color: #818181;
+}
+
+.trip-session-new-line {
+  padding: 0px 0px 0px 0px;
+}
+
+.trip-session-new-infos-div {
+  background-color: #e8e6e6;
+  width: 220px;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  margin: 30px;
+  border-radius: 2px;
+}
+
+
+// CARDS DE JEUX
+
+.trip-session-new-games-cards {
+  display: flex;
+  padding: 20px 5px 0px 5px;
+}
+
+.trip-session-new-chifumi-card {
+  padding: 0px 0px 0px 12px;
+}
+
+
+// JOIN OU CREER UNE PARTIE
+
+.trip-session-new-join {
+  width: 140px;
+  position: relative;
+  top: -85px;
+  left: -80px;
+  text-align: center;
+
+  h2 {
+    font-size: 24px;
+    margin: 15px 0px 0px 0px;
+    line-height: 20px;
+  }
+}
+
+.trip-session-new-gamer-bonhomme {
+  padding: 1px;
+}
+
+.trip-session-new-create {
+  width: 120px;
+  position: relative;
+  top: -290px;
+  left: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  p {
+    line-height: 14px;
+    font-size: 12px;
+    margin-bottom: 5px
+  }
+
+  h2 {
+    font-size: 18px;
+    background-color: white;
+    border-color: black;
+    border: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    padding: 5px 0px;
+    margin: 0px;
+    width: 100px;
+    text-align: center;
+  }
+}
