@@ -8,6 +8,9 @@ $headers-font: "Oliver", "Helvetica", "sans-serif";
 
 // Oliver font
 @font-face {
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: local('Oliver');
   font-family: "Oliver";
   src: font-url('app/assets/fonts/Oliver.eot');
   src: font-url('app/assets/fonts/Oliver.woff') format('woff'),
