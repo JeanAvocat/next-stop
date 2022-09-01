@@ -1,28 +1,58 @@
 <%# PAGE DE JEUX %>
 <div class="trip-session-new">
 
+<%# HEADER %>
   <div class="trip-session-new-profile-div">
     <div class="trip-session-new-profile-text"><h6>Bienvenue <br> Doucecracotte!</h6></div>
     <div class="trip-session-new-profil-picture">
-      <%= image_tag "svg/profil.svg", class: "session-new-ligne", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
+      <%= image_tag "svg/profil.svg", class: "trip-session-new-profil", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
     </div>
   </div>
 
+<%# LIGNE %>
   <div class="trip-session-new-inside-profile">
   <div class="trip-session-new-line">
     <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
   </div>
 
+<%# BLOC INFORMATION DE LA ROOM %>
   <div class="trip-session-new-infos-div">
-    <div class="trip-session-new-bus">
-      <%= image_tag "svg/bus.svg", class: "session-new-ligne", data: { inject: { svg: "svg/bus.svg" } }, :width => 60 %>
+    <div class="trip-session-new-icons">
+      <div class="trip-session-new-bus">
+        <%= image_tag "svg/bus.svg", class: "trip-session-new-bus", data: { inject: { svg: "svg/bus.svg" } }, :width => 70 %>
+      </div>
+      <div class="trip-session-new-bonhommes">
+        <%= image_tag "svg/bonhommes.svg", class: "trip-session-new-bonhommes", data: { inject: { svg: "svg/bonhommes.svg" } }, :width => 50 %>
+      </div>
     </div>
-    <p>Bus ligne 9</p>
-    <p><%= @active_people  %> personnes connectées</p>
+    <div class="trip-session-new-details">
+      <p>Bus ligne 9</p>
+      <p><%= @active_people  %> personnes connectées</p>
+    </div>
   </div>
 
-  <p>ici il y aura la possibilité de créer ou rejoindre une partie de tic tac toe dans un premier temps.</p>
-  <p>Nombre de personnes connectés : <%= @active_people  %></p>
+<%# CARDS DE JEUX %>
+  <div class="trip-session-new-games-cards">
+      <div class="trip-session-new-morpion-card">
+        <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-morpions-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
+      </div>
+      <div class="trip-session-new-chifumi-card">
+        <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-chifumi-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
+      </div>
+  </div>
+
+  <div class="trip-session-new-join">
+    <%= image_tag "svg/gamer_bonhomme.svg", class: "trip-session-new-gamer-bonhomme", data: { inject: { svg: "svg/gamer_bonhomme.svg" } }, :height => 150 %>
+    <h2>PETIT CACTUS</h2>
+    <p>te défie au Morpions!</p>
+  </div>
+
+  <div class="trip-session-new-create">
+    <p>Aucune partie de Chifumi en attente</p>
+    <h2>Creer une partie!</h2>
+  </div>
+
+
   <% if @trip_session != nil  %>
     <p><%= button_to("rejoindre", join_trip_session_path(@trip_session), method: :patch) %></p>
   <% else %>
