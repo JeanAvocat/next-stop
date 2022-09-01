@@ -12,8 +12,9 @@ $headers-font: "Oliver", "Helvetica", "sans-serif";
   unicode-range: U+000-5FF;
   src: local('Oliver');
   font-family: "Oliver";
-  src: font-url('app/assets/fonts/Oliver.eot');
-  src: font-url('app/assets/fonts/Oliver.woff') format('woff'),
+  src: font-url('app/assets/fonts/Oliver.woff') format('woff');
+  src: font-url('app/assets/fonts/Oliver.woff2') format('woff2'),
+       font-url('app/assets/fonts/Oliver.eot'),
        font-url('app/assets/fonts/Oliver.ttf') format('truetype');
 }
 
