@@ -3,10 +3,12 @@
   padding: 20px 10px;
 }
 
-.trip-session-new-inside-profile {
+// HEADER
+.trip-session-new-profile-div {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+  height: 40px;
 }
 
 .trip-session-new-profile-text {
@@ -14,16 +16,17 @@
   padding: 10px 0px 0px 0px;
 }
 
+.trip-session-new-inside-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .trip-session-new-profil-picture {
   padding: 0px 10px;
 }
 
-.trip-session-new-profile-div {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 40px;
-}
+// BLOC INFORMATION DE LA ROOM
 
 .trip-session-new-icons {
   display: flex;
@@ -58,7 +61,7 @@
   height: 100px;
   text-align: center;
   display: flex;
-  margin: 30px;
+  margin: 15px 30px 15px 30px;
   border-radius: 2px;
 }
 
@@ -67,7 +70,7 @@
 
 .trip-session-new-games-cards {
   display: flex;
-  padding: 20px 5px 0px 5px;
+  padding: 120px 5px 0px 5px;
 }
 
 .trip-session-new-chifumi-card {
@@ -80,14 +83,24 @@
 .trip-session-new-join {
   width: 140px;
   position: relative;
-  top: -85px;
-  left: -80px;
+  top: -384px;
+  left: -83px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h2 {
-    font-size: 24px;
-    margin: 15px 0px 0px 0px;
-    line-height: 20px;
+    font-size: 18px;
+    background-color: white;
+    border-color: black;
+    border: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    padding: 5px 0px;
+    margin: 0px;
+    width: 100px;
+    text-align: center;
   }
 
   p {
@@ -97,13 +110,13 @@
 }
 
 .trip-session-new-gamer-bonhomme {
-  padding: 1px;
+  margin: 0px 0px 231px 0px;
 }
 
 .trip-session-new-create {
   width: 120px;
   position: relative;
-  top: -290px;
+  top: -474px;
   left: 80px;
   text-align: center;
   display: flex;
