@@ -3,4 +3,52 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  width: 335px;
+  border-radius: 5px;
+  border-width: 2px;
+  text-align: center;
+  font-family: $my-font;
+  --bs-alert-padding-x: 2rem;
+  --bs-alert-padding-y: 1rem;
+  padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+}
+
+
+// CONNEXION REUSSIE //
+.alert-info {
+  color: $white;
+  border-color: $yellow;
+  background-color: $yellow;
+  padding: 5px 48px;
+}
+
+// VOUS DEVEZ VOUS CONNECTER OU VOUS INSCRITE POUR ACCEDER A CETTE PAGE
+.alert-warning {
+  color: $white;
+  border-color: $orange;
+  background-color: $orange;
+  padding: 5px 48px;
+}
+
+//
+.alert-danger {
+  color: $white;
+  border-color: $red;
+  background-color: $red;
+  padding: 5px 48px;
+}
+
+//
+.alert-light {
+  color: $dark;
+  border-color: $white;
+  background-color: $dark;
+  padding: 5px 48px;
+}
+
+.alert-dark {
+  color: $white;
+  border-color: $dark;
+  background-color: $white;
+  padding: 5px 48px;
 }
