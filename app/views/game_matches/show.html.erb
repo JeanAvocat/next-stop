@@ -1,11 +1,4 @@
+<p>tu joues contre</p>
+<p>petit cactus</p>
 
-<section>
-  <p>tu joues contre</p>
-  <p>petit cactus</p>
-  <div class="game--container" data-controller="tic-tac-toe-game-subscription"  data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>">
-    <%= render "shared/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game %>
-  </div>
-  <% if @tic_tac_toe_game.end_of_a_game? %>
-    <h2 class="game--status">The winner is <strong><%= @tic_tac_toe_game.result %></strong></h2>
-  <% end %>
-</section>
+<%= render "shared/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game, game_match: @game_match %>

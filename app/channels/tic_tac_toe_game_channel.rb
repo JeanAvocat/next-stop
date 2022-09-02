@@ -1,7 +1,7 @@
 class TicTacToeGameChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    game_match = GameMatch.find(params[:id]).matchable
+    game_match = GameMatch.find(params[:id])
     stream_for game_match
   end
 
