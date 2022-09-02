@@ -8,7 +8,7 @@
   background-color: white;
   color: black;
   text-align: center;
-  padding: 20px 20px 20px 20px;
+  padding: 105px 20px 20px 20px;
   position: fixed;
   top: 0;
   left: 0;
@@ -46,8 +46,14 @@
 .session-new-links {
   color: $lightgray;
   line-height: 20px;
-}
 
-a {
-  color: $lightgray;
+  p {
+    text-decoration: none;
+    color: $lightgray;
+  }
+
+  a {
+    color: $lightgray;
+    text-decoration: underline;
+  }
 }

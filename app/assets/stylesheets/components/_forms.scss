@@ -19,6 +19,20 @@
   font-size: 16px;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid black;
+  -webkit-text-fill-color: black;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 #user_password {
   background-color: white;
   border-radius: 5px;
@@ -78,6 +92,18 @@
   border-width: 2px;
   border-radius: 5px;
   background-color: white;
+  height: 56px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px;
+}
+
+#submit-btn:active {
+  background-color: $pink;
+  color: black;
+  border-color: black;
+  font-family: $my-font;
+  border-width: 2px;
+  border-radius: 5px;
   height: 56px;
   padding: 0px 0px 0px 0px;
   margin: 20px;
