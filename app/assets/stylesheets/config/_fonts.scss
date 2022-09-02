@@ -10,8 +10,8 @@ $headers-font: "Oliver", "Helvetica", "sans-serif";
 @font-face {
   font-family: "Oliver";
   font-display: swap;
-  src: font-url('app/assets/fonts/Oliver.woff2') format('woff2'),
-       font-url('app/assets/fonts/Oliver.woff') format('woff');
+  src: url('Oliver.woff2') format('woff2'),
+       url('Oliver.woff') format('woff');
 }
 
 $my-font: "Oliver";
