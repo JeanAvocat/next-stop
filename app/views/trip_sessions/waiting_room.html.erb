@@ -1,5 +1,5 @@
 <div class="profil-header-back-button">
-  <%= link_to new_trip_session_path do %>
+  <%= link_to trip_session_path(@trip_session), data: {turbo_method: :delete} do %>
     <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
   <% end %>
   </div>
