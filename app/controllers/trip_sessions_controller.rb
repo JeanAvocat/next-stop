@@ -1,4 +1,5 @@
 class TripSessionsController < ApplicationController
+  before_action :set_trip_session, only: %i[join destroy waiting_room]
   def new
     if TripSession.last != nil
       @trip_session = TripSession.last if TripSession.last.status == "waiting for joiner"
@@ -17,7 +18,6 @@ class TripSessionsController < ApplicationController
   end
 
   def join
-    @trip_session = TripSession.find(params[:id])
     @trip_session.joiner = current_user
     @trip_session.status = "in game"
     @trip_session.save
@@ -32,11 +32,21 @@ class TripSessionsController < ApplicationController
     redirect_to counter_game_match_path(@game_match)
   end
 
+  def destroy
+    @trip_session.destroy
+    redirect_to new_trip_session_path, status: :see_other
+  end
+
   def waiting_room
-    @trip_session = TripSession.find(params[:id])
     @game_match = GameMatch.find_by trip_session_id: @trip_session.id
     if @trip_session.joiner_id? # TODO : convert the "if" condition in real time with ActionCable gem
       redirect_to counter_game_match_path(@game_match)
     end
+  end
+
+  private
+
+  def set_trip_session
+    @trip_session = TripSession.find(params[:id])
   end
 end
