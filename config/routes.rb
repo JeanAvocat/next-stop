@@ -24,12 +24,12 @@ Rails.application.routes.draw do
   end
 
   resources :game_matches, only: :show do
+    resources :messages, only: :create
     member do
       get :counter
     end
   end
 
-  resources :messages, only: :create
 
   resources :tic_tac_toe_games, only: :show do
     member do

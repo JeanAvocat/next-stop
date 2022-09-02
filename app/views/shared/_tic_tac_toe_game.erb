@@ -1,0 +1,16 @@
+<section>
+  <div class="game--container" data-controller="tic-tac-toe-game-subscription"  data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>" data-tic-tac-toe-game-subscription-target="tictactoe">
+    <% (1..9).each do |n| %>
+      <% if @tic_tac_toe_game.position(n) || @tic_tac_toe_game.end_of_a_game? %>
+        <div class="cell" id=<%= "tile#{n}" %> ><p><%= @tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
+      <% else %>
+        <%= link_to(select_tile_tic_tac_toe_game_path(tile: n), data: {turbo_method: :patch}) do %>
+        <div data-action="click->tic-tac-toe-game-subscription#updateTile" data-tic-tac-toe-game-subscription-target="tile" class="cell" id=<%= "tile#{n}" %> ><p><%= @tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <% if @tic_tac_toe_game.end_of_a_game? %>
+    <h2 class="game--status">The winner is <strong><%= @tic_tac_toe_game.result %></strong></h2>
+  <% end %>
+</section>

@@ -4,8 +4,16 @@
 
 import { application } from "./application"
 
+
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import GameMatchesController from "./game_matches_controller"
 application.register("game-matches", GameMatchesController)
 
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TicTacToeGameSubscriptionController from "./tic_tac_toe_game_subscription_controller"
+application.register("tic-tac-toe-game-subscription", TicTacToeGameSubscriptionController)
