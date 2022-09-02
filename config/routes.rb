@@ -5,4 +5,35 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get "profil", to: "pages#profil"
+  resources :trip_sessions, only: %i[show create new destroy] do
+    member do
+      patch :join
+      patch :leave
+      get :waiting_room
+    end
+
+    resources :requests, only: :create
+  end
+
+  resources :requests, only: :show do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
+
+  resources :game_matches, only: :show do
+    resources :messages, only: :create
+    member do
+      get :counter
+    end
+  end
+
+
+  resources :tic_tac_toe_games, only: :show do
+    member do
+      patch :select_tile
+    end
+  end
 end

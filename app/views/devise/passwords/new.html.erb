@@ -1,18 +1,25 @@
-<h2>Forgot your password?</h2>
+<%# MOT DE PASSE OUBLIE PAGE %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+<div class="session-new-general-div">
+  <h3>Mot de passe oublié</h3>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+  <div class="session-new-line">
+    <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
 
-<%= render "devise/shared/links" %>
+    <div class="formulaire">
+      <%= f.input :email,
+                  placeholder: 'email',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+    </div>
+
+    <button id="submit-btn" type="button"><%= f.button :submit, "Envoyer les instructions" %></button>
+  <% end %>
+
+  <div class="session-new-links">Ou<%= render "devise/shared/links" %></div>
+</div>

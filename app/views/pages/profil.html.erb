@@ -1,0 +1,40 @@
+<%# PROFIL PAGE %>
+
+<div class="profil-header">
+  <div class="profil-header-back-button">
+    <%= link_to new_trip_session_path do %>
+      <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+    <% end %>
+  </div>
+
+  <div class="profil-number-points">
+    <%= image_tag "svg/piece_icon.svg", class: "profil-header-piece-icon", data: { inject: { svg: "svg/piece_icon.svg" } }, :width => 20 %>
+    <h6>13</h6>
+  </div>
+</div>
+
+<div class="profil-picture">
+  <%= image_tag "svg/profil.svg", class: "profil-picture", data: { inject: { svg: "svg/profil.svg" } }, :width => 200 %>
+</div>
+
+<div class="profil-welcome-message">
+  <h2>Bonjour DOUCECRACOTTE</h2>
+</div>
+
+<div class="profil-informations-div">
+  <div class="profil-informations-icons">
+    <%= image_tag "svg/classement_icon.svg", class: "profil-classement-icon", data: { inject: { svg: "svg/classement_icon.svg" } }, :width => 30 %>
+    <%= image_tag "svg/email_icon.svg", class: "profil-email-icon", data: { inject: { svg: "svg/email_icon.svg" } }, :width => 30 %>
+    <%= image_tag "svg/instagram_icon.svg", class: "profil-instagram-icon", data: { inject: { svg: "svg/instagram_icon.svg" } }, :width => 30 %>
+  </div>
+  <div class="profil-informations-text">
+    <p>tu es <strong>200e</strong> au classement</p>
+    <p><%= current_user.email %></p>
+    <p><%= current_user.social_media %></p>
+  </div>
+</div>
+
+<div class="profil-modification-bouton">
+  <button class = "black-blue-btn">Changer mes informations</button>
+  <p><%= link_to "se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
+</div>

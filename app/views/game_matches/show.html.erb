@@ -1,0 +1,33 @@
+<section class="">
+<h6 class="gray-text-h6">tu joues contre</h6>
+<% if @tic_tac_toe_game.cross_player == current_user %>
+  <h6 class="competitor"><%= @tic_tac_toe_game.circle_player.random_nickname %></h6>
+<% else %>
+  <h6 class="competitor"><%= @tic_tac_toe_game.cross_player.random_nickname %></h6>
+<% end %>
+  <div class="game--container" data-controller="tic-tac-toe-game-subscription"  data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>" data-tic-tac-toe-game-subscription-target="tictactoe">
+    <%= render "tic_tac_toe_games/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game %>
+  </div>
+</section>
+
+<%# CHANEL %>
+<div>
+  <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>">
+  <h1>Canal de discussions</h1>
+
+<div>
+  <div class="messages" data-chatroom-subscription-target="messages">
+    <% @trip_session.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+  <div>
+    <%= simple_form_for [@game_match, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Ecris à #{@buddy}",
+        wrapper_html: {class: "flex-grow-1"} %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
+</div>
