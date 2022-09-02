@@ -1,6 +1,6 @@
 <%# MOT DE PASSE OUBLIE PAGE %>
 
-<div class="session-new-general-div">
+<div class="password-new-general-div">
   <h3>Mot de passe oublié</h3>
 
   <div class="session-new-line">
@@ -13,12 +13,13 @@
     <div class="formulaire">
       <%= f.input :email,
                   placeholder: 'email',
+                  label: false,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <button id="submit-btn" type="button"><%= f.button :submit, "Envoyer les instructions" %></button>
+    <button id="submit-blue-btn" type="button"><%= f.button :submit, "Envoyer les instructions" %></button>
   <% end %>
 
   <div class="session-new-links">Ou<%= render "devise/shared/links" %></div>

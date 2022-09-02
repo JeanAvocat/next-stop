@@ -1,4 +1,6 @@
-// HOME PAGE CSS
+// CSS DES DEVISES
+
+// PAGE DE CONNEXION
 
 .session-new-general-div {
   display: flex;
@@ -39,6 +41,9 @@
   }
 }
 
+
+// PAGE D'INSCRIPTION
+
 .registration-new-general-div {
   display: flex;
   flex-direction: column;
@@ -78,9 +83,56 @@
   }
 }
 
+// PAGE DE MOT DE PASSE OUBLIE
+
+.password-new-general-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 15px 20px 20px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+
+  h1 {
+    font-size: 80px;
+    padding: 0px 20px 10px 20px;
+    line-height: 64px;
+  }
+
+  h2 {
+    font-family: "Barlow";
+    font-size: 20px;
+    padding: 0px 20px 20px 20px;
+  }
+
+  h3 {
+    font-size: 50px;
+  }
+
+  p {
+    font-style: italic;
+    padding: 0px 45px 60px 45px;
+    color: $gray;
+  }
+}
+
+
+// SEPARATION LINE
+
 .session-new-line {
   padding: 0px 0px 40px 0px;
 }
+
+
+// LINKS DE DEVISE SHARED
 
 .session-new-links {
   color: $lightgray;

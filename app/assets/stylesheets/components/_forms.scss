@@ -157,6 +157,31 @@ select:-webkit-autofill:focus {
   margin: 20px;
 }
 
+//BLUE
+#submit-blue-btn {
+  font-family: $my-font;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: white;
+  height: 56px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px;
+}
+
+#submit-blue-btn:active {
+  background-color: $blue;
+  color: black;
+  border-color: black;
+  font-family: $my-font;
+  border-width: 2px;
+  border-radius: 5px;
+  height: 56px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px;
+}
+
 .btn {
   padding: 0px 10px 0px 10px;
   line-height: 20px;
