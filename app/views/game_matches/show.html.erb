@@ -6,7 +6,7 @@
   <h6 class="competitor"><%= @tic_tac_toe_game.cross_player.random_nickname %></h6>
 <% end %>
   <div class="game--container" data-controller="tic-tac-toe-game-subscription"  data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>" data-tic-tac-toe-game-subscription-target="tictactoe">
-    <%= render "tic_tac_toe_games/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game, game_match: @game_match %>
+    <%= render "tic_tac_toe_games/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game %>
   </div>
 </section>
 
