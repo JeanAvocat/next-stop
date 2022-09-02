@@ -18,7 +18,7 @@ class TicTacToeGame < ApplicationRecord
     case filter_winning_pattern.flatten.uniq.join
     when "cross" then cross_player.first_name
     when "circle" then circle_player.first_name
-    else "Draw"
+    else "draw"
     end
   end
 
