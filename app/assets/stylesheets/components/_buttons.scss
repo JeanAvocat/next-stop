@@ -42,3 +42,20 @@
   height: 28px;
   padding: 0px 0px 0px 0px;
 }
+
+.black-blue-btn {
+  font-family: $my-font;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: white;
+  height: 28px;
+  padding: 0px 0px 0px 0px;
+}
+
+.black-blue-btn:active {
+  background-color: $blue;
+  color: black;
+  border-color: black;
+}
