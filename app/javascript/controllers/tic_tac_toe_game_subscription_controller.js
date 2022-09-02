@@ -12,14 +12,16 @@ export default class extends Controller {
       { channel: "TicTacToeGameChannel", id: this.gameIdValue },
       {  received: data => this.#updateTile(data) } // this.tictactoeTarget("beforeend", data) }
     )
-    console.log(`Subscribe to the tic tac toe game with the id ${this.gameIdValue}.`)
-    console.log("hello tic tac toe");
+    // console.log(`Subscribe to the tic tac toe game with the id ${this.gameIdValue}.`)
+    // console.log("hello tic tac toe");
+    // console.log(this.tictactoeTarget)
   }
 
 
   #updateTile(data) {
     // event.preventDefault()
-    console.log(this.tictactoeTarget.innerHTML);
+    // console.log(this.tictactoeTarget.innerHTML);
+    console.log(this.tictactoeTarget)
     this.tictactoeTarget.innerHTML = data
     // this.tileTargets.forEach(target => {
       // console.log(target);

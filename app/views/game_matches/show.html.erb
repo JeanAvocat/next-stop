@@ -1,7 +1,14 @@
-<p>tu joues contre</p>
-<p>petit cactus</p>
-
-<%= render "shared/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game, game_match: @game_match %>
+<section class="">
+<h6 class="gray-text-h6">tu joues contre</h6>
+<% if @tic_tac_toe_game.cross_player == current_user %>
+  <h6 class="competitor"><%= @tic_tac_toe_game.circle_player.random_nickname %></h6>
+<% else %>
+  <h6 class="competitor"><%= @tic_tac_toe_game.cross_player.random_nickname %></h6>
+<% end %>
+  <div class="game--container" data-controller="tic-tac-toe-game-subscription"  data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>" data-tic-tac-toe-game-subscription-target="tictactoe">
+    <%= render "tic_tac_toe_games/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game, game_match: @game_match %>
+  </div>
+</section>
 
 <%# CHANEL %>
 <div>
@@ -24,4 +31,3 @@
     <% end %>
   </div>
 </div>
-
