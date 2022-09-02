@@ -1,6 +1,20 @@
 // TRIP SESSION NEW PAGE
 .trip-session-new {
   padding: 20px 10px;
+  height: 300px;
+}
+
+// HEADER
+.trip-session-new-profile-div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+}
+
+.trip-session-new-profile-text {
+  text-align: right;
+  padding: 10px 0px 0px 0px;
 }
 
 .trip-session-new-inside-profile {
@@ -9,21 +23,11 @@
   align-items: center;
 }
 
-.trip-session-new-profile-text {
-  text-align: right;
-  padding: 10px 0px 0px 0px;
-}
-
 .trip-session-new-profil-picture {
   padding: 0px 10px;
 }
 
-.trip-session-new-profile-div {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 40px;
-}
+// BLOC INFORMATION DE LA ROOM
 
 .trip-session-new-icons {
   display: flex;
@@ -58,7 +62,7 @@
   height: 100px;
   text-align: center;
   display: flex;
-  margin: 30px;
+  margin: 15px 30px 15px 30px;
   border-radius: 2px;
 }
 
@@ -67,10 +71,10 @@
 
 .trip-session-new-games-cards {
   display: flex;
-  padding: 20px 5px 0px 5px;
+  padding: 120px 5px 0px 5px;
 }
 
-.trip-session-new-chifumi-card {
+.trip-session-new-chifoumi-card {
   padding: 0px 0px 0px 12px;
 }
 
@@ -80,31 +84,48 @@
 .trip-session-new-join {
   width: 140px;
   position: relative;
-  top: -85px;
-  left: -80px;
-  text-align: center;
-
-  h2 {
-    font-size: 24px;
-    margin: 15px 0px 0px 0px;
-    line-height: 20px;
-  }
-}
-
-.trip-session-new-gamer-bonhomme {
-  padding: 1px;
-}
-
-.trip-session-new-create {
-  width: 120px;
-  position: relative;
-  top: -290px;
-  left: 80px;
+  top: -384px;
+  left: -153px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  h2 {
+    font-size: 18px;
+    background-color: white;
+    border-color: black;
+    border: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    padding: 5px 0px;
+    margin: 0px;
+    width: 100px;
+    text-align: center;
+  }
+
+  p {
+    margin: 0px 0px 0px 0px;
+    font-size: 15px;
+  }
+}
+
+.trip-session-new-gamer-bonhomme {
+  margin: 0px 0px 231px 0px;
+}
+
+.trip-session-new-create {
+  width: 130px;
+  height: 270px;
+  position: relative;
+  top: -254px;
+  left: -150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  justify-content: flex-end;
 
   p {
     line-height: 14px;
@@ -123,5 +144,18 @@
     margin: 0px;
     width: 100px;
     text-align: center;
+    text-decoration: none;
   }
+}
+
+.bouton-relou {
+  border: none;
+  background-color: white;
+  height: 0px;
+  width: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

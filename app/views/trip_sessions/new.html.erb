@@ -5,7 +5,9 @@
   <div class="trip-session-new-profile-div">
     <div class="trip-session-new-profile-text"><h6>Bienvenue <br> Doucecracotte!</h6></div>
     <div class="trip-session-new-profil-picture">
-      <%= image_tag "svg/profil.svg", class: "trip-session-new-profil", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
+      <%= link_to profil_path do %>
+        <%= image_tag "svg/profil.svg", class: "trip-session-new-profil", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
+      <% end %>
     </div>
   </div>
 
@@ -36,27 +38,28 @@
       <div class="trip-session-new-morpion-card">
         <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-morpions-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
       </div>
-      <div class="trip-session-new-chifumi-card">
-        <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-chifumi-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
+      <div class="trip-session-new-chifoumi-card">
+        <%= image_tag "svg/chifoumi_card.svg", class: "trip-session-new-chifoumi-card", data: { inject: { svg: "svg/chifoumi_card.svg" } }, :height => 270 %>
       </div>
   </div>
 
-  <div class="trip-session-new-join">
-    <%= image_tag "svg/gamer_bonhomme.svg", class: "trip-session-new-gamer-bonhomme", data: { inject: { svg: "svg/gamer_bonhomme.svg" } }, :height => 150 %>
-    <h2>PETIT CACTUS</h2>
-    <p>te défie au Morpions!</p>
-  </div>
+   <% if @trip_session != nil  %>
+      <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
+        <div class="trip-session-new-join">
+          <%= image_tag "svg/gamer_bonhomme.svg", class: "trip-session-new-gamer-bonhomme", data: { inject: { svg: "svg/gamer_bonhomme.svg" } }, :height => 120 %>
+          <div class="trip-session-new-button-join">
+            <h2>Rejoins la partie!</h2>
+          </div>
+        </div>
+      <% end %>
 
-  <div class="trip-session-new-create">
-    <p>Aucune partie de Chifumi en attente</p>
-    <h2>Creer une partie!</h2>
-  </div>
 
-
-  <% if @trip_session != nil  %>
-    <p><%= button_to("rejoindre", join_trip_session_path(@trip_session), method: :patch) %></p>
   <% else %>
-    <p><%= link_to "Créer", trip_sessions_path, data: {turbo_method: :post}%></p>
+  <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
+    <div class="trip-session-new-create">
+      <p>Aucune partie de Chifumi en attente</p>
+      <h2>Creer une partie!</h2>
+    </div>
+    <% end %>
   <% end %>
-</div>
 </div>

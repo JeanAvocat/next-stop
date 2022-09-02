@@ -1,6 +1,11 @@
+<div class="profil-header-back-button">
+  <%= link_to new_trip_session_path do %>
+    <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+  <% end %>
+  </div>
 <div>
-  <div>
-    <h1>Arrêt du bus</h1>
+  <div class="dino-text">
+    <h1>Salle d'attente</h1>
     <p>Ton coéquipier arrive...</p>
   </div>
 
@@ -660,8 +665,6 @@
         * account the backing store pixel ratio and
         * the device pixel ratio.
         *
-        * See article by Paul Lewis:
-        * https://www.html5rocks.com/en/tutorials/canvas/hidpi/
         *
         * @param {HTMLCanvasElement} canvas
         * @param {number} opt_width
@@ -1603,7 +1606,7 @@
         */
         Cloud.config = {
         HEIGHT: 14,
-        MAX_CLOUD_GAP: 400,
+        MAX_CLOUD_GAP: 40,
         MAX_SKY_LEVEL: 30,
         MIN_CLOUD_GAP: 100,
         MIN_SKY_LEVEL: 71,
@@ -1934,12 +1937,15 @@
       found in the LICENSE file. */
 
     a {
-      color: #585858;
+      color: black;
+      font-family: $my-font;
+      text-align: center;
     }
 
     body {
-      background-color: #f7f7f7;
-      color: #585858;
+      background-color: white;
+      text-align: center;
+      color: black;
       font-size: 125%;
     }
 
@@ -2007,10 +2013,11 @@
 
     h1 {
       -webkit-margin-after: 16px;
-      color: #585858;
+      color: black;
       font-size: 1.6em;
       font-weight: normal;
       line-height: 1.25em;
+      padding: 20px 0px 0px 0px;
     }
 
     h2 {
@@ -2140,6 +2147,24 @@
 
     .styled-checkbox input[type=checkbox]:checked + label::after {
       opacity: 1;
+    }
+
+    .dino-text {
+      padding: 10px 0px 60px 0px;
+      line-height: 12px;
+    }
+
+    .dino-text p {
+        font-size: 14px;
+        font-family: Barlow;
+        line-height: 5px;
+        font-style: italic;
+      }
+
+    .bottom-trex {
+      padding: 60px 0px 10px 0px;
+      font-family: Barlow;
+      font-size: 14px;
     }
 
     @media (max-width: 700px) {
@@ -2365,7 +2390,7 @@
     /* Decrease padding at low sizes. */
     @media (max-width: 640px), (max-height: 640px) {
       body {
-        margin: 15px;
+        margin: 0px;
       }
       h1 {
         margin: 10px 0 15px;
@@ -2550,9 +2575,7 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
-        <div class="onlyforchrome" style="font-size: 30px;text-align: center;font-family: Helvetica;">Running T-Rex</div>
-        <div class="onlyforchrome" style="margin-top:5px;text-align:center;color:#8a8a8a;margin-bottom:80px; font-size:.8em;line-height:1.2em;font-family: Georgia;"><a href="http://www.thecodepost.org/internet/play-hidden-t-rex-game-offline-chrome/" target="_blank"><strong>T-Rex Dino game</strong></a> from Google Chrome offline mode ripped by <a href="https://www.twitter.com/thecodepost" target="_blank"><strong>@thecodepost</strong></a>.<br/> Press "Space" to jump your Dino and start the game.</div>
-      <div id="main-frame-notchrome" style="display:none; margin-top:50px;">Sorry, this game only runs on the Google Chrome! You can download it free <a href="https://www.google.com/chrome">here</a></div>
+        <div class="onlyforchrome" style="font-size: 30px;text-align: center;font-family: Helvetica;">Running T-Rex <br/> Appuyez sur votre écran pour faire sauter le Dino et commencer le jeu.</div>
         <div id="offline-resources" jstcache="0">
         <div id="offline-resources-1x" jstcache="0">
           <img id="1x-obstacle-large" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAyCAMAAACJUtIoAAAACVBMVEX////39/dTU1OabbyfAAAAAXRSTlMAQObYZgAAAXhJREFUeF7t2NGqAjEMANGM///RlwvaYQndULuFPJgHUYaEI6IPhgNAOA8HZ+3U6384F5y1U6YzAZTWG+dZamnFEstBFtCKJZSHWMADLJ18z+JqpQeLdKoDC8siC5iFCQs4znIxB5B1t6F3lQWkL4N0JsF+u6GXJdbI+FKW+yWr3lhgCZ2VSag3Nlk/FnRkIRbasLCO0oulikMsvmGpeiGLZ1jOMgtIP5bODivYYUXEIVbwFCt4khVssRgsgidZwQaLd2A8m7MYLGTl4KeQQs2y4kMAMGGlmQViDIb5O6xZnnLD485dIBzqDSE1yyFdL4Iqu4XJqUUWl/NVAFSZq1P6a5aqbAUM2epQbBioWflUBABiUyhYyZoCBev8XyMAObDNOhOAfiyxmHU0YNlldGAphGjFCjA3YkUn1o/1Y3EkZFZ5isCC6NUgwDBn1RuXH96doNfAhDXfsIyJ2AnolcCVhay0kcYbW0HvCO8OwIcJ3GzkORpkFuUP/1Ec8FW1qJkAAAAASUVORK5CYII=" jstcache="0">
@@ -2592,8 +2615,6 @@
             data-width="150"
             data-show-faces="false">
           </div></td>
-          <td style="padding-left:15px;"><div class="g-plusone" data-size="medium" data-href="http://apps.thecodepost.org/trex/trex.html"></div></td>
-          <td><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://apps.thecodepost.org/trex/trex.html" data-text="Cool Hidden T-Rex game" data-via="thecodepost" data-hashtags="trexgame">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></td>
         </tr></table>
         </div>
@@ -2607,7 +2628,7 @@
       </div>
   </div>
 
-  <div>
+  <div class="bottom-trex">
     <p>Travaille tes skills avec T-Rex en attendant</p>
   </div>
 </div>
