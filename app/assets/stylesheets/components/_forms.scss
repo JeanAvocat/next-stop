@@ -19,6 +19,24 @@
   font-size: 16px;
 }
 
+#user_email:focus {
+  border: 3px solid black;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid black;
+  -webkit-text-fill-color: black;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 #user_password {
   background-color: white;
   border-radius: 5px;
@@ -28,6 +46,10 @@
   text-align: center;
   color: $gray;
   font-size: 16px;
+}
+
+#user_password:focus {
+  border: 3px solid black;
 }
 
 #user_first_name {
@@ -41,6 +63,10 @@
   font-size: 16px;
 }
 
+#user_first_name:focus {
+  border: 3px solid black;
+}
+
 #user_social_media {
   background-color: white;
   border-radius: 5px;
@@ -50,6 +76,10 @@
   text-align: center;
   color: $gray;
   font-size: 16px;
+}
+
+#user_social_media:focus {
+  border: 3px solid black;
 }
 
 #user_password_confirmation {
@@ -63,6 +93,10 @@
   font-size: 16px;
 }
 
+#user_password_confirmation:focus {
+  border: 3px solid black;
+}
+
 .form-control:focus {
   color: #000000;
   background-color: #FDFDFD;
@@ -71,13 +105,53 @@
   box-shadow: 0 0 0 0;
 }
 
-#submit-btn {
+// SUBMIT BUTTON
+
+//PINK
+#submit-pink-btn {
   font-family: $my-font;
   color: black;
   border-color: black;
   border-width: 2px;
   border-radius: 5px;
   background-color: white;
+  height: 56px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px;
+}
+
+#submit-pink-btn:active {
+  background-color: $pink;
+  color: black;
+  border-color: black;
+  font-family: $my-font;
+  border-width: 2px;
+  border-radius: 5px;
+  height: 56px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px;
+}
+
+//GREEN
+#submit-green-btn {
+  font-family: $my-font;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: white;
+  height: 56px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px;
+}
+
+#submit-green-btn:active {
+  background-color: $green;
+  color: black;
+  border-color: black;
+  font-family: $my-font;
+  border-width: 2px;
+  border-radius: 5px;
   height: 56px;
   padding: 0px 0px 0px 0px;
   margin: 20px;
