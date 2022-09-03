@@ -1,4 +1,4 @@
-<div class="profil-header-back-button">
+<div class="profil-header-back-button" data-controller="joiner-listener" data-joiner-listener-status-value= "<%= @trip_session.status %>" data-joiner-listener-sessionid-value= "<%= @trip_session.id %>">
   <%= link_to trip_session_path(@trip_session), data: {turbo_method: :delete} do %>
     <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
   <% end %>
