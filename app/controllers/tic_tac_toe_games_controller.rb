@@ -8,7 +8,7 @@ class TicTacToeGamesController < ApplicationController
       @tic_tac_toe_game.update("position_#{params[:tile]}": "circle")
     end
 
-    @tic_tac_toe_game.end_of_a_game?
+    @tic_tac_toe_game.who_have_to_play
 
     TicTacToeGameChannel.broadcast_to(
       @game_match,

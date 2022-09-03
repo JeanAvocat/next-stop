@@ -1,5 +1,5 @@
 <% (1..9).each do |n| %>
-  <% if tic_tac_toe_game.position(n) || tic_tac_toe_game.end_of_a_game? %>
+  <% if tic_tac_toe_game.position(n) || tic_tac_toe_game.end_of_a_game? || tic_tac_toe_game.who_have_to_play != current_user %>
     <div class="cell" id=<%= "tile#{n}" %> ><p><%= tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
   <% else %>
     <%= link_to(select_tile_tic_tac_toe_game_path(tile: n), data: {turbo_method: :patch}) do %>

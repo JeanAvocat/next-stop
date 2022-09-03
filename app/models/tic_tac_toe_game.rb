@@ -22,6 +22,14 @@ class TicTacToeGame < ApplicationRecord
     end
   end
 
+  def who_have_to_play
+    if nil_position.odd?
+      cross_player
+    else
+      circle_player
+    end
+  end
+
   def display_cross_or_circle(num)
     return if position(num).nil?
 

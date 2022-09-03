@@ -2,6 +2,11 @@ section {
   text-align: center;
 }
 
+.tic-tac-toe-game-player-info {
+  display: flex;
+  justify-content: space-around;
+}
+
 .gray-text-h6 {
   color: $gray;
 }

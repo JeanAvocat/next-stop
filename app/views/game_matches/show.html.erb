@@ -1,10 +1,18 @@
 <section class="">
-<h6 class="gray-text-h6">tu joues contre</h6>
-<% if @tic_tac_toe_game.cross_player == current_user %>
-  <h6 class="competitor"><%= @tic_tac_toe_game.circle_player.random_nickname %></h6>
-<% else %>
-  <h6 class="competitor"><%= @tic_tac_toe_game.cross_player.random_nickname %></h6>
-<% end %>
+<div class="tic-tac-toe-game-player-info">
+  <div>
+    <h6 class="gray-text-h6">tu joues contre</h6>
+    <% if @tic_tac_toe_game.cross_player == current_user %>
+      <h6 class="competitor"><%= @tic_tac_toe_game.circle_player.random_nickname %></h6>
+    <% else %>
+      <h6 class="competitor"><%= @tic_tac_toe_game.cross_player.random_nickname %></h6>
+    <% end %>
+  </div>
+  <div>
+    <h6 class="gray-text-h6">C'est au tour de</h6>
+    <h6><%= @tic_tac_toe_game.who_have_to_play.random_nickname %></h6>
+  </div>
+</div>
   <div class="game--container" data-controller="tic-tac-toe-game-subscription"  data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>" data-tic-tac-toe-game-subscription-target="tictactoe">
     <%= render "tic_tac_toe_games/tic_tac_toe_game", tic_tac_toe_game: @tic_tac_toe_game %>
   </div>
