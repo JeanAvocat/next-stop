@@ -12,7 +12,7 @@ class TicTacToeGamesController < ApplicationController
 
     TicTacToeGameChannel.broadcast_to(
       @game_match,
-      render_to_string(partial: "tic_tac_toe_games/tic_tac_toe_game", locals: { tic_tac_toe_game: @tic_tac_toe_game })
+      render_to_string(partial: "tic_tac_toe_games/selected_tile", locals: { tic_tac_toe_game: @tic_tac_toe_game, n: params[:tile] })
     )
     head :ok
   end
