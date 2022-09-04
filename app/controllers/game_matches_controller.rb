@@ -8,6 +8,10 @@ class GameMatchesController < ApplicationController
     @message = Message.new
     @buddy = current_user.id == @trip_session.creator_id ? @trip_session.joiner_id : @trip_session.creator_id
     @buddy = User.find(@buddy).random_nickname
+
+    # Requests
+    @request = Request.new
+    @request_answer = @trip_session.requests.last
   end
 
   def counter
