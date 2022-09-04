@@ -16,6 +16,9 @@ export default class extends Controller {
     // console.log(this.nicknameTarget.innerText)
   }
 
+  disconnect() {
+    this.channel.unsubscribe()
+  }
 
   #updateTile(data) {
     // methode to update tile on both screen
@@ -38,10 +41,10 @@ export default class extends Controller {
   }
 
   #endOfGame(data) {
+    // catch information if the game is finish and display it on the screen
     if ((data.includes("égalité")) || (data.includes("gagnant"))) {
-      this.finalResult = data.split(`"`).filter(element => element.includes("gagnant") || element.includes("égalité")).join()
+      this.finalResult = data.split(`"`).filter(element => element.includes("gagnant") || element.includes("égalité")).join();
       this.resultTarget.innerHTML = `<h6> ${this.finalResult} </h6>`;
-      // alert("la partie est terminée")
     }
   }
 }
