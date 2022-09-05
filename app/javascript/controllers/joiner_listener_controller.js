@@ -18,7 +18,6 @@ export default class extends Controller {
      )
   }
   #changeMessage(data) {
-    console.log(this.joinmessageTarget)
     this.joinmessageTarget.innerText = "Vous allez rejoindre votre binôme de jeu"
     setTimeout(() => {  location.replace(`/game_matches/${data}/counter`) }, 3000)
 

@@ -17,7 +17,10 @@ import RequestSubscriptionController from "./request_subscription_controller"
 application.register("request-subscription", RequestSubscriptionController)
 
 import JoinerListenerController from "./joiner_listener_controller"
-application.register("joiner-listener", JoinerListenerController)
+ application.register("joiner-listener", JoinerListenerController)
+
+import ReturnGameMatchController from "./return_game_match_controller"
+application.register("return-game-match", ReturnGameMatchController)
 
 import TicTacToeGameSubscriptionController from "./tic_tac_toe_game_subscription_controller"
 application.register("tic-tac-toe-game-subscription", TicTacToeGameSubscriptionController)
