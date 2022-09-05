@@ -53,7 +53,8 @@ class GameMatchesController < ApplicationController
 
   def set_game_match
     @game_match = GameMatch.find(params[:id])
-
+  end
+  
   def classForSendRequest
     @requestclass = @lastrequest == nil ? "" : "d-none"
   end
