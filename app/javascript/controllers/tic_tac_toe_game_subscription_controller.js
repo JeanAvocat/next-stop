@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="tic-tac-toe-game-subscription"
 export default class extends Controller {
   static values = { gameId: Number, result: Boolean }
-  static targets = ["tile", "nickname", "competitor", "result"]
+  static targets = ["tile", "gameInfo", "competitor"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -12,8 +12,8 @@ export default class extends Controller {
       {  received: data => this.#updateTile(data) }
     )
     // console.log(`Subscribe to the tic tac toe game with the id ${this.gameIdValue}.`)
-    // console.log("hello tic tac toe");
-    // console.log(this.nicknameTarget.innerText)
+    console.log("hello tic tac toe");
+    console.log(this.gameInfoTarget.innerText)
   }
 
   disconnect() {
@@ -33,10 +33,10 @@ export default class extends Controller {
 
   #updatePlayer() {
     // methode to update info about player who have to play
-    if (this.nicknameTarget.innerText === "C'est à ton tour de jouer") {
-      this.nicknameTarget.innerText = `C'est au tour de ${this.competitorTarget.innerText}`;
+    if (this.gameInfoTarget.innerText === "C'est à ton tour de jouer") {
+      this.gameInfoTarget.innerText = `C'est au tour de ${this.competitorTarget.innerText}`;
     } else {
-      this.nicknameTarget.innerText = "C'est à ton tour de jouer";
+      this.gameInfoTarget.innerText = "C'est à ton tour de jouer";
     }
   }
 
@@ -44,7 +44,7 @@ export default class extends Controller {
     // catch information if the game is finish and display it on the screen
     if ((data.includes("égalité")) || (data.includes("gagnant"))) {
       this.finalResult = data.split(`"`).filter(element => element.includes("gagnant") || element.includes("égalité")).join();
-      this.resultTarget.innerHTML = `<h6> ${this.finalResult} </h6>`;
+      this.gameInfoTarget.innerText = this.finalResult;
     }
   }
 }

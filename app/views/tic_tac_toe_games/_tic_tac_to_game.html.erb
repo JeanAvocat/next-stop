@@ -13,9 +13,9 @@
     </div>
     <div>
       <% if tic_tac_toe_game.who_have_to_play == current_user %>
-        <h6 data-tic-tac-toe-game-subscription-target="nickname">C'est à ton tour de jouer</h6>
+        <h6 data-tic-tac-toe-game-subscription-target="gameInfo">C'est à ton tour de jouer</h6>
       <% else %>
-        <h6 data-tic-tac-toe-game-subscription-target="nickname">C'est au tour de <%= tic_tac_toe_game.who_have_to_play.random_nickname %></h6>
+        <h6 data-tic-tac-toe-game-subscription-target="gameInfo">C'est au tour de <%= tic_tac_toe_game.who_have_to_play.random_nickname %></h6>
       <% end %>
     </div>
   </div>
