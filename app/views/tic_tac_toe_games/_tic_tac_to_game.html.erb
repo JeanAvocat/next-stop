@@ -34,7 +34,7 @@
   </section>
 
   <div class="<%= 'hidden' unless tic_tac_toe_game.end_of_a_game? %> tic-tac-toe-replay" data-tic-tac-toe-game-subscription-target="restart">
-    <%= link_to(game_matches_path(previous_game_match: game_match), data: {turbo_method: :post}) do %>
+    <%= link_to game_matches_path, data: {turbo_method: :post} do %>
       <button class="white-yellow-btn" type="button">Rejouer</button>
     <% end %>
   </div>
