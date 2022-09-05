@@ -9,16 +9,27 @@ class TicTacToeGame < ApplicationRecord
     # check if there is a winner only if at least 5 tiles are selected
     return if nil_position >= 5
 
-    # call method result if there is a winning pattern or if nil position is 0
+    # return true if there is a winning pattern or if nil position is 0
     winning_patern? || nil_position.zero?
   end
 
   def result
+    # return nil if end of game is not finish
+    return unless end_of_a_game?
+
     # should return the result of the game: Name of the winnner or draw
     case filter_winning_pattern.flatten.uniq.join
-    when "cross" then cross_player.first_name
-    when "circle" then circle_player.first_name
-    else "draw"
+    when "cross" then "Le gagnant est #{cross_player.random_nickname}"
+    when "circle" then "Le gagnant est #{circle_player.random_nickname}"
+    else "C'est une égalité"
+    end
+  end
+
+  def who_have_to_play
+    if nil_position.odd?
+      cross_player
+    else
+      circle_player
     end
   end
 

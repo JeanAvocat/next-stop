@@ -1,4 +1,5 @@
 <%# PROFIL PAGE %>
+
 <div class="profil-header">
   <div class="profil-header-back-button">
     <%= link_to new_trip_session_path do %>
@@ -17,7 +18,7 @@
 </div>
 
 <div class="profil-welcome-message">
-  <h2>Bonjour DOUCECRACOTTE</h2>
+  <h2><span style="font-family: Barlow;">Bonjour</span> DOUCECRACOTTE</h2>
 </div>
 
 <div class="profil-informations-div">
@@ -34,6 +35,6 @@
 </div>
 
 <div class="profil-modification-bouton">
-  <button class = "white-btn">Changer mes informations</button>
+  <button class = "black-blue-btn">Changer mes informations</button>
   <p><%= link_to "se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
 </div>
