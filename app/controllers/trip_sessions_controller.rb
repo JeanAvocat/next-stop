@@ -18,17 +18,24 @@ class TripSessionsController < ApplicationController
   end
 
   def join
+    # Complete infos from the trip session
     @trip_session.joiner = current_user
     @trip_session.status = "in game"
     @trip_session.save
+    # Create new TicTacToeGame
     @tic_tac_toe_game = TicTacToeGame.new
     @tic_tac_toe_game.cross_player = @trip_session.joiner
     @tic_tac_toe_game.circle_player = @trip_session.creator
     @tic_tac_toe_game.save
+    # Create new game match
     @game_match = GameMatch.new
     @game_match.trip_session = @trip_session
     @game_match.matchable = @tic_tac_toe_game
     @game_match.save
+    ListenJoinerChannel.broadcast_to(
+      @trip_session,
+      @game_match.id
+    )
     redirect_to counter_game_match_path(@game_match)
   end
 
@@ -39,9 +46,12 @@ class TripSessionsController < ApplicationController
 
   def waiting_room
     @game_match = GameMatch.find_by trip_session_id: @trip_session.id
+<<<<<<< HEAD
     if @trip_session.joiner_id? # TODO : convert the "if" condition in real time with ActionCable gem
       redirect_to counter_game_match_path(@game_match)
     end
+=======
+>>>>>>> c4f5478ea5c7484a570c2d2b96a70ab0c1a97d4f
   end
 
   private

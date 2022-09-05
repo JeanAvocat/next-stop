@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
 <%= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Êtes vous sûr?"} do %>
     <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
@@ -5,6 +6,9 @@
 </div>
 
   <section data-controller="tic-tac-toe-game-subscription" data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>">
+=======
+<section data-controller="tic-tac-toe-game-subscription" data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>">
+>>>>>>> c4f5478ea5c7484a570c2d2b96a70ab0c1a97d4f
   <div class="tic-tac-toe-game-player-info">
     <div>
       <h6 class="gray-text-h6">tu joues contre</h6>
