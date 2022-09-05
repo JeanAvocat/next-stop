@@ -25,7 +25,7 @@
   border-radius: 5px;
 }
 
-.white-yellow-btn:active {
+.white-yellow-btn:focus-within {
   background-color: $yellow;
   color: black;
   border-color: black;
