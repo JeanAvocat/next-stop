@@ -13,6 +13,7 @@ export default class extends Controller {
     )
     // console.log(`Subscribe to the tic tac toe game with the id ${this.gameIdValue}.`)
     // console.log("hello tic tac toe");
+    // console.log(this.tictactoeTarget)
     // console.log(this.nicknameTarget.innerText)
   }
 
