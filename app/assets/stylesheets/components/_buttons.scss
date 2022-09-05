@@ -1,3 +1,12 @@
+// BUTTONS CSS
+
+// OVERWRITE SUR LE BOUTON CLASSICO
+.btn:hover {
+  border-color: none;
+  border: 0px;
+}
+
+// BOUTONS SUR FOND NOIR
 .white-btn {
   font-family: $my-font;
   color: white;
@@ -7,6 +16,22 @@
   border-radius: 5px;
 }
 
+.white-yellow-btn {
+  font-family: $my-font;
+  color: white;
+  background-color: black;
+  border-color: white;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.white-yellow-btn:active {
+  background-color: $yellow;
+  color: black;
+  border-color: black;
+}
+
+// BOUTONS SUR FOND BLANC
 .black-btn {
   font-family: $my-font;
   color: black;
@@ -16,4 +41,21 @@
   background-color: white;
   height: 28px;
   padding: 0px 0px 0px 0px;
+}
+
+.black-blue-btn {
+  font-family: $my-font;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: white;
+  height: 28px;
+  padding: 0px 0px 0px 0px;
+}
+
+.black-blue-btn:active {
+  background-color: $blue;
+  color: black;
+  border-color: black;
 }

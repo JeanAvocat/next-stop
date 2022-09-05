@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :messages, only: :create
     member do
       get :counter
+      get :return
     end
   end
 
