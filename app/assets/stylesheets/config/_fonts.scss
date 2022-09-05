@@ -15,3 +15,13 @@ $headers-font: "Oliver", "Helvetica", "sans-serif";
 }
 
 $my-font: "Oliver";
+
+// Fuffy font
+@font-face {
+  font-family: "Fuffy";
+  font-display: swap;
+  src: url('Fuffy.woff2') format('woff2'),
+       url('Fuffy.woff') format('woff');
+}
+
+$chat-font: "Fuffy";
