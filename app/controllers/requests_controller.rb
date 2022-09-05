@@ -7,7 +7,13 @@ class RequestsController < ApplicationController
     @request.sender_id = current_user.id
     @request.status = "pending"
     if @request.save
-      redirect_to game_match_path(@game_match)
+      # redirect_to game_match_path(@game_match)
+      RequestChannel.broadcast_to(
+        @game_match,
+        current_user.id
+      )
+      head :ok
+    else
     end
   end
 
@@ -15,7 +21,8 @@ class RequestsController < ApplicationController
     update_request_status
     @request_answer.status = "accepted"
     if @request_answer.save
-      redirect_to game_match_path(@game_match)
+      # redirect_to game_match_path(@game_match)
+      # REPLACE PREVIOUS LINE BY redirect_to the profil path
     end
   end
 
@@ -23,7 +30,7 @@ class RequestsController < ApplicationController
     update_request_status
     @request_answer.status = "refused"
     if @request_answer.save
-      redirect_to game_match_path(@game_match)
+      # redirect_to game_match_path(@game_match)
     end
   end
 
