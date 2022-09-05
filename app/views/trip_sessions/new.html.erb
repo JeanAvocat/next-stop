@@ -3,7 +3,7 @@
 
 <%# HEADER %>
   <div class="trip-session-new-profile-div">
-    <div class="trip-session-new-profile-text"><h6>Bienvenue <br> Doucecracotte!</h6></div>
+    <div class="trip-session-new-profile-text"><h6><span style="font-family: Barlow;">Bienvenue</span> <br> Doucecracotte!</h6></div>
     <div class="trip-session-new-profil-picture">
       <%= link_to profil_path do %>
         <%= image_tag "svg/profil.svg", class: "trip-session-new-profil", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
@@ -28,8 +28,8 @@
       </div>
     </div>
     <div class="trip-session-new-details">
-      <p>Bus ligne 9</p>
-      <p><%= @active_people  %> personnes connectées</p>
+      <p>Bus  <span style="font-family: Oliver;">ligne 9</span></p>
+      <p><span style="font-family: Oliver;"><%= @active_people  %></span> personnes connectées</p>
     </div>
   </div>
 
@@ -52,8 +52,6 @@
           </div>
         </div>
       <% end %>
-
-
   <% else %>
   <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
     <div class="trip-session-new-create">

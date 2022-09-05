@@ -19,6 +19,7 @@ class GameMatchesController < ApplicationController
   def counter
     @counter = 5
     @game_match = GameMatch.find(params[:id])
+    @trip_session = @game_match.trip_session
   end
 
   private
