@@ -8,8 +8,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("heyy")
-    console.log(location)
     setTimeout(() => {  this.counterTarget.innerText = 4; }, 1000)
     setTimeout(() => {  this.counterTarget.innerText = 3; }, 2000)
     setTimeout(() => {  this.counterTarget.innerText = 2; }, 3000)

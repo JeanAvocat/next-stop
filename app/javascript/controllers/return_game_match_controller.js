@@ -3,6 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="game-matches"
 export default class extends Controller {
+    static targets = [ "leavemessage"]
     static values = {
       gameid: Number
 
@@ -18,8 +19,9 @@ export default class extends Controller {
        )
     }
     #return(data) {
-      console.log("hey")
-      setTimeout(() => {  location.replace(`/trip_sessions/new`) }, 3000)
+      setTimeout(() => {  location.replace(`/trip_sessions/new`) }, 8000)
+      this.leavemessageTarget.innerText = "Oups, votre adversaire est arrivé à bon port et a quitté la partie"
+      setTimeout(() => {  this.leavemessageTarget.innerText = "Vous allez être redirigé pour jouer avec un nouveau voisin de rame"}, 5000)
 
     }
 }

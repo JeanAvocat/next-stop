@@ -46,12 +46,6 @@ class TripSessionsController < ApplicationController
 
   def waiting_room
     @game_match = GameMatch.find_by trip_session_id: @trip_session.id
-<<<<<<< HEAD
-    if @trip_session.joiner_id? # TODO : convert the "if" condition in real time with ActionCable gem
-      redirect_to counter_game_match_path(@game_match)
-    end
-=======
->>>>>>> c4f5478ea5c7484a570c2d2b96a70ab0c1a97d4f
   end
 
   private
