@@ -17,6 +17,10 @@ class GameMatchesController < ApplicationController
   def return
     @trip_session = @game_match.trip_session
     @trip_session.status = "closed"
+    ReturnGameMatchChannel.broadcast_to(
+      @game_match,
+      " "
+    )
     redirect_to new_trip_session_path, status: :see_other
   end
 
