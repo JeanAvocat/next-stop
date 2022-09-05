@@ -11,39 +11,25 @@
 </section>
 
 <%# REQUESTS %>
-<div>
-  <div class="container chatroom">
-    <div class="requests">
-      <% @trip_session.requests.each do |request| %>
-        <div id="request-<%= request.id %>">
-          <small>
-            <strong><%= request.sender_id %></strong>
-            <i><%= request.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-          </small>
-          <p><%= request.status %></p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div>
+<div class="container requests">
+  <div id="send-request">
     <%= simple_form_for [@trip_session,  @request], html: {class: "d-flex"} do |f| %>
     <%= f.submit "Révéler mon profil", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
-  <div>
-    <div>
-      <%= simple_form_for [@request_answer, accept_request_path], html: {class: "d-flex"} do |f| %>
+  <div id="answer-request">
+    <div id="accept-request">
+      <%= simple_form_for @request, :url => accept_request_path, :method => :patch, html: {class: "d-flex"} do |f| %>
       <%= f.submit "Accepter la demande", class: "btn btn-primary mb-3" %>
       <% end %>
     </div>
-    <div>
-      <%= simple_form_for [@request_answer, decline_request_path], html: {class: "d-flex"} do |f| %>
+    <div id="decline-request">
+      <%= simple_form_for @request, :url => decline_request_path, :method => :patch, html: {class: "d-flex"} do |f| %>
       <%= f.submit "Refuser la demande", class: "btn btn-primary mb-3" %>
       <% end %>
     </div>
   </div>
 </div>
-
 
 <%# CHANEL %>
 <div>

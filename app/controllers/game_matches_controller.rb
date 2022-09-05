@@ -11,7 +11,6 @@ class GameMatchesController < ApplicationController
 
     # Requests
     @request = Request.new
-    @request_answer = @trip_session.requests.last
   end
 
   def counter

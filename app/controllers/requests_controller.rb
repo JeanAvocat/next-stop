@@ -12,22 +12,25 @@ class RequestsController < ApplicationController
   end
 
   def accept
-    @trip_session = TripSession.find(params[:trip_session_id])
-    @game_match = @trip_session.game_matches.last
-    @request_accepted = @trip_session.request.last
-    @request_accepted.status = "accepted"
-    if @request_accepted.save
+    update_request_status
+    @request_answer.status = "accepted"
+    if @request_answer.save
       redirect_to game_match_path(@game_match)
     end
   end
 
   def decline
-    @trip_session = TripSession.find(params[:trip_session_id])
-    @game_match = @trip_session.game_matches.last
-    @request_declined = @trip_session.request.last
-    @request_declined.status = "refused"
-    if @request_declined.save
+    update_request_status
+    @request_answer.status = "refused"
+    if @request_answer.save
       redirect_to game_match_path(@game_match)
     end
+  end
+
+  def update_request_status
+    @game_match = GameMatch.find(params[:id])
+    @trip_session = @game_match.trip_session_id
+    @trip_session = TripSession.find(@trip_session)
+    @request_answer = @trip_session.requests.last
   end
 end
