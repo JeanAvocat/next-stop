@@ -2,11 +2,17 @@ section {
   text-align: center;
 }
 
+.gray-text-h6 {
+  color: $gray;
+}
+
 .game--container {
   display: grid;
   grid-template-columns: repeat(3, auto);
   width: 306px;
   margin: 10px auto;
+  background-image: asset-url("svg/grille_morpion.svg");
+  background-repeat: no-repeat;
 }
 
 .game--container > a {
@@ -18,14 +24,16 @@ section {
   font-family: $my-font;
   width: 100px;
   height: 100px;
-  border: 2px solid;
   cursor: pointer;
   line-height: 100px;
   font-size: 60px;
 }
 
-.game--status {
-  font-size: 50px;
+.cell > p {
+  margin: 0px;
+}
+
+.tic-tac-toe-result {
   color: #d7a62f;
   margin: 20px auto;
 }

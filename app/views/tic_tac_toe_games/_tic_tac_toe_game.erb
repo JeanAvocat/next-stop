@@ -1,0 +1,13 @@
+<% (1..9).each do |n| %>
+  <% if tic_tac_toe_game.position(n) || tic_tac_toe_game.end_of_a_game? %>
+    <div class="cell" id=<%= "tile#{n}" %> ><p><%= tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
+  <% else %>
+    <%= link_to(select_tile_tic_tac_toe_game_path(tile: n), data: {turbo_method: :patch}) do %>
+    <div class="cell" id=<%= "tile#{n}" %> ><p><%= tic_tac_toe_game.display_cross_or_circle(n) %></p></div>
+    <% end %>
+  <% end %>
+<% end %>
+<br>
+<% if tic_tac_toe_game.end_of_a_game? %>
+  <h6 class="tic-tac-toe-result"><%= tic_tac_toe_game.result %></h6>
+<% end %>

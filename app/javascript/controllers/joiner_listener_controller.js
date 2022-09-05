@@ -16,16 +16,12 @@ export default class extends Controller {
     // // if (this.statusValue === "in game") {
     // //   location.replace(this.urlValue)
     // }
-    // this.channel = createConsumer().subscriptions.create(
-    //   { channel: "ListenJoinerChannel", id: this.sessionidValue },
-    //   {  received: data => this.#updateTile(data)  }
-    // )
+    this.channel = createConsumer().subscriptions.create(
+      { channel: "ListenJoinerChannel", id: this.sessionidValue },
+      {  received: data => console.log(data)  }
+     )
   }
+  
 
-  redirect() {
-    this.element.innerText = "Bingo!"
-    this.element.setAttribute("disabled", "")
-    location.replace(this.urlValue)
-  }
 
 }

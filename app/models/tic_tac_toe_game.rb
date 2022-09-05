@@ -16,9 +16,9 @@ class TicTacToeGame < ApplicationRecord
   def result
     # should return the result of the game: Name of the winnner or draw
     case filter_winning_pattern.flatten.uniq.join
-    when "cross" then cross_player.first_name
-    when "circle" then circle_player.first_name
-    else "draw"
+    when "cross" then "le gagnant est #{cross_player.random_nickname}"
+    when "circle" then "le gagnant est #{circle_player.random_nickname}"
+    else "c'est une égalité"
     end
   end
 

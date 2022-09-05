@@ -38,8 +38,8 @@
       <div class="trip-session-new-morpion-card">
         <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-morpions-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
       </div>
-      <div class="trip-session-new-chifumi-card">
-        <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-chifumi-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
+      <div class="trip-session-new-chifoumi-card">
+        <%= image_tag "svg/chifoumi_card.svg", class: "trip-session-new-chifoumi-card", data: { inject: { svg: "svg/chifoumi_card.svg" } }, :height => 270 %>
       </div>
   </div>
 
@@ -52,12 +52,10 @@
           </div>
         </div>
       <% end %>
-
-
   <% else %>
   <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
     <div class="trip-session-new-create">
-      <p>Aucune partie de Chifumi en attente</p>
+      <p>Aucune partie de Morpion en attente</p>
       <h2>Creer une partie!</h2>
     </div>
     <% end %>
