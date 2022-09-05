@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :game_matches, only: :show do
+  resources :game_matches, only: %i[show create] do
     resources :messages, only: :create
     member do
       get :counter

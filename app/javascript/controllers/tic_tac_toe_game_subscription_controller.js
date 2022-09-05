@@ -9,15 +9,28 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "TicTacToeGameChannel", id: this.gameIdValue },
-      {  received: data => this.#updateTile(data) }
+      {  received: data => this.#nextAction(data) }
     )
     // console.log(`Subscribe to the tic tac toe game with the id ${this.gameIdValue}.`)
-    console.log("hello tic tac toe");
-    console.log(this.gameInfoTarget.innerText)
+    // console.log("hello tic tac toe");
+    // console.log(this.gameInfoTarget.innerText)
   }
 
   disconnect() {
     this.channel.unsubscribe()
+  }
+
+  #nextAction(data) {
+    // check if the received data is to restart the game or to update tic tac toe tile
+    if (data === this.gameIdValue) {
+      this.#restartGame();
+    } else {
+      this.#updateTile(data);
+    }
+  }
+
+  #restartGame() {
+    location.replace(`/game_matches/${this.gameIdValue + 1}`)
   }
 
   #updateTile(data) {
