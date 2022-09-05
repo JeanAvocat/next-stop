@@ -4,20 +4,34 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="tic-tac-toe-game-subscription"
 export default class extends Controller {
   static values = { gameId: Number, result: Boolean }
-  static targets = ["tile", "nickname", "competitor", "result"]
+  static targets = ["tile", "gameInfo", "competitor", "restart"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "TicTacToeGameChannel", id: this.gameIdValue },
-      {  received: data => this.#updateTile(data) }
+      {  received: data => this.#nextAction(data) }
     )
     // console.log(`Subscribe to the tic tac toe game with the id ${this.gameIdValue}.`)
     // console.log("hello tic tac toe");
-    // console.log(this.nicknameTarget.innerText)
+    // console.log(this.gameInfoTarget.innerText)
+    // console.log(this.restartTarget.outerHTML);
   }
 
   disconnect() {
     this.channel.unsubscribe()
+  }
+
+  #nextAction(data) {
+    // check if the received data is to restart the game or to update tic tac toe tile
+    if (data === this.gameIdValue) {
+      this.#restartGame();
+    } else {
+      this.#updateTile(data);
+    }
+  }
+
+  #restartGame() {
+    location.replace(`/game_matches/${this.gameIdValue + 1}`)
   }
 
   #updateTile(data) {
@@ -33,10 +47,10 @@ export default class extends Controller {
 
   #updatePlayer() {
     // methode to update info about player who have to play
-    if (this.nicknameTarget.innerText === "C'est à ton tour de jouer") {
-      this.nicknameTarget.innerText = `C'est au tour de ${this.competitorTarget.innerText}`;
+    if (this.gameInfoTarget.innerText === "C'est à ton tour de jouer") {
+      this.gameInfoTarget.innerText = `C'est au tour de ${this.competitorTarget.innerText}`;
     } else {
-      this.nicknameTarget.innerText = "C'est à ton tour de jouer";
+      this.gameInfoTarget.innerText = "C'est à ton tour de jouer";
     }
   }
 
@@ -44,7 +58,8 @@ export default class extends Controller {
     // catch information if the game is finish and display it on the screen
     if ((data.includes("égalité")) || (data.includes("gagnant"))) {
       this.finalResult = data.split(`"`).filter(element => element.includes("gagnant") || element.includes("égalité")).join();
-      this.resultTarget.innerHTML = `<h6> ${this.finalResult} </h6>`;
+      this.gameInfoTarget.innerText = this.finalResult;
+      this.restartTarget.classList.remove("hidden");
     }
   }
 }

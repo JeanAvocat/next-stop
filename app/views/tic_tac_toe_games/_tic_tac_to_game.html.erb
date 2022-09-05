@@ -1,0 +1,41 @@
+<div data-controller="tic-tac-toe-game-subscription" data-tic-tac-toe-game-subscription-game-id-value="<%= game_match.id %>">
+  <section>
+    <div class="tic-tac-toe-game-player-info">
+      <div>
+        <h6 class="gray-text-h6">tu joues contre</h6>
+        <% if tic_tac_toe_game.cross_player == current_user %>
+          <h6 class="competitor" data-tic-tac-toe-game-subscription-target="competitor"><%= tic_tac_toe_game.circle_player.random_nickname %></h6>
+        <% else %>
+          <h6 class="competitor" data-tic-tac-toe-game-subscription-target="competitor"><%= tic_tac_toe_game.cross_player.random_nickname %></h6>
+        <% end %>
+      </div>
+      <div>
+        <h6>ton signe <strong><%= tic_tac_toe_game.cross_player == current_user ? "X" : "O" %></strong></h6>
+      </div>
+      <div>
+        <% if tic_tac_toe_game.end_of_a_game? %>
+          <h6 data-tic-tac-toe-game-subscription-target="gameInfo"><%= tic_tac_toe_game.result %></h6>
+        <% elsif  tic_tac_toe_game.who_have_to_play == current_user %>
+          <h6 data-tic-tac-toe-game-subscription-target="gameInfo">C'est à ton tour de jouer</h6>
+        <% else %>
+          <h6 data-tic-tac-toe-game-subscription-target="gameInfo">C'est au tour de <%= tic_tac_toe_game.who_have_to_play.random_nickname %></h6>
+        <% end %>
+      </div>
+    </div>
+    <div class="game--container">
+      <% (1..9).each do |n| %>
+        <% if tic_tac_toe_game.position(n) || tic_tac_toe_game.end_of_a_game? %>
+          <%= render "tic_tac_toe_games/selected_tile", tic_tac_toe_game: tic_tac_toe_game ,n: %>
+        <% else %>
+          <%= render "tic_tac_toe_games/tile_to_select", tic_tac_toe_game: tic_tac_toe_game ,n: %>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <div class="<%= 'hidden' unless tic_tac_toe_game.end_of_a_game? %> tic-tac-toe-replay" data-tic-tac-toe-game-subscription-target="restart">
+    <%= link_to game_matches_path, data: {turbo_method: :post} do %>
+      <button class="white-yellow-btn" type="button">Rejouer</button>
+    <% end %>
+  </div>
+</div>
