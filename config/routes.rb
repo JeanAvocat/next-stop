@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :tic_tac_toe_games, only: :show do
     member do
       patch :select_tile
