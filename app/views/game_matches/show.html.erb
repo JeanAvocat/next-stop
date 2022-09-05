@@ -1,3 +1,11 @@
+<div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
+<%= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Êtes vous sûr? En quittant la partie, vous abandonnez aussi votre adversaire"} do %>
+    <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+<% end %>
+<div class="message-leaving-game">
+  <h6  data-return-game-match-target="leavemessage"></h6>
+</div>
+
 <%= render "tic_tac_toe_games/tic_tac_to_game", game_match: @game_match, tic_tac_toe_game: @tic_tac_toe_game %>
 
 <%# REQUESTS %>
