@@ -24,7 +24,7 @@
         <%= image_tag "svg/bus.svg", class: "trip-session-new-bus", data: { inject: { svg: "svg/bus.svg" } }, :width => 70 %>
       </div>
       <div class="trip-session-new-bonhommes">
-        <%= image_tag "svg/bonhommes.svg", class: "trip-session-new-bonhommes", data: { inject: { svg: "svg/bonhommes.svg" } }, :width => 50 %>
+        <img id="gif-bonhommes" src="/assets/gifs/bonhommes.gif" draggable="true" ondragstart="drag(event)" height="28">
       </div>
     </div>
     <div class="trip-session-new-details">
