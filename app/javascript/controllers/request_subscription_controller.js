@@ -12,12 +12,12 @@ export default class extends Controller {
       { received: data => this.nextAction(data) }
     )
     // this.answerRequestTarget.style.display = "none";
-    console.log(`the request is on the game_match ${this.requestIdValue}.`);
+    // console.log(`the request is on the game_match ${this.requestIdValue}.`);
   }
 
   nextAction(data){
     const user = this.element.dataset.user;
-    console.log(data);
+    // console.log(data);
     const sender_user = data;
     if (user == sender_user) {
       // console.log("I sent the request");
@@ -33,7 +33,7 @@ export default class extends Controller {
   }
 
   disableAnswerRequest() {
-    console.log("la réponse est envoyée");
+    // console.log("la réponse est envoyée");
     this.answerRequestTarget.style.display = "none";
   }
 }

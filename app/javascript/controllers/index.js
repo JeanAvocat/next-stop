@@ -7,17 +7,20 @@ import { application } from "./application"
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
+import DisplayChatController from "./display_chat_controller"
+application.register("display-chat", DisplayChatController)
+
 import GameMatchesController from "./game_matches_controller"
 application.register("game-matches", GameMatchesController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import JoinerListenerController from "./joiner_listener_controller"
+application.register("joiner-listener", JoinerListenerController)
+
 import RequestSubscriptionController from "./request_subscription_controller"
 application.register("request-subscription", RequestSubscriptionController)
-
-import JoinerListenerController from "./joiner_listener_controller"
- application.register("joiner-listener", JoinerListenerController)
 
 import ReturnGameMatchController from "./return_game_match_controller"
 application.register("return-game-match", ReturnGameMatchController)
