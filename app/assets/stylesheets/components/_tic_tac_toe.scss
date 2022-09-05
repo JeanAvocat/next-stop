@@ -38,6 +38,15 @@ section {
   margin: 0px;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.tic-tac-toe-replay {
+  display: flex;
+  justify-content: center;
+}
+
 .tic-tac-toe-result {
   color: #d7a62f;
   margin: 20px auto;

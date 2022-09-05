@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="tic-tac-toe-game-subscription"
 export default class extends Controller {
   static values = { gameId: Number, result: Boolean }
-  static targets = ["tile", "gameInfo", "competitor"]
+  static targets = ["tile", "gameInfo", "competitor", "restart"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -14,6 +14,7 @@ export default class extends Controller {
     // console.log(`Subscribe to the tic tac toe game with the id ${this.gameIdValue}.`)
     // console.log("hello tic tac toe");
     // console.log(this.gameInfoTarget.innerText)
+    // console.log(this.restartTarget.outerHTML);
   }
 
   disconnect() {
@@ -58,6 +59,7 @@ export default class extends Controller {
     if ((data.includes("égalité")) || (data.includes("gagnant"))) {
       this.finalResult = data.split(`"`).filter(element => element.includes("gagnant") || element.includes("égalité")).join();
       this.gameInfoTarget.innerText = this.finalResult;
+      this.restartTarget.classList.remove("hidden");
     }
   }
 }
