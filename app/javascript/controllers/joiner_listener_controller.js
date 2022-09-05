@@ -13,11 +13,11 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ListenJoinerChannel", id: this.sessionidValue },
-      {  received: data => this.#updateTile(data)  }
+      {  received: data => this.#changeMessage(data)  }
 
      )
   }
-  #updateTile(data) {
+  #changeMessage(data) {
     console.log(this.joinmessageTarget)
     this.joinmessageTarget.innerText = "Vous allez rejoindre votre binôme de jeu"
     setTimeout(() => {  location.replace(`/game_matches/${data}/counter`) }, 3000)
