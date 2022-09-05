@@ -1,3 +1,4 @@
+<div data-controller="joiner-listener" data-joiner-listener-status-value= "<%= @trip_session.status %>" data-joiner-listener-sessionid-value= "<%= @trip_session.id %>">
 <div class="profil-header">
   <%= link_to trip_session_path(@trip_session), data: {turbo_method: :delete} do %>
     <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
@@ -8,7 +9,6 @@
     <h1>Salle d'attente</h1>
     <p>Ton coéquipier arrive...</p>
   </div>
-
     <%# Dino game below %>
   <div>
     <head>
@@ -2575,7 +2575,7 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
-        <div class="onlyforchrome" style="font-size: 20px;text-align: center;font-family: Barlow;">Appuyez sur votre écran pour faire sauter le Dino et commencer le jeu.</div>
+        <div data-joiner-listener-target="joinmessage" class="onlyforchrome" style="font-size: 30px;text-align: center;font-family: Helvetica;">Touchez l'écran pour faire sauter le Dino.</div>
         <div id="offline-resources" jstcache="0">
         <div id="offline-resources-1x" jstcache="0">
           <img id="1x-obstacle-large" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAyCAMAAACJUtIoAAAACVBMVEX////39/dTU1OabbyfAAAAAXRSTlMAQObYZgAAAXhJREFUeF7t2NGqAjEMANGM///RlwvaYQndULuFPJgHUYaEI6IPhgNAOA8HZ+3U6384F5y1U6YzAZTWG+dZamnFEstBFtCKJZSHWMADLJ18z+JqpQeLdKoDC8siC5iFCQs4znIxB5B1t6F3lQWkL4N0JsF+u6GXJdbI+FKW+yWr3lhgCZ2VSag3Nlk/FnRkIRbasLCO0oulikMsvmGpeiGLZ1jOMgtIP5bODivYYUXEIVbwFCt4khVssRgsgidZwQaLd2A8m7MYLGTl4KeQQs2y4kMAMGGlmQViDIb5O6xZnnLD485dIBzqDSE1yyFdL4Iqu4XJqUUWl/NVAFSZq1P6a5aqbAUM2epQbBioWflUBABiUyhYyZoCBev8XyMAObDNOhOAfiyxmHU0YNlldGAphGjFCjA3YkUn1o/1Y3EkZFZ5isCC6NUgwDBn1RuXH96doNfAhDXfsIyJ2AnolcCVhay0kcYbW0HvCO8OwIcJ3GzkORpkFuUP/1Ec8FW1qJkAAAAASUVORK5CYII=" jstcache="0">
@@ -2606,20 +2606,6 @@
         new Runner('.interstitial-wrapper');
       </script>
 
-      <div class="onlyforchrome">
-        <div id="socialbutts" class="addthis_toolbox addthis_default_style" style="text-align:center; padding-top:65px;">
-          <table border="0" style="margin:0 auto;"><tr>
-          <td><div
-            class="fb-like"
-            data-share="false"
-            data-width="150"
-            data-show-faces="false">
-          </div></td>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></td>
-        </tr></table>
-        </div>
-      </div>
-
         <script type="text/javascript">
         if (navigator.userAgent.toLowerCase().indexOf('chrome') <= -1) {
         hideClass(".onlyforchrome");
@@ -2631,4 +2617,5 @@
   <div class="bottom-trex">
     <p><i>Travaille tes skills avec T-Rex en attendant</i></p>
   </div>
+</div>
 </div>
