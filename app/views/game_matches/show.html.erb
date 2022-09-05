@@ -1,5 +1,10 @@
+<div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
+<%= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Êtes vous sûr? En quittant la partie, vous abandonnez aussi votre adversaire"} do %>
+    <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+<% end %>
 <section data-controller="tic-tac-toe-game-subscription" data-tic-tac-toe-game-subscription-game-id-value="<%= @game_match.id %>">
-  <div class="tic-tac-toe-game-player-info">
+  <div class="tic-tac-toe-game-player-info" data-return-game-match-target="leavemessage">
+  <h2></h2>
     <div>
       <h6 class="gray-text-h6">tu joues contre</h6>
       <% if @tic_tac_toe_game.cross_player == current_user %>
@@ -36,11 +41,33 @@
   </div>
 </section>
 
+<%# REQUESTS %>
+<div class="container request" data-controller="request-subscription" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
+  <div class="request" data-request-subscription-target="request">
+    <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
+      <%= simple_form_for [@trip_session,  @request], html: { class: "d-flex"} do |f| %>
+      <%= f.submit "Révéler mon profil", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
+    <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
+      <div id="accept-request">
+        <%= simple_form_for @request, :url => accept_request_path, :method => :patch, html: { data: { action: "turbo:submit-end->request-subscription#disableAnswerRequest"}, class: "d-flex"} do |f| %>
+        <%= f.submit "Accepter la demande", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+      <div id="decline-request">
+        <%= simple_form_for @request, :url => decline_request_path, :method => :patch, html: { data: { action: "turbo:submit-end->request-subscription#disableAnswerRequest"}, class: "d-flex"} do |f| %>
+        <%= f.submit "Refuser la demande", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%# CHANEL %>
 <div>
   <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>">
   <h1>Canal de discussions</h1>
-
 <div>
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @trip_session.messages.each do |message| %>
@@ -53,7 +80,8 @@
         label: false,
         placeholder: "Ecris à #{@buddy}",
         wrapper_html: {class: "flex-grow-1"} %>
-      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+      <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
+</div>
 </div>
