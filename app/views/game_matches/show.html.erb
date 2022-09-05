@@ -36,11 +36,33 @@
   </div>
 </section>
 
+<%# REQUESTS %>
+<div class="container request" data-controller="request-subscription" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
+  <div class="request" data-request-subscription-target="request">
+    <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
+      <%= simple_form_for [@trip_session,  @request], html: { class: "d-flex"} do |f| %>
+      <%= f.submit "Révéler mon profil", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
+    <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
+      <div id="accept-request">
+        <%= simple_form_for @request, :url => accept_request_path, :method => :patch, html: { data: { action: "turbo:submit-end->request-subscription#disableAnswerRequest"}, class: "d-flex"} do |f| %>
+        <%= f.submit "Accepter la demande", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+      <div id="decline-request">
+        <%= simple_form_for @request, :url => decline_request_path, :method => :patch, html: { data: { action: "turbo:submit-end->request-subscription#disableAnswerRequest"}, class: "d-flex"} do |f| %>
+        <%= f.submit "Refuser la demande", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%# CHANEL %>
 <div>
   <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>">
   <h1>Canal de discussions</h1>
-
 <div>
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @trip_session.messages.each do |message| %>
@@ -53,7 +75,7 @@
         label: false,
         placeholder: "Ecris à #{@buddy}",
         wrapper_html: {class: "flex-grow-1"} %>
-      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+      <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
 </div>

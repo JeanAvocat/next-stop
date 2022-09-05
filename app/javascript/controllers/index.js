@@ -13,6 +13,9 @@ application.register("game-matches", GameMatchesController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import RequestSubscriptionController from "./request_subscription_controller"
+application.register("request-subscription", RequestSubscriptionController)
+
 import JoinerListenerController from "./joiner_listener_controller"
 application.register("joiner-listener", JoinerListenerController)
 
