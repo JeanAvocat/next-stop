@@ -54,7 +54,7 @@
   padding: 0px 0px 0px 0px;
 }
 
-.black-blue-btn:active {
+.black-blue-btn:focus-within {
   background-color: $blue;
   color: black;
   border-color: black;
