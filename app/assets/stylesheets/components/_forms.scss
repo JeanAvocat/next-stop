@@ -106,10 +106,15 @@ select:-webkit-autofill:focus {
 }
 
 // Chat
-#message_content{
+#message_content {
+  font-family: $my-font;
   height: 28px;
   border-radius: 5px;
   padding: 0px;
+}
+
+#message_content:focus {
+font-family: $my-font;
 }
 // SUBMIT BUTTON
 
