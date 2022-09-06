@@ -1,7 +1,8 @@
 <%# REVELATION PROFIL PAGE %>
 <%# BOUTON RETOUR %>
-<%= link_to game_match_path(@game_match), data: {turbo_method: :get} do %>
+<%= link_to game_match_path(@game_match) do %>
     <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+<% end %>
 <% if (@accept === true)  %>
   <div class="reveal-identity-div">
   <% if current_user == @trip_session.joiner %>
@@ -21,4 +22,3 @@
 <% else %>
   <p> Tu vas un poil trop vite, ton partenaire n'a pas (encore) donné son accord</p>
 <% end %>
-
