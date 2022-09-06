@@ -10,13 +10,16 @@ export default class extends Controller {
     }
 
     connect() {
+      // console.log("hey")
+      // console.log(this.gameidValue)
+
       this.channel = createConsumer().subscriptions.create(
         { channel: "ReturnGameMatchChannel", id: this.gameidValue },
         {  received: data => this.#return(data)  }
 
        )
     }
-    #return(data) {
+    #return() {
       setTimeout(() => {  location.replace(`/trip_sessions/new`) }, 8000)
       this.leavemessageTarget.innerText = "Oups, votre adversaire est arrivé à bon port et a quitté la partie"
       setTimeout(() => {  this.leavemessageTarget.innerText = "Vous allez être redirigé pour jouer avec un nouveau voisin de rame"}, 5000)

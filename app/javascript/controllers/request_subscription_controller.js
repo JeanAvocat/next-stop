@@ -40,7 +40,7 @@ export default class extends Controller {
   }
 
   disableAnswerRequest() {
-    console.log("la réponse est envoyée");
+    // console.log("la réponse est envoyée");
     this.answerRequestTarget.style.display = "none";
   }
 
