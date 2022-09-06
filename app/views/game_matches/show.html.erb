@@ -44,13 +44,17 @@
       </div>
 
       <%# CHANEL CHAT ROOM%>
-      <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>">
+      <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
         <div class="chatroom">
           <h1>Canal de discussions</h1>
           <div>
-            <div class="messages" data-chatroom-subscription-target="messages">
+            <div class="messages" data-chatroom-subscription-target="messages" data-display-chat-target="messages">
               <% @trip_session.messages.each do |message| %>
-                <%= render "messages/message", message: message %>
+                <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+                  <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                    <%= render "messages/message", message: message %>
+                  </div>
+                </div>
               <% end %>
             </div>
             <div>
