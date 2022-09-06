@@ -1,11 +1,9 @@
 <%# REVELATION PROFIL PAGE %>
-
 <%# BOUTON RETOUR %>
-<%= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Êtes vous sûr? En quittant la partie, vous abandonnez aussi votre adversaire"} do %>
+<%= link_to game_match_path(@game_match), data: {turbo_method: :get} do %>
     <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
-<% end %>
-
-<div class="reveal-identity-div">
+<% if (@accept === true)  %>
+  <div class="reveal-identity-div">
   <% if current_user == @trip_session.joiner %>
     <h2>Mais qui est vraiment PetitCactus?</h2>
     <img src="https://images.unsplash.com/photo-1593757107729-eae8bcc74f8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" alt="gros bg">
@@ -20,3 +18,7 @@
     <%= image_tag "svg/circle.svg", class: "reveal-profil-circle", data: { inject: { svg: "svg/circle.svg" } }, :width => 202 %>
   <% end %>
 </div>
+<% else %>
+  <p> Tu vas un poil trop vite, ton partenaire n'a pas (encore) donné son accord</p>
+<% end %>
+

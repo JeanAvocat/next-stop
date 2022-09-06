@@ -1,12 +1,23 @@
-// CHAT ROOM
-
-.form-control {
-  border: 2px;
-  border-radius: 5px;
-  font-family: $chat-font;
-  border-color: black;
+.hide-chat-game-match {
+  display: none;
 }
 
-.message {
-  background-color: red;
+.btn-to-display-or-hide-chat {
+  display: flex;
+  justify-content: center;
 }
+
+.btn-fix-to-bottom {
+  position:fixed;
+  bottom:0;
+  left: 50%;
+}
+
+.chat-game-match {
+  height: 444px
+}
+
+.messages {
+  border: 4px solid #969696;
+  height: 150px;
+  overflow-y: scroll;
