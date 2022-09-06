@@ -47,20 +47,20 @@
                   <% end %>
                 </div>
                 <%# ACCEPT %>
-                <div id="accept-or-decline">
-                  <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
-                    <div class="info-request">
-                      <h6>How are you ?</h6>
-                    </div>
+                <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
+                  <div class="info-request">
+                    <h6>Veux-tu révéler ton profil ?</h6>
+                  </div>
+                  <div id="accept-or-decline">
                     <div id="accept-request">
                       <%= link_to  accept_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
-                        <button class="white-btn" id="accept-request" type="button">O</button>
+                        <button class="white-btn" id="accept-request" type="button">Oui</button>
                       <% end %>
                     </div>
                     <%# DECLINE %>
                     <div id="decline-request">
                       <%= link_to  decline_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
-                        <button class="white-btn" id="decline-request" type="button">N</button>
+                        <button class="white-btn" id="decline-request" type="button">Non</button>
                       <% end %>
                     </div>
                   </div>
