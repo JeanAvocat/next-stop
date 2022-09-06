@@ -59,3 +59,17 @@
   color: black;
   border-color: black;
 }
+
+.chat-btn-closed {
+  background-image: asset-url("svg/back_button.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 76px;
+  width: 24px;
+  transform: rotate(90deg);
+}
+
+.chat-btn-opened {
+  transform: rotate(270deg);
+}

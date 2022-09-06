@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :tic_tac_toe_games_as_cross_player, foreign_key: :cross_player_id, class_name: "TicTacToeGame"
   has_many :tic_tac_toe_games_as_circle_player, foreign_key: :circle_player_id, class_name: "TicTacToeGame"
 
+  has_many :chifoumi_games_as_first_player, foreign_key: :first_player_id, class_name: "Chifoumi"
+  has_many :chifoumi_games_as_second_player, foreign_key: :second_player_id, class_name: "Chifoumi"
+
   has_one_attached :user_photo
 
   devise :database_authenticatable, :registerable,

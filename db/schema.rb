@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_133208) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_101239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_133208) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "chifoumi_games", force: :cascade do |t|
+    t.string "first_player_choice"
+    t.string "second_player_choice"
+    t.integer "play_round"
+    t.integer "first_player_score"
+    t.integer "second_player_score"
+    t.bigint "first_player_id", null: false
+    t.bigint "second_player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_player_id"], name: "index_chifoumi_games_on_first_player_id"
+    t.index ["second_player_id"], name: "index_chifoumi_games_on_second_player_id"
   end
 
   create_table "game_matches", force: :cascade do |t|
@@ -119,6 +133,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_133208) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chifoumi_games", "users", column: "first_player_id"
+  add_foreign_key "chifoumi_games", "users", column: "second_player_id"
   add_foreign_key "game_matches", "trip_sessions"
   add_foreign_key "messages", "trip_sessions"
   add_foreign_key "messages", "users"
