@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get "profil", to: "pages#profil"
+  get "my_profil", to: "profils#my_profil"
   resources :trip_sessions, only: %i[show create new destroy] do
     member do
       patch :join
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :game_matches, only: %i[show create] do
     resources :messages, only: :create
+    get "reveal_profil", to: "profils#reveal_profil", as: :reveal_profil
     member do
       get :counter
       patch :return
@@ -34,6 +35,12 @@ Rails.application.routes.draw do
   resources :tic_tac_toe_games, only: :show do
     member do
       patch :select_tile
+    end
+  end
+
+  resources :chifoumi_games, only: :show do
+    member do
+      patch :select_weapon
     end
   end
 end

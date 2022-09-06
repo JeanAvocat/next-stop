@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="tic-tac-toe-game-subscription"
 export default class extends Controller {
   static values = { gameId: Number, result: Boolean }
-  static targets = ["tile", "gameInfo", "competitor", "restart"]
+  static targets = ["tile", "gameInfo", "competitor", "restart", "playerSymbol"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -49,17 +49,26 @@ export default class extends Controller {
     // methode to update info about player who have to play
     if (this.gameInfoTarget.innerText === "C'est à ton tour de jouer") {
       this.gameInfoTarget.innerText = `C'est au tour de ${this.competitorTarget.innerText}`;
+      this.playerSymbolTarget.classList.add("hidden");
     } else {
       this.gameInfoTarget.innerText = "C'est à ton tour de jouer";
+      this.playerSymbolTarget.classList.remove("hidden");
     }
   }
 
   #endOfGame(data) {
-    // catch information if the game is finish and display it on the screen
-    if ((data.includes("égalité")) || (data.includes("gagnant"))) {
-      this.finalResult = data.split(`"`).filter(element => element.includes("gagnant") || element.includes("égalité")).join();
+    // catch information if the game is finish with a draw result and display it on the screen
+    if (data.includes("égalité")) {
+      this.finalResult = "C'est une égalité";
       this.gameInfoTarget.innerText = this.finalResult;
       this.restartTarget.classList.remove("hidden");
+    }
+    // catch information if the game is finish with a winner and display it on the screen
+    if (data.includes("gagnant")) {
+      this.finalResult = data.split(`"`).filter(element => element.includes("gagnant")).join();
+      this.gameInfoTarget.innerText = this.finalResult;
+      this.restartTarget.classList.remove("hidden");
+      this.playerSymbolTarget.classList.add("hidden");
     }
   }
 }

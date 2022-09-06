@@ -21,7 +21,7 @@
     <%# CHAT %>
     <div class="chat-game-match hide-chat-game-match" data-display-chat-target="displayChatGameMatch">
       <%# REQUESTS %>
-      <div class="request" data-controller="request-subscription" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
+      <div class="request" data-controller="request-subscription" data-request-subscription-user_id-value="<%= current_user.id %>" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
         <div class="request" data-request-subscription-target="request">
           <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
             <%= simple_form_for [@trip_session,  @request], html: { class: "d-flex"} do |f| %>

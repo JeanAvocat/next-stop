@@ -27,3 +27,6 @@ application.register("return-game-match", ReturnGameMatchController)
 
 import TicTacToeGameSubscriptionController from "./tic_tac_toe_game_subscription_controller"
 application.register("tic-tac-toe-game-subscription", TicTacToeGameSubscriptionController)
+
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)

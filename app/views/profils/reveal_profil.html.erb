@@ -1,0 +1,15 @@
+<% if (@accept === true)  %>
+  <% if current_user == @trip_session.joiner %>
+    <h2>Mais qui est vraiment petit cactus</h2>
+    <img src="https://images.unsplash.com/photo-1593757107729-eae8bcc74f8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" alt="">
+    <p>C'est <strong><%= @trip_session.creator.first_name %></strong></p>
+    <p>Tu peux le retrouver sur <strong><%= @trip_session.creator.social_media %></strong></p>
+  <% else %>
+    <h2>Mais qui est vraiment douce craquotte</h2>
+    <img src="https://images.unsplash.com/photo-1593757107729-eae8bcc74f8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" alt="">
+    <p>C'est <strong><%= @trip_session.creator.first_name %></strong></p>
+    <p>Tu peux le retrouver sur <strong><%= @trip_session.creator.social_media %></strong></p>
+  <% end %>
+<% else %>
+  <p> Tu vas un poil trop vite, ton partenaire n'a pas (encore) donné son accord</p>
+<% end %>

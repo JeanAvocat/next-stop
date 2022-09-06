@@ -84,7 +84,7 @@
 .trip-session-new-join {
   width: 140px;
   position: relative;
-  top: -384px;
+  top: -386px;
   left: -153px;
   text-align: center;
   display: flex;
@@ -163,4 +163,8 @@
 a {
   text-decoration: none;
   color: black;
+}
+
+.trip-session-new-button-join {
+  margin: 225px;
 }
