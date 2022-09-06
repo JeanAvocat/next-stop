@@ -62,6 +62,7 @@ export default class extends Controller {
       this.finalResult = "C'est une égalité";
       this.gameInfoTarget.innerText = this.finalResult;
       this.restartTarget.classList.remove("hidden");
+      this.playerSymbolTarget.classList.add("hidden");
     }
     // catch information if the game is finish with a winner and display it on the screen
     if (data.includes("gagnant")) {
