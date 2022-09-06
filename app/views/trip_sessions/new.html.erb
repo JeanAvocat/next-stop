@@ -24,7 +24,7 @@
         <%= image_tag "svg/bus.svg", class: "trip-session-new-bus", data: { inject: { svg: "svg/bus.svg" } }, :width => 70 %>
       </div>
       <div class="trip-session-new-bonhommes">
-        <img id="gif-bonhommes" src="/assets/gifs/bonhommes.gif" height="28">
+        <%= image_tag(File.join(“gif”,”bonhommes.gif”), :border => 0, :size => “200×75”) %>
       </div>
     </div>
     <div class="trip-session-new-details">
