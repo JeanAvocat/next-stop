@@ -43,6 +43,7 @@ class GameMatchesController < ApplicationController
   def return
     @trip_session = @game_match.trip_session
     @trip_session.status = "closed"
+    @trip_session.save
     ReturnGameMatchChannel.broadcast_to(
       @game_match,
       " "
@@ -55,7 +56,6 @@ class GameMatchesController < ApplicationController
   def set_game_match
     @game_match = GameMatch.find(params[:id])
   end
-
   def classForSendRequest
     @requestclass = @lastrequest == nil ? "" : "d-none"
   end

@@ -20,10 +20,9 @@ class RequestsController < ApplicationController
   def accept
     update_request_status
     @request_answer.status = "accepted"
-    if @request_answer.save
-      # redirect_to game_match_path(@game_match)
+    @request_answer.save
+    redirect_to game_match_reveal_profil_path(@game_match)
       # REPLACE PREVIOUS LINE BY redirect_to the profil path
-    end
   end
 
   def decline

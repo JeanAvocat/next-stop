@@ -12,12 +12,19 @@ export default class extends Controller {
       { received: data => this.nextAction(data) }
     )
     // this.answerRequestTarget.style.display = "none";
-    console.log(`the request is on the game_match ${this.requestIdValue}.`);
+    // console.log(`the request is on the game_match ${this.requestIdValue}.`);
   }
-
   nextAction(data){
+    // Allow to display button accept/decline or to the profil of accept
+    if (data === "reveal") {
+      this.#profil_reveal();
+    } else {
+      this.#accept_or_decline(data);
+    }
+  }
+  #accept_or_decline(data){
     const user = this.element.dataset.user;
-    console.log(data);
+    // console.log(data);
     const sender_user = data;
     if (user == sender_user) {
       // console.log("I sent the request");
@@ -35,5 +42,13 @@ export default class extends Controller {
   disableAnswerRequest() {
     console.log("la réponse est envoyée");
     this.answerRequestTarget.style.display = "none";
+  }
+
+  #profil_reveal() {
+    // Link to the the other people profil
+    console.log("hey");
+    console.log(this.requestIdValue);
+    // location.replace(`/game_matches/${this.requestIdValue}/reveal_profil`)
+    setTimeout(() => {  location.replace(`/game_matches/${this.requestIdValue}/reveal_profil`); }, 0050);
   }
 }
