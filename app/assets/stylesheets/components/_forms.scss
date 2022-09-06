@@ -120,7 +120,7 @@ select:-webkit-autofill:focus {
   margin: 20px;
 }
 
-#submit-pink-btn:active {
+#submit-pink-btn:focus-within {
   background-color: $pink;
   color: black;
   border-color: black;
@@ -145,7 +145,7 @@ select:-webkit-autofill:focus {
   margin: 20px;
 }
 
-#submit-green-btn:active {
+#submit-green-btn:focus-within {
   background-color: $green;
   color: black;
   border-color: black;
@@ -170,7 +170,7 @@ select:-webkit-autofill:focus {
   margin: 20px;
 }
 
-#submit-blue-btn:active {
+#submit-blue-btn:focus-within {
   background-color: $blue;
   color: black;
   border-color: black;
