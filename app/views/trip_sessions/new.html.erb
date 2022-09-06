@@ -24,7 +24,7 @@
         <%= image_tag "svg/bus.svg", class: "trip-session-new-bus", data: { inject: { svg: "svg/bus.svg" } }, :width => 70 %>
       </div>
       <div class="trip-session-new-bonhommes">
-        <%= image_tag "svg/bonhommes.svg", class: "trip-session-new-bonhommes", data: { inject: { svg: "svg/bonhommes.svg" } }, :width => 50 %>
+        <img id="gif-bonhommes" src="/assets/gifs/bonhommes.gif" draggable="true" ondragstart="drag(event)" height="28">
       </div>
     </div>
     <div class="trip-session-new-details">
@@ -46,7 +46,7 @@
    <% if @trip_session != nil  %>
       <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
         <div class="trip-session-new-join">
-          <%= image_tag "svg/gamer_bonhomme.svg", class: "trip-session-new-gamer-bonhomme", data: { inject: { svg: "svg/gamer_bonhomme.svg" } }, :height => 120 %>
+          <img id="gif-gamer-bonhomme" src="/assets/gifs/gamer_bonhomme.gif" draggable="true" ondragstart="drag(event)" height="120">
           <div class="trip-session-new-button-join">
             <h2>Rejoins la partie!</h2>
           </div>

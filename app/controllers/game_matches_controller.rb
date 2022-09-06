@@ -2,6 +2,7 @@ class GameMatchesController < ApplicationController
   before_action :set_game_match, only: %i[show counter return]
   def show
     @tic_tac_toe_game = @game_match.matchable
+    
     # Chatroom
     @trip_session = @game_match.trip_session
     @message = Message.new
