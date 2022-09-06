@@ -1,5 +1,6 @@
-.overlay {
+.chat-overlay-game {
   position: absolute;
+  top: 52px;
   z-index: 9;
   background: white;
   width: 100%;
@@ -7,21 +8,6 @@
 
 .hide-chat-game-match {
   display: none;
-}
-
-.btn-to-display-or-hide-chat {
-  display: flex;
-  justify-content: center;
-}
-
-#btn-chat-submit {
-  height: 39px;
-}
-
-.btn-fix-to-bottom {
-  position:fixed;
-  bottom:0;
-  left: 50%;
 }
 
 .title-chatroom {
@@ -33,8 +19,4 @@
 
 .title-chatroom > h6{
   margin: 0px;
-}
-
-.chat-game-match {
-  height: 444px
 }

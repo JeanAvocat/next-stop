@@ -13,7 +13,7 @@
     <%= render "tic_tac_toe_games/tic_tac_to_game", game_match: @game_match, tic_tac_toe_game: @tic_tac_toe_game %>
   </div>
 
-  <div class="overlay" data-controller="display-chat">
+  <div class="chat-overlay-game" data-controller="display-chat">
     <div class="btn-to-display-or-hide-chat" data-action="click->display-chat#hideChat">
       <button data-display-chat-target="btnChatGameMatch" class="black-btn chat-btn-closed btn-fix-to-bottom" type="button">
         <div class="chat-btn-icon">

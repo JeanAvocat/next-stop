@@ -98,6 +98,21 @@
   transform: rotate(270deg);
 }
 
+.btn-to-display-or-hide-chat {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-fix-to-bottom {
+  position:fixed;
+  bottom:0;
+  left: 50%;
+}
+
+#btn-chat-submit {
+  height: 39px;
+}
+
 // REQUEST BTN
 
 #révéler-mon-profil {
