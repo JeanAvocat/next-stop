@@ -2,7 +2,7 @@ class GameMatchesController < ApplicationController
   before_action :set_game_match, only: %i[show counter return]
   def show
     @tic_tac_toe_game = @game_match.matchable
-    @tic_tac_toe_game_current_user_sign = @tic_tac_toe_game.cross_player == current_user ? "X" : "O"
+    
     # Chatroom
     @trip_session = @game_match.trip_session
     @message = Message.new
