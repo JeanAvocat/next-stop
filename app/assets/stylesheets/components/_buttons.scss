@@ -73,3 +73,16 @@
 .chat-btn-opened {
   transform: rotate(270deg);
 }
+
+// REQUEST BTN
+
+#révéler-mon-profil {
+  width: 100%;
+  border: none;
+}
+
+#accept-request, #decline-request {
+  border: none;
+  display:inline-block;
+  margin-right:5px;
+}

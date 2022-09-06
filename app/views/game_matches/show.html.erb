@@ -20,28 +20,6 @@
 
     <%# CHAT %>
     <div class="chat-game-match hide-chat-game-match" data-display-chat-target="displayChatGameMatch">
-      <%# REQUESTS %>
-      <div class="request" data-controller="request-subscription" data-request-subscription-user_id-value="<%= current_user.id %>" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
-        <div class="request" data-request-subscription-target="request">
-          <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
-            <%= simple_form_for [@trip_session,  @request], html: { class: "d-flex"} do |f| %>
-            <%= f.submit "Révéler mon profil", class: "btn btn-primary mb-3" %>
-            <% end %>
-          </div>
-          <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
-            <div id="accept-request">
-              <%= simple_form_for @request, :url => accept_request_path, :method => :patch, html: { data: { action: "turbo:submit-end->request-subscription#disableAnswerRequest"}, class: "d-flex"} do |f| %>
-              <%= f.submit "Accepter la demande", class: "btn btn-primary mb-3" %>
-              <% end %>
-            </div>
-            <div id="decline-request">
-              <%= simple_form_for @request, :url => decline_request_path, :method => :patch, html: { data: { action: "turbo:submit-end->request-subscription#disableAnswerRequest"}, class: "d-flex"} do |f| %>
-              <%= f.submit "Refuser la demande", class: "btn btn-primary mb-3" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <%# CHANEL CHAT ROOM%>
       <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
@@ -59,6 +37,37 @@
                 </div>
               <% end %>
             </div>
+            <%# REQUESTS %>
+            <%# ASK TO REVEAL PROFILE %>
+            <div class="request" data-controller="request-subscription" data-request-subscription-user_id-value="<%= current_user.id %>" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
+              <div class="request" data-request-subscription-target="request">
+                <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
+                  <%= link_to  trip_session_requests_path(@trip_session), data: {turbo_method: :post} do %>
+                    <button class="white-btn" id="révéler-mon-profil" type="button">Révéler mon profil</button>
+                  <% end %>
+                </div>
+                <%# ACCEPT %>
+                <div id="accept-or-decline">
+                  <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
+                    <div class="info-request">
+                      <h6>How are you ?</h6>
+                    </div>
+                    <div id="accept-request">
+                      <%= link_to  accept_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
+                        <button class="white-btn" id="accept-request" type="button">O</button>
+                      <% end %>
+                    </div>
+                    <%# DECLINE %>
+                    <div id="decline-request">
+                      <%= link_to  decline_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
+                        <button class="white-btn" id="decline-request" type="button">N</button>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%# REQUESTS %>
             <div>
               <%= simple_form_for [@game_match, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
                 <%= f.input :content,
