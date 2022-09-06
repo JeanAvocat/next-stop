@@ -36,4 +36,10 @@ Rails.application.routes.draw do
       patch :select_tile
     end
   end
+
+  resources :chifoumi_games, only: :show do
+    member do
+      patch :select_weapon
+    end
+  end
 end

@@ -1,0 +1,2 @@
+class ChifoumiGamesController < ApplicationController
+end
