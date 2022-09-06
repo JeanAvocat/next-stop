@@ -10,8 +10,6 @@ export default class extends Controller {
     }
 
     connect() {
-      console.log("hey")
-      console.log(this.gameidValue)
       this.channel = createConsumer().subscriptions.create(
         { channel: "ReturnGameMatchChannel", id: this.gameidValue },
         {  received: data => this.#return(data)  }

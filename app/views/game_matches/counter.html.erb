@@ -1,6 +1,6 @@
 <%# COUNTER PAGE %>
 <div class="counter-page">
-  <h3>PetitCactus a rejoins la partie</h3>
+  <h3 class="counter-buddy">PetitCactus a rejoins la partie</h3>
   <p class="game-instructions"> Aligne 3 symboles identiques pour gagner </p>
   <div data-controller="game-matches" data-game-matches-url-value= "<%= game_match_path(@game_match) %>" >
     <h1 data-game-matches-target="counter" class="counter"><%= @counter %></h1>
