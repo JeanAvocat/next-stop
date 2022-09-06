@@ -11,8 +11,8 @@ class GameMatchesController < ApplicationController
     # Requests
     @request = Request.new
     @lastrequest = @trip_session.requests.exists? ? @trip_session.requests.last.status : nil
-    classForSendRequest
-    classFotAnswerRequest
+    class_for_send_request
+    class_for_answer_request
   end
 
   def create
@@ -54,13 +54,13 @@ class GameMatchesController < ApplicationController
   def set_game_match
     @game_match = GameMatch.find(params[:id])
   end
-  
-  def classForSendRequest
-    @requestclass = @lastrequest == nil ? "" : "d-none"
+
+  def class_for_send_request
+    @requestclass = @lastrequest.nil? ? "" : "d-none"
   end
 
-  def classFotAnswerRequest
-    if @lastrequest == nil || @lastrequest == "refused"
+  def class_for_answer_request
+    if @lastrequest.nil? || @lastrequest == "refused"
       # There were no request yet, or the request has been refused
       @answerrequestclass = "d-none"
     elsif @lastrequest == "pending" && current_user.id == @trip_session.requests.last.sender_id
@@ -79,10 +79,14 @@ class GameMatchesController < ApplicationController
 
   def find_last_trip_sessions
     # define last trip_sessions_as_creator
-    creator_id = current_user.trip_sessions_as_creator.last.id
+    creator_id = current_user.trip_sessions_as_creator.last.id if current_user.trip_sessions_as_creator.last
     # define last trip_sessions_as_joiner
-    joiner_id = current_user.trip_sessions_as_joiner.last.id
-    # return the bigger id concerning the trip sessions
+    joiner_id = current_user.trip_sessions_as_joiner.last.id if current_user.trip_sessions_as_joiner.last
+    # return last TripSession if joiner_id or creator_id is nil
+    return TripSession.find(creator_id) if joiner_id.nil?
+    return TripSession.find(joiner_id) if creator_id.nil?
+
+    # return the last trip sessions of players
     creator_id > joiner_id ? TripSession.find(creator_id) : TripSession.find(joiner_id)
   end
 

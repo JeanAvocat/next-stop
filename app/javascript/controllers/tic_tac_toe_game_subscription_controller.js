@@ -55,9 +55,15 @@ export default class extends Controller {
   }
 
   #endOfGame(data) {
-    // catch information if the game is finish and display it on the screen
-    if ((data.includes("égalité")) || (data.includes("gagnant"))) {
-      this.finalResult = data.split(`"`).filter(element => element.includes("gagnant") || element.includes("égalité")).join();
+    // catch information if the game is finish with a draw result and display it on the screen
+    if (data.includes("égalité")) {
+      this.finalResult = "C'est une égalité";
+      this.gameInfoTarget.innerText = this.finalResult;
+      this.restartTarget.classList.remove("hidden");
+    }
+    // catch information if the game is finish with a winner and display it on the screen
+    if (data.includes("gagnant")) {
+      this.finalResult = data.split(`"`).filter(element => element.includes("gagnant")).join();
       this.gameInfoTarget.innerText = this.finalResult;
       this.restartTarget.classList.remove("hidden");
     }
