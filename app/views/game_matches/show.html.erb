@@ -15,7 +15,12 @@
 
   <div class="overlay" data-controller="display-chat">
     <div class="btn-to-display-or-hide-chat" data-action="click->display-chat#hideChat">
-      <button data-display-chat-target="btnChatGameMatch" class="black-btn chat-btn-closed btn-fix-to-bottom" type="button"></button>
+      <button data-display-chat-target="btnChatGameMatch" class="black-btn chat-btn-closed btn-fix-to-bottom" type="button">
+        <div class="chat-btn-icon">
+          <div data-display-chat-target="emailIcon" class="chat-btn-closed-email-img"></div>
+          <div class="chat-btn-closed-arrow-img"></div>
+        </div>
+      </button>
     </div>
 
     <%# CHAT %>
