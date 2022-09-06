@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="chatroom-subscription"
 export default class extends Controller {
   static values = { chatroomId: Number, currentUserId: Number }
-  static targets = ["messages"]
+  static targets = ["messages", "buddy"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -32,7 +32,7 @@ export default class extends Controller {
     return `
     <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
       <div class="${this.#userStyleClass(currentUserIsSender)}">
-        ${message}
+        ${ currentUserIsSender ? message :  message.replace("Moi", this.buddyTarget.innerText) }
       </div>
     </div>
   `
@@ -46,3 +46,11 @@ export default class extends Controller {
     return currentUserIsSender ? "sender-style" : "receiver-style"
   }
 }
+
+`<div id="message-118">
+  <small class="message-info" >
+    <strong>Moi</strong>
+    <i class="message-hour">-15h47</i>
+  </small>
+  <p>commence à faire chier cette histoire</p>
+</div>`

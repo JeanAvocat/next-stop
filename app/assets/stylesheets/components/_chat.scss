@@ -13,6 +13,17 @@
   left: 50%;
 }
 
+.title-chatroom {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: black;
+}
+
+.title-chatroom > h6{
+  margin: 0px;
+}
+
 .chat-game-match {
   height: 444px
 }

@@ -5,23 +5,42 @@
 }
 
 .message-row {
-  margin-bottom: 10px;
-  padding: 8px;
+  padding: 0px 8px;
 }
 
 // To style the message itself
 .sender-style, .receiver-style {
+  font-family: $my-font;
   width: 70%;
   max-width: 400px;
   border-radius: 4px;
   padding: 8px;
-  min-height: 80px;
+  min-height: 30px;
+}
+
+.sender-style, .receiver-style > p {
+  margin: 0px;
+}
+
+.message-info {
+  text-decoration: underline;
+}
+
+.message-hour {
+  color: $gray;
+}
+
+.message-text-content {
+  margin: 0px;
 }
 
 .sender-style {
-  background-color: lightcoral;
+  color: $gray;
+  display: flex;
+  justify-content: end;
+  text-align: right;
 }
 
-.receiver-style {
-  background-color: lightblue;
-}
+// .receiver-style {
+
+// }

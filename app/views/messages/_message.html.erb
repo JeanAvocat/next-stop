@@ -1,7 +1,7 @@
 <div id="message-<%= message.id %>">
-  <small>
-    <strong><%= User.find(message.user_id).random_nickname %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  <small class="message-info" >
+    <strong><%= message.sender?(current_user) ? "Moi" : User.find(message.user_id).random_nickname %></strong>
+    <i class="message-hour">-<%= message.created_at.strftime("%Hh%M") %></i>
   </small>
-  <p><%= message.content %></p>
+  <p class="message-text-content"><%= message.content %></p>
 </div>

@@ -45,8 +45,10 @@
 
       <%# CHANEL CHAT ROOM%>
       <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
-        <div class="chatroom">
-          <h1>Canal de discussions</h1>
+        <div class="container chatroom">
+          <div class="title-chatroom">
+            <h6>chat avec <span data-chatroom-subscription-target="buddy"><%= @buddy %></span></h6>
+          </div>
           <div>
             <div class="messages" data-chatroom-subscription-target="messages" data-display-chat-target="messages">
               <% @trip_session.messages.each do |message| %>
