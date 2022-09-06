@@ -21,6 +21,10 @@ class RequestsController < ApplicationController
     update_request_status
     @request_answer.status = "accepted"
     @request_answer.save
+    RequestChannel.broadcast_to(
+      @game_match,
+      "reveal"
+    )
     redirect_to game_match_reveal_profil_path(@game_match)
       # REPLACE PREVIOUS LINE BY redirect_to the profil path
   end

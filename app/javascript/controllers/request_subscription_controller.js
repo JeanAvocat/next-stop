@@ -49,6 +49,6 @@ export default class extends Controller {
     console.log("hey");
     console.log(this.requestIdValue);
     // location.replace(`/game_matches/${this.requestIdValue}/reveal_profil`)
-    setTimeout(() => {  location.replace(`/game_matches/${this.requestIdValue}/reveal_profil`); }, 0050);
+    setTimeout(() => {  location.replace(`/game_matches/${this.requestIdValue}/reveal_profil`); }, 50);
   }
 }

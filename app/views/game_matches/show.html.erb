@@ -9,7 +9,7 @@
 <%= render "tic_tac_toe_games/tic_tac_to_game", game_match: @game_match, tic_tac_toe_game: @tic_tac_toe_game %>
 
 <%# REQUESTS %>
-<div class="container request" data-controller="request-subscription" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
+<div class="container request" data-controller="request-subscription" data-request-subscription-user_id-value="<%= current_user.id %>" data-request-subscription-request-id-value="<%= @game_match.id %>" data-user="<%= current_user.id %>">
   <div class="request" data-request-subscription-target="request">
     <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
       <%= simple_form_for [@trip_session,  @request], html: { class: "d-flex"} do |f| %>
