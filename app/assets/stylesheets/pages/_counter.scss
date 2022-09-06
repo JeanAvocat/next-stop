@@ -3,12 +3,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background:url("svg/background_bus.svg") no-repeat ;
+  background-image: url("gifs/counter.gif");
+  background-size: cover;
   justify-content: flex-start;
   background-image: black;
   text-align: center;
   position: fixed;
-  top: 0;
+  top: -80px;
   left: 0;
   bottom: 0;
   right: 0;
