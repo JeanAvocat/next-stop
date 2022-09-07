@@ -4,6 +4,7 @@ class TicTacToeGame < ApplicationRecord
   has_many :game_matches, as: :matchable
 
   def random_first_player
+    # method to define who is cross player or circle player in order to randomize the first plyer who start
     rand(0..1) == 1 ? ["joiner", "creator"] : ["creator", "joiner"]
   end
 

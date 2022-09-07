@@ -24,6 +24,7 @@ class TripSessionsController < ApplicationController
     @trip_session.save
     # Create new TicTacToeGame
     @tic_tac_toe_game = TicTacToeGame.new
+    # define the cross and circle player with the method random_first_player
     random_player = @tic_tac_toe_game.random_first_player
     @tic_tac_toe_game.cross_player = @trip_session.public_send(random_player[0])
     @tic_tac_toe_game.circle_player = @trip_session.public_send(random_player[1])
