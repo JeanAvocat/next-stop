@@ -1,53 +1,55 @@
-<div class="chifoumi-game-player-info">
-  <div class="d-flex justify-content-around mb-4">
-    <div>
-      <h5 class="gray-text-h6">salut <%= current_user.random_nickname %></h5>
-    </div>
-    <div>
-      <h6 class="gray-text-h6">tu joues contre</h6>
-      <% if chifoumi_game.first_player == current_user %>
-        <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.second_player.random_nickname %></h6>
-      <% else %>
-        <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.first_player.random_nickname %></h6>
-      <% end %>
+<div data-controller="chifoumi-subscription" data-chifoumi-subscription-game-id-value="<%= game_match.id %>">
+  <div class="chifoumi-game-player-info">
+    <div class="d-flex justify-content-around mb-4">
+      <div>
+        <h5 class="gray-text-h6">salut <%= current_user.random_nickname %></h5>
+      </div>
+      <div>
+        <h6 class="gray-text-h6">tu joues contre</h6>
+        <% if chifoumi_game.first_player == current_user %>
+          <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.second_player.random_nickname %></h6>
+        <% else %>
+          <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.first_player.random_nickname %></h6>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<%#= WHO HAVE TO PLAY  %>
-<div>
-  <% if @chifoumi_game.who_have_to_play == current_user %>
-    <h6>Choisi ton signe</h6>
-  <% else %>
-    <h6>Attends ton tour</h6>
-  <% end %>
-</div>
-<div class="chifoumi-game-choosen-weapons">
-  <% if chifoumi_game.play_round.zero? %>
-    <h5>La partie commence</h5>
-  <% elsif chifoumi_game.play_round.odd? %>
-    <div class="text-center mb-4">
-      <h5>round <%= ((chifoumi_game.play_round - 1) / 2) + 1 %> </h5>
-    </div>
-  <% else chifoumi_game.play_round.even? %>
-    <div class="text-center mb-4">
-      <h5>round <%= (chifoumi_game.play_round / 2) + 1 %> </h5>
-    </div>
-    <div class="d-flex justify-content-between mb-4">
-      <div><h6><%= chifoumi_game.first_player.random_nickname %> --> <%= chifoumi_game.first_player_choice %></h6></div>
-      <div><h6><%= chifoumi_game.second_player.random_nickname %> --> <%= chifoumi_game.second_player_choice %></h6></div>
-      <div><h6><%= chifoumi_game.round_winner %> WIN</h6></div>
-    </div>
-  <% end %>
-</div>
+  <%#= WHO HAVE TO PLAY  %>
+  <div>
+    <% if @chifoumi_game.who_have_to_play == current_user %>
+      <h6>Choisi ton signe</h6>
+    <% else %>
+      <h6>Attends ton tour</h6>
+    <% end %>
+  </div>
+  <div class="chifoumi-game-choosen-weapons">
+    <% if chifoumi_game.play_round.zero? %>
+      <h5>La partie commence</h5>
+    <% elsif chifoumi_game.play_round.odd? %>
+      <div class="text-center mb-4">
+        <h5>round <%= ((chifoumi_game.play_round - 1) / 2) + 1 %> </h5>
+      </div>
+    <% else chifoumi_game.play_round.even? %>
+      <div class="text-center mb-4">
+        <h5>round <%= (chifoumi_game.play_round / 2) + 1 %> </h5>
+      </div>
+      <div class="d-flex justify-content-between mb-4">
+        <div><h6><%= chifoumi_game.first_player.random_nickname %> --> <%= chifoumi_game.first_player_choice %></h6></div>
+        <div><h6><%= chifoumi_game.second_player.random_nickname %> --> <%= chifoumi_game.second_player_choice %></h6></div>
+        <div><h6><%= chifoumi_game.round_winner %> WIN</h6></div>
+      </div>
+    <% end %>
+  </div>
 
-<div class="container">
-  <%# <%= render "chifoumi_games/be_ready_counter", chifoumi_game: chifoumi_game %>
-  <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game %>
-  <%# chifoumi_game.round_paterns %>
-  <div class="mt-5"><h6>winner is   <%= chifoumi_game.round_winner %></h6></div>
-  <div class="mt-5"><h6>real play round</h6> <h3><%= chifoumi_game.play_round %></h3></div>
-  <% if @chifoumi_game.end_of_a_game? %>
-    <div class="mt-5"><h6>winner is</h6> <h3><%= chifoumi_game.result %></h3></div>
-  <% end %>
+  <div class="container">
+    <%# <%= render "chifoumi_games/be_ready_counter", chifoumi_game: chifoumi_game %>
+    <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game %>
+    <%# chifoumi_game.round_paterns %>
+    <div class="mt-5"><h6>winner is   <%= chifoumi_game.round_winner %></h6></div>
+    <div class="mt-5"><h6>real play round</h6> <h3><%= chifoumi_game.play_round %></h3></div>
+    <% if @chifoumi_game.end_of_a_game? %>
+      <div class="mt-5"><h6>winner is</h6> <h3><%= chifoumi_game.result %></h3></div>
+    <% end %>
+  </div>
 </div>
