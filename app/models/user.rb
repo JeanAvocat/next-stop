@@ -12,7 +12,19 @@ class User < ApplicationRecord
 
   has_one_attached :user_photo
 
+
+  MALE_NAME = ["Cactus", "Saucisson", "Biscuit", "Buisson", "Nuage", "Soleil", "Coeur", "Chaton", "Doudou", "Bébé", "Gnome", "Dindon"]
+  MALE_ADJECTIVE = ["Doux", "Tendre", "Beau", "Piquant", "Brillant", "Douillet", "Petit", "Gros", "Soyeux", "Vilain", "Poli", "Enflammé", "Moux", "Honnête", "Audacieux", "Habile", "Costaud", "Irrésistible", "Simplet", "Gentil", "Sexy", "Coquet", "Rusé", "Bougre", "Forceur"]
+
+  FEMALE_NAME = ["Craquotte", "Aubergine", "Saucisse", "Guimauve", "Princesse", "Compote", "Licorne", "Paillette"]
+  FEMALE_ADJECTIVE = ["Douce", "Tendre", "Belle", "Piquante", "Brillante", "Douillette", "Petite", "Grosse", "Soyeuse", "Vilaine", "Polie", "Fofolle", "Enflammée", "Molle", "Honnête", "Audacieuse", "Habile", "Irrésistible", "Gentille", "Sexy", "Coquette", "Rusée"]
+
+  def set_nickname
+    male_or_femmale = rand(0..1) == 1 ? "MALE" : "FEMALE"
+    "User::#{male_or_femmale}_ADJECTIVE".constantize.sample + " " + "User::#{male_or_femmale}_NAME".constantize.sample
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :first_name, :email, :password, presence: true
+  validates :first_name, :email, presence: true
 end
