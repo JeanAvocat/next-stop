@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="request-subscription"
 export default class extends Controller {
   static values = { requestId: Number }
-  static targets = ["request", "sendRequest", "answerRequest", "user"]
+  static targets = ["request", "sendRequest", "answerRequest", "user", "notifRequests", "ChatGameMatch"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -15,6 +15,7 @@ export default class extends Controller {
     // console.log(`the request is on the game_match ${this.requestIdValue}.`);
   }
   nextAction(data){
+    this.#addRequestNotification()
     // Allow to display button accept/decline or to the profil of accept
     if (data === "reveal") {
       this.#profil_reveal();
@@ -50,5 +51,20 @@ export default class extends Controller {
     console.log(this.requestIdValue);
     // location.replace(`/game_matches/${this.requestIdValue}/reveal_profil`)
     setTimeout(() => {  location.replace(`/game_matches/${this.requestIdValue}/reveal_profil`); }, 50);
+  }
+
+  #addRequestNotification() {
+    if (this.ChatGameMatchTarget.classList.contains("hide-chat-game-match")) {
+      this.notifRequestsTarget.classList.add("chat-notif-request");
+      this.#computeNotifications()
+    }
+  }
+
+  #computeNotifications() {
+    if (this.notifRequestsTarget.innerText === "") {
+      this.notifRequestsTarget.innerText = 1;
+    } // else {
+    //   this.notifRequestsTarget.innerText = parseInt(this.notifRequestsTarget.innerText) + 1;
+    // }
   }
 }
