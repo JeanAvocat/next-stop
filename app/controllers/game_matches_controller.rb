@@ -93,8 +93,9 @@ class GameMatchesController < ApplicationController
   def tic_tac_toe_creation
     # assign cross player and circle player to new tic tac toe game
     tic_tac_toe_game = TicTacToeGame.new
-    tic_tac_toe_game.cross_player = find_last_trip_sessions.joiner
-    tic_tac_toe_game.circle_player = find_last_trip_sessions.creator
+    random_player = tic_tac_toe_game.random_first_player
+    tic_tac_toe_game.cross_player = find_last_trip_sessions.public_send(random_player[0])
+    tic_tac_toe_game.circle_player = find_last_trip_sessions.public_send(random_player[1])
     # save the new tic tac toe game instance in DB
     tic_tac_toe_game.save
     # return tic tac toe game
