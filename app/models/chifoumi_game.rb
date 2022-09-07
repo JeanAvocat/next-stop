@@ -21,10 +21,10 @@ class ChifoumiGame < ApplicationRecord
     end
   end
 
-  def round_paterns?
+  def round_paterns
 
     # winning_combinations = ["rock" > "scissors", "scissors" > "paper", "paper" > "rock"]
-
+    raise
     if (first_player_choice == "rock" && second_player_choice == "scissors") || (first_player_choice == "scissors" && second_player_choice == "paper") || (first_player_choice == "paper" && second_player_choice == "rock")
       first_player_score += 1
       play_round += 1
