@@ -11,7 +11,6 @@ export default class extends Controller {
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data => this.#insertMessageAndScrollDown(data)}
     )
-    console.log("salut, on discute ?");
   }
 
   resetForm(event) {
@@ -49,7 +48,6 @@ export default class extends Controller {
   }
 
   #addMessageNotification() {
-    console.log(this.ChatGameMatchTarget.classList.contains("hide-chat-game-match"));
     if (this.ChatGameMatchTarget.classList.contains("hide-chat-game-match")) {
       this.notifMessagesTarget.classList.add("chat-notif-message");
       this.#computeNotifications()

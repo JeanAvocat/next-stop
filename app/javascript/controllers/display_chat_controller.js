@@ -4,11 +4,9 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["displayChatGameMatch", "btnChatGameMatch", "messages", "emailIcon", "arrowIcon", "notifMessages", "notifRequests"]
   connect() {
-    console.log("coucou le chat on s'amuse");
   }
 
   hideChat() {
-    console.log(this.notifMessagesTarget.classList);
     // display or hide chat
     this.displayChatGameMatchTarget.classList.toggle("hide-chat-game-match");
     // display chat btn according if chat is open or closed
