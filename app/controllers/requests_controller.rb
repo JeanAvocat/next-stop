@@ -26,7 +26,6 @@ class RequestsController < ApplicationController
       "reveal"
     )
     redirect_to game_match_reveal_profil_path(@game_match)
-      # REPLACE PREVIOUS LINE BY redirect_to the profil path
   end
 
   def decline
