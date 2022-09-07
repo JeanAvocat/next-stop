@@ -3,6 +3,10 @@ class ChifoumiGame < ApplicationRecord
   belongs_to :second_player, foreign_key: :second_player_id, class_name: "User"
   has_many :game_matches, as: :matchable
 
+  def who_have_to_play
+    play_round.even? ? first_player : second_player
+  end
+
   def end_of_a_game?
     return if play_round <= 4
 

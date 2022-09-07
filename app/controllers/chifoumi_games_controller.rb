@@ -4,6 +4,8 @@ class ChifoumiGamesController < ApplicationController
     @game_match = GameMatch.find(params[:id])
     # create instance Tic tac toe about the game match
     @chifoumi_game = @game_match.matchable
+    return unless @chifoumi_game.who_have_to_play == current_user
+
     if current_user == @chifoumi_game.first_player
       @chifoumi_game.update(first_player_choice: params[:choice])
     else
