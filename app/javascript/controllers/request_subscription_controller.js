@@ -11,14 +11,12 @@ export default class extends Controller {
       { channel: "RequestChannel", id: this.requestIdValue },
       { received: data => this.nextAction(data) }
     )
-    console.log("helloooooo")
     // this.answerRequestTarget.style.display = "none";
     // console.log(`the request is on the game_match ${this.requestIdValue}.`);
   }
   nextAction(data){
     this.#addRequestNotification()
     // Allow to display button accept/decline or to the profil of accept
-    console.log(data);
     if (data === "reveal") {
       this.#profil_reveal();
     } else {
