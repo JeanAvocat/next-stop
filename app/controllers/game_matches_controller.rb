@@ -11,8 +11,8 @@ class GameMatchesController < ApplicationController
     # Chatroom
     @trip_session = @game_match.trip_session
     @message = Message.new
-    @buddy = current_user.id == @trip_session.creator_id ? @trip_session.joiner_id : @trip_session.creator_id
-    @buddy = User.find(@buddy).random_nickname
+    # find buddy name to display
+    @buddy = current_user == @trip_session.creator ? @trip_session.joiner.random_nickname : @trip_session.creator.random_nickname
 
     # Requests
     @request = Request.new
@@ -98,8 +98,10 @@ class GameMatchesController < ApplicationController
   def tic_tac_toe_creation
     # assign cross player and circle player to new tic tac toe game
     tic_tac_toe_game = TicTacToeGame.new
-    tic_tac_toe_game.cross_player = find_last_trip_sessions.joiner
-    tic_tac_toe_game.circle_player = find_last_trip_sessions.creator
+    # define the cross and circle player with the
+    random_player = find_last_trip_sessions.joiner_or_creatore
+    tic_tac_toe_game.cross_player = find_last_trip_sessions.public_send(random_player[0])
+    tic_tac_toe_game.circle_player = find_last_trip_sessions.public_send(random_player[1])
     # save the new tic tac toe game instance in DB
     tic_tac_toe_game.save
     # return tic tac toe game
