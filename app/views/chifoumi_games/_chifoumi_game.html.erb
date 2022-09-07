@@ -1,0 +1,22 @@
+
+
+<div class="chifoumi-game-player-info">
+  <div class ="">
+    <h6 class="gray-text-h6">tu joues contre</h6>
+    <% if chifoumi_game.first_player == current_user %>
+      <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.second_player.random_nickname %></h6>
+    <% else %>
+      <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.first_player.random_nickname %></h6>
+    <% end %>
+  </div>
+</div>
+
+<div class="game--container">
+  <% (1..9).each do |n| %>
+    <% if chifoumi_game.position(n) || chifoumi_game.end_of_a_game? %>
+      <%= render "chifoumi_games/selected_weapon", chifoumi_game: chifoumi_game ,n: %>
+    <% else %>
+      <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game ,n: %>
+    <% end %>
+  <% end %>
+</div>

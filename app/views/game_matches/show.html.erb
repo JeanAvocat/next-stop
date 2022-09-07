@@ -7,10 +7,14 @@
   <h6  data-return-game-match-target="leavemessage"></h6>
 </div>
 
-<%# TIC TAC TOE GAME %>
+<%# GAME CHOICE %>
 <div class="game-match-content">
   <div class="games-container">
-    <%= render "tic_tac_toe_games/tic_tac_to_game", game_match: @game_match, tic_tac_toe_game: @tic_tac_toe_game %>
+    <% if @trip_session.game_matches.last.matchable_type == "ChifoumiGame" %>
+      <%= render "chifoumi_games/chifoumi_game", game_match: @game_match, chifoumi_game: @chifoumi_game %>
+    <% else %>
+      <%= render "tic_tac_toe_games/tic_tac_to_game", game_match: @game_match, tic_tac_toe_game: @tic_tac_toe_game %>
+    <% end  %>
   </div>
 
   <div class="overlay" data-controller="display-chat">
