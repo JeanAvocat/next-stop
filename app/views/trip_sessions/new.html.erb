@@ -24,7 +24,6 @@
         <%= image_tag "svg/bus.svg", class: "trip-session-new-bus", data: { inject: { svg: "svg/bus.svg" } }, :width => 70 %>
       </div>
       <div class="trip-session-new-bonhommes">
-        <img id="gif-bonhommes" src="/assets/gifs/bonhommes.gif" draggable="true" ondragstart="drag(event)" height="28">
       </div>
     </div>
     <div class="trip-session-new-details">
@@ -56,7 +55,7 @@
   <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
     <div class="trip-session-new-create">
       <p>Aucune partie de Morpion en attente</p>
-      <h2>Creer une partie!</h2>
+      <h2>Créer une partie!</h2>
     </div>
     <% end %>
   <% end %>

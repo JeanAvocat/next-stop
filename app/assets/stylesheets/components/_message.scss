@@ -1,0 +1,45 @@
+.messages {
+  height: 333px;
+  overflow-y: scroll;
+}
+
+.message-row {
+  padding: 0px 8px;
+}
+
+// To style the message itself
+.sender-style, .receiver-style {
+  font-family: $my-font;
+  width: 70%;
+  max-width: 400px;
+  border-radius: 4px;
+  padding: 8px;
+  min-height: 30px;
+}
+
+.sender-style, .receiver-style > p {
+  margin: 0px;
+}
+
+.message-info {
+  text-decoration: underline;
+}
+
+.message-hour {
+  color: $gray;
+}
+
+.message-text-content {
+  margin: 0px;
+}
+
+.sender-style {
+  color: $gray;
+  display: flex;
+  justify-content: end;
+  text-align: right;
+}
+
+// .receiver-style {
+
+// }
