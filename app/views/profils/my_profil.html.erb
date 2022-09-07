@@ -32,7 +32,8 @@
   <div class="profil-informations-text">
     <p>tu es <strong>200e</strong> au classement</p>
     <p><%= current_user.email %></p>
-    <p><%= current_user.social_media %></p>
+    <p><%= current_user.instagram_account.nil? ? nil : current_user.instagram_account %></p>
+    <p><%= current_user.phone_number.nil? ? nil : current_user.phone_number %></p>
   </div>
 </div>
 

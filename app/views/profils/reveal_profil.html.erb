@@ -9,7 +9,8 @@
     <h2>Mais qui est vraiment <%= @trip_session.creator.random_nickname %>?</h2>
     <img src="https://images.unsplash.com/photo-1593757107729-eae8bcc74f8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" alt="gros bg">
     <p>C'est <br><span style="font-family: Oliver;"><%= @trip_session.creator.first_name %></span>!</p>
-    <p><span style="font-size: 18px; line-height: 10px;">Tu peux le retrouver sur <br><strong><%= @trip_session.creator.social_media %></strong></span></p>
+    <p><span style="font-size: 18px; line-height: 10px;">Tu peux le retrouver sur <br><strong><%= @trip_session.creator.instagram_account.nil? ? nil : @trip_session.creator.instagram_account %></strong></span></p>
+    <p><span style="font-size: 18px; line-height: 10px;">Tu peux le retrouver sur <br><strong><%= @trip_session.creator.phone_number.nil? ? nil : @trip_session.creator.phone_number %></strong></span></p>
     <%= image_tag "svg/circle.svg", class: "reveal-profil-circle", data: { inject: { svg: "svg/circle.svg" } }, :width => 202 %>
   <% else %>
     <h2>Mais qui est vraiment <%= @trip_session.joiner.random_nickname %></h2>
@@ -20,5 +21,8 @@
   <% end %>
 </div>
 <% else %>
-  <p> Tu vas un poil trop vite, ton partenaire n'a pas (encore) donné son accord</p>
+  <div>
+    <h5>Petit coquin !</h5>
+    <p> Tu vas un poil trop vite, ton partenaire n'a pas (encore) donné son accord</p>
+  </div>
 <% end %>
