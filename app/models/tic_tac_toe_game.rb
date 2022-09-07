@@ -3,11 +3,6 @@ class TicTacToeGame < ApplicationRecord
   belongs_to :circle_player, foreign_key: :circle_player_id, class_name: "User"
   has_many :game_matches, as: :matchable
 
-  def random_first_player
-    # method to define who is cross player or circle player in order to randomize the first plyer who start
-    rand(0..1) == 1 ? ["joiner", "creator"] : ["creator", "joiner"]
-  end
-
   def end_of_a_game?
     # anounce that game is finish if there is a winner or if all tile are write
     # announce there is a winner if a winning pattern has all the same symbol
