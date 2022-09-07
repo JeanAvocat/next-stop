@@ -10,6 +10,7 @@
 <%# GAME CHOICE %>
 <div class="game-match-content">
   <div class="games-container">
+  <%#= raise %>
     <% if @trip_session.game_matches.last.matchable_type == "ChifoumiGame" %>
       <%= render "chifoumi_games/chifoumi_game", game_match: @game_match, chifoumi_game: @chifoumi_game %>
     <% else %>

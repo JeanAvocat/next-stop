@@ -5,8 +5,10 @@ class GameMatchesController < ApplicationController
     @tic_tac_toe_game = @game_match.matchable
 
     # Chifoumi
-    @chifoumi_game = @game_match.matchable
-    @chifoumi_player = @chifoumi_game.first_player_id == current_user.id ? "first_player" : "second_player"
+    if @game_match.matchable_type == "ChifoumiGame"
+      @chifoumi_game = @game_match.matchable
+      @chifoumi_player = @chifoumi_game.first_player_id == current_user.id ? "first_player" : "second_player"
+    end
 
     # Chatroom
     @trip_session = @game_match.trip_session

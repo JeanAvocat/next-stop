@@ -11,18 +11,20 @@
 </div>
 
 <div class="chifoumi-game-choosen-weapons">
-  <% if chifoumi_game.play_round == 0 %>
+  <% if chifoumi_game.play_round.zero? %>
     <h5>La partie commence</h5>
-  <% else %>
+  <% elsif chifoumi_game.play_round.odd? %>
+    <h5>round <%= (chifoumi_game.play_round - 1) / 2 %> </h5>
+  <% else chifoumi_game.play_round.even? %>
+    <h5>round <%= chifoumi_game.play_round / 2 %> </h5>
     <div><%= chifoumi_game.first_player_choice %></div>
     <div><%= chifoumi_game.second_player_choice %></div>
+    <div><%= chifoumi_game.round_winner %></div>
   <% end %>
 </div>
 
 <div class="container">
-  <%# <%= render "chifoumi_games/be_ready_counter", chifoumi_game: chifoumi_game %> %>
-    <% until chifoumi_game.end_of_a_game? %>
+  <%# <%= render "chifoumi_games/be_ready_counter", chifoumi_game: chifoumi_game %>
       <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game %>
-      <% chifoumi_game.round_paterns %>
-    <% end %>
+      <%# chifoumi_game.round_paterns %>
 </div>
