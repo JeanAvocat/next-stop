@@ -3,7 +3,7 @@
 
 <%# HEADER %>
   <div class="trip-session-new-profile-div">
-    <div class="trip-session-new-profile-text"><h6><span style="font-family: Barlow;">Bienvenue</span> <br> Doucecracotte!</h6></div>
+    <div class="trip-session-new-profile-text"><h6><span style="font-family: Barlow;">Bienvenue</span> <br><%= current_user.random_nickname %></h6></div>
     <div class="trip-session-new-profil-picture">
       <%= link_to my_profil_path do %>
         <%= image_tag "svg/profil.svg", class: "trip-session-new-profil", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
@@ -23,8 +23,7 @@
       <div class="trip-session-new-bus">
         <%= image_tag "svg/bus.svg", class: "trip-session-new-bus", data: { inject: { svg: "svg/bus.svg" } }, :width => 70 %>
       </div>
-      <div class="trip-session-new-bonhommes">
-      </div>
+      <div class="trip-session-new-bonhommes"></div>
     </div>
     <div class="trip-session-new-details">
       <p>Bus  <span style="font-family: Oliver;">ligne 9</span></p>
@@ -45,7 +44,7 @@
    <% if @trip_session != nil  %>
       <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
         <div class="trip-session-new-join">
-          <img id="gif-gamer-bonhomme" src="/assets/gifs/gamer_bonhomme.gif" draggable="true" ondragstart="drag(event)" height="120">
+          <div class="trip-session-new-gamer-bonhomme"></div>
           <div class="trip-session-new-button-join">
             <h2>Rejoins la partie!</h2>
           </div>
