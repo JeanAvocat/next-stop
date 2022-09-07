@@ -1,24 +1,22 @@
+.chat-overlay-game {
+  position: absolute;
+  top: 52px;
+  z-index: 9;
+  background: white;
+  width: 100%;
+}
+
 .hide-chat-game-match {
   display: none;
 }
 
-.btn-to-display-or-hide-chat {
+.title-chatroom {
   display: flex;
   justify-content: center;
+  color: white;
+  background-color: black;
 }
 
-.btn-fix-to-bottom {
-  position:fixed;
-  bottom:0;
-  left: 50%;
-}
-
-.chat-game-match {
-  height: 444px
-}
-
-.messages {
-  border: 4px solid #969696;
-  height: 150px;
-  overflow-y: scroll;
+.title-chatroom > h6{
+  margin: 0px;
 }

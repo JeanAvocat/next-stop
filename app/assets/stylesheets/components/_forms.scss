@@ -105,6 +105,17 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0 0;
 }
 
+// Chat
+#message_content {
+  font-family: $my-font;
+  height: 28px;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+#message_content:focus {
+font-family: $my-font;
+}
 // SUBMIT BUTTON
 
 //PINK
