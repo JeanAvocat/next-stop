@@ -27,11 +27,11 @@
     <h5>La partie commence</h5>
   <% elsif chifoumi_game.play_round.odd? %>
     <div class="text-center mb-4">
-      <h5>round <%= (chifoumi_game.play_round - 1) / 2 %> </h5>
+      <h5>round <%= ((chifoumi_game.play_round - 1) / 2) + 1 %> </h5>
     </div>
   <% else chifoumi_game.play_round.even? %>
     <div class="text-center mb-4">
-      <h5>round <%= chifoumi_game.play_round / 2 %> </h5>
+      <h5>round <%= (chifoumi_game.play_round / 2) + 1 %> </h5>
     </div>
     <div class="d-flex justify-content-between mb-4">
       <div><h6><%= chifoumi_game.first_player.random_nickname %> --> <%= chifoumi_game.first_player_choice %></h6></div>
@@ -47,4 +47,7 @@
   <%# chifoumi_game.round_paterns %>
   <div class="mt-5"><h6>winner is   <%= chifoumi_game.round_winner %></h6></div>
   <div class="mt-5"><h6>real play round</h6> <h3><%= chifoumi_game.play_round %></h3></div>
+  <% if @chifoumi_game.end_of_a_game? %>
+    <div class="mt-5"><h6>winner is</h6> <h3><%= chifoumi_game.result %></h3></div>
+  <% end %>
 </div>

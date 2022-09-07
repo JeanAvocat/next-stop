@@ -14,7 +14,25 @@ class ChifoumiGamesController < ApplicationController
     # update the result of game match if end of the game method is true
     # @game_match.update(winner: @chifoumi_game.result.split.last) if @chifoumi_game.end_of_a_game?
     # @chifoumi_game.round_paterns
-    @chifoumi_game.update(play_round: @chifoumi_game.play_round + 1)
+    update_play_round
+    update_score
+    @game_match.update(winner: @chifoumi_game.result.split.last) if @chifoumi_game.end_of_a_game?
     redirect_to game_match_path
+  end
+
+  private
+
+  def update_play_round
+    @chifoumi_game.update(play_round: @chifoumi_game.play_round + 1)
+  end
+
+  def update_score
+    return unless @chifoumi_game.play_round.even?
+
+    if @chifoumi_game.first_player_choice == @chifoumi_game.winning_pattern
+      @chifoumi_game.update(first_player_score: @chifoumi_game.first_player_score + 1)
+    else
+      @chifoumi_game.update(second_player_score: @chifoumi_game.second_player_score + 1)
+    end
   end
 end

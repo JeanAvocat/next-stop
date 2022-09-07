@@ -15,6 +15,8 @@ class ChifoumiGame < ApplicationRecord
   end
 
   def result
+    return unless end_of_a_game?
+
     # should return the result of the game: Name of the winnner
     first_player_score > second_player_score ? first_player.random_nickname : second_player.random_nickname
     # case final_winner?
@@ -28,12 +30,6 @@ class ChifoumiGame < ApplicationRecord
     return "égalité" if winning_pattern == "tie"
 
     first_player_choice == winning_pattern ? first_player.random_nickname : second_player.random_nickname
-  end
-
-  private
-
-  def score
-    first_player_choice == winning_pattern ? self.first_player_score += 1 : self.second_player_score += 1
   end
 
   def round_pattern
