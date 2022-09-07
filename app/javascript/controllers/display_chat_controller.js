@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="display-chat"
 export default class extends Controller {
-  static targets = ["displayChatGameMatch", "btnChatGameMatch", "messages", "emailIcon", "arrowIcon", "notifMessages"]
+  static targets = ["displayChatGameMatch", "btnChatGameMatch", "messages", "emailIcon", "arrowIcon", "notifMessages", "notifRequests"]
   connect() {
     console.log("coucou le chat on s'amuse");
   }
@@ -20,20 +20,22 @@ export default class extends Controller {
   }
 
   #toggleChatButton() {
-     // return btn chat when opened
-     this.btnChatGameMatchTarget.classList.toggle("chat-btn-opened");
-     // add fix position to the btn when chat is closed
-     this.btnChatGameMatchTarget.classList.toggle("btn-fix-to-bottom");
-     // hide email Icon when chat is opened
-     this.emailIconTarget.classList.toggle("chat-btn-closed-email-img");
-     // hide arrow icon when chat is closed
-     this.arrowIconTarget.classList.toggle("chat-btn-closed-arrow-img");
+    // return btn chat when opened
+    this.btnChatGameMatchTarget.classList.toggle("chat-btn-opened");
+    // add fix position to the btn when chat is closed
+    this.btnChatGameMatchTarget.classList.toggle("btn-fix-to-bottom");
+    // hide email Icon when chat is opened
+    this.emailIconTarget.classList.toggle("chat-btn-closed-email-img");
+    // hide arrow icon when chat is closed
+    this.arrowIconTarget.classList.toggle("chat-btn-closed-arrow-img");
   }
 
   #updateNotificationWhenChatOpened() {
     // hide notification when we open the chat
     this.notifMessagesTarget.classList.remove("chat-notif-message");
     this.notifMessagesTarget.innerText = "";
+    this.notifRequestsTarget.classList.remove("chat-notif-request");
+    this.notifRequestsTarget.innerText = "";
   }
 
   #scrollDown() {
