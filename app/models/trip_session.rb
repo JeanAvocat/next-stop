@@ -9,4 +9,9 @@ class TripSession < ApplicationRecord
 
   validates :status, presence: true, inclusion: { in: STATUS }
 
+  def joiner_or_creatore
+    # method to define who is cross player or circle player in order to randomize the first plyer who start
+    rand(0..1) == 1 ? ["creator", "joiner"] : ["joiner", "creator"]
+  end
+
 end
