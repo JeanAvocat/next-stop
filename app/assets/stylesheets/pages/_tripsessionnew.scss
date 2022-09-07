@@ -33,10 +33,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 0px 0px 5px 25px;
 
   .trip-session-new-bus {
-    padding: 0px 0px 6px 0px;
+    padding: 8px 0px 3px 0px;
   }
 }
 
@@ -57,13 +58,23 @@
 }
 
 .trip-session-new-infos-div {
-  background-color: #e8e6e6;
+  background-color: #DADADA;
   width: 220px;
   height: 100px;
   text-align: center;
   display: flex;
   margin: 15px 30px 15px 30px;
   border-radius: 2px;
+}
+
+.trip-session-new-bonhommes {
+  width: 40px;
+  height: 70px;
+  background-image: url("gifs/bonhommes.gif");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin: 4px 0px 0px 0px;
 }
 
 // CARDS DE JEUX
