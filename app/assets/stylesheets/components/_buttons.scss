@@ -54,17 +54,41 @@
   padding: 0px 0px 0px 0px;
 }
 
-.black-blue-btn:active {
+.black-blue-btn:focus-within {
   background-color: $blue;
   color: black;
   border-color: black;
 }
 
-.chat-btn-closed {
+// CHAT
+
+.chat-btn-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.chat-btn-closed-arrow-img {
+  height: 30px;
+  width: 18px;
   background-image: asset-url("svg/back_button.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.chat-btn-closed-email-img {
+  height: 30px;
+  width: 26px;
+  background-image: asset-url("svg/email_icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transform: rotate(270deg) !important;
+}
+
+.chat-btn-closed {
   height: 76px;
   width: 24px;
   transform: rotate(90deg);
@@ -72,4 +96,32 @@
 
 .chat-btn-opened {
   transform: rotate(270deg);
+}
+
+.btn-to-display-or-hide-chat {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-fix-to-bottom {
+  position:fixed;
+  bottom:0;
+  left: 50%;
+}
+
+#btn-chat-submit {
+  height: 39px;
+}
+
+// REQUEST BTN
+
+#révéler-mon-profil {
+  width: 100%;
+  border: none;
+}
+
+#accept-request, #decline-request {
+  border: none;
+  display:inline-block;
+  margin-bottom: 16px;
 }
