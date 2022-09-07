@@ -2,12 +2,12 @@ class GameMatchesController < ApplicationController
   before_action :set_game_match, only: %i[show counter return]
   def show
     @tic_tac_toe_game = @game_match.matchable
-    
+
     # Chatroom
     @trip_session = @game_match.trip_session
     @message = Message.new
-    @buddy = current_user.id == @trip_session.creator_id ? @trip_session.joiner_id : @trip_session.creator_id
-    @buddy = User.find(@buddy).random_nickname
+    # find buddy name to display
+    @buddy = current_user == @trip_session.creator ? @trip_session.joiner.random_nickname : @trip_session.creator.random_nickname
 
     # Requests
     @request = Request.new

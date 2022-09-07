@@ -1,0 +1,13 @@
+.info-request {
+  // display: inline-block;
+  width: 100%;
+  font-family: $my-font;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+}
+
+#accept-or-decline {
+  display: flex;
+  justify-content: space-around;
+}
