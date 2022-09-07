@@ -1,10 +1,13 @@
 <%# LANDING PAGE %>
 
-<p><span data-controller="typed-js"></span></p>
+<div class="container">
+    <p><span id="dynamic-title" data-controller="typed-js"></span></p>
+    <p>Choose a film</p>
+  </div>
 
 <div class="landing-page-general-div">
   <h1>Next Stop</h1>
-  <p>Chaque bonne journée commence par un bon trajet : sociabilisez facilement dans les transports en commun</p>
+      <p><span id="dynamic-title" data-controller="typed-js"></span></p>
   <% if user_signed_in? %>
     <%= link_to new_trip_session_path do %>
       <button class="white-yellow-btn" type="button">Entrer</button>
