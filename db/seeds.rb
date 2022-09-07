@@ -12,6 +12,7 @@ puts "Deleting all previous seeds..."
 Request.destroy_all
 Message.destroy_all
 GameMatch.destroy_all
+ChifoumiGame.destroy_all
 TicTacToeGame.destroy_all
 TripSession.destroy_all
 User.destroy_all
@@ -38,8 +39,8 @@ bobby = User.new(first_name: "Bobby",
                 random_nickname: "GrosSaucisson",
                 email: "bobby.levrai@gmail.com",
                 password: "jaimeleswagons",
-                score: 35,
-                social_media: "Facebook : BobbyTV Levrai || Instagram : super_bobby")
+                score: 2,
+                instagram_account: "super_bobby")
 
 attach_user_photo(bobby, "https://images.unsplash.com/photo-1614252369475-531eba835eb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFuJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80", "bobby")
 
@@ -48,7 +49,7 @@ hector = User.new(first_name: "Hector",
                   email: "hector.mail@hotmail.com",
                   password: "hectorbg59",
                   score: 7,
-                  social_media: "Facebook : Hector Danatol / Insta: hector_dan")
+                  instagram_account: "hector_dan")
 
 attach_user_photo(hector, "https://wallpaperaccess.com/full/1448056.jpg", "hector")
 
@@ -56,8 +57,8 @@ julie = User.new(first_name: "Julie",
                 random_nickname: "TomateFragile",
                 email: "julie@gmail.com",
                 password: "password",
-                score: 0,
-                social_media: "Facebook : Julie Laffon, Instagram : super_julie, Snap : Juju38933")
+                score: 4,
+                instagram_account: "super_julie")
 
 attach_user_photo(julie, "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmVtYWxlJTIwcG9ydHJhaXR8ZW58MHx8MHx8&w=1000&q=80", "julie")
 
@@ -65,8 +66,8 @@ bill = User.new(first_name: "Bill",
                 random_nickname: "PetitCactus",
                 email: "bill123@gmail.com",
                 password: "secret",
-                score: 28,
-                social_media: "Facebook : Bill Jobs // Instagram : @bill_jobs")
+                score: 18,
+                instagram_account: "@bill_jobs")
 
 attach_user_photo(bill, "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8eW91bmclMjBtZW58ZW58MHx8MHx8&w=1000&q=80", "bill")
 
@@ -74,8 +75,9 @@ mathilde = User.new(first_name: "Mathilde",
                     random_nickname: "PasuperCalme",
                     email: "mathildedu39@hotmail.com",
                     password: "petiteprincesse",
-                    score: 31,
-                    social_media: "Tel : 06998878 - Facebook : Mathou Rgx - Instagram : @math_rgx")
+                    score: 2,
+                    phone_number: "0699887867",
+                    instagram_account: "@math_rgx")
 
 attach_user_photo(mathilde, "https://i.pinimg.com/originals/39/8b/fa/398bfa54c82f4f5143808e8fa6b75234.png", "mathilde")
 
@@ -84,7 +86,8 @@ daniel = User.new(first_name: "Daniel",
                 email: "daniellegrand@gmail.com",
                 password: "cestunmotdepasse",
                 score: 3,
-                social_media: "Numéro perso : 0636789076")
+                phone_number: "0636789076",
+                instagram_account: "daniel_petit")
 
 attach_user_photo(daniel, "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmxhY2slMjBtYW58ZW58MHx8MHx8&w=1000&q=80", "daniel")
 
@@ -92,8 +95,9 @@ alfred = User.new(first_name: "Alfred",
                   random_nickname: "BoudeurContent",
                   email: "alfredolagrange@hotmail.com",
                   password: "alfredolagrange",
-                  score: 31,
-                  social_media: "Alfred Lagrange (sur Facebook et Insta)")
+                  score: 11,
+                  phone_number: "0650458895",
+                  instagram_account: "alfred_olagrange")
 
 attach_user_photo(alfred, "https://media.istockphoto.com/photos/shot-of-a-handsome-young-man-standing-against-a-grey-background-picture-id1335941248?b=1&k=20&m=1335941248&s=170667a&w=0&h=sn_An6VRQBtK3BuHnG1w9UmhTzwTqM3xLnKcqLW-mzw=", "alfred")
 
@@ -101,8 +105,9 @@ benoit = User.new(first_name: "Benoit",
                 random_nickname: "SuperTravailleur",
                 email: "bladoucette@gmail.com",
                 password: "monmotdepasse",
-                score: 42,
-                social_media: "Facebook => benoit Ladoucette")
+                score: 12,
+                phone_number: "0320364847",
+                instagram_account: "benoit_doudou")
 
 attach_user_photo(benoit, "https://images.unsplash.com/photo-1584043720379-b56cd9199c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fG1lbnxlbnwwfHwwfHw%3D&w=1000&q=80", "benoit")
 
@@ -111,7 +116,8 @@ marguerite = User.new(first_name: "Marguerite",
                   email: "paquerettdesigneuse@sfr.fr",
                   password: "cassoulet12345",
                   score: 1,
-                  social_media: "Tel : 06388001 - Facebook : Marg Paquerett - Instagram : Paqu_rette - Github : Paquerett - Snap : tropbgettedu44 - TikTok : Paqou - LinkedIn : Margueritte Paquerette")
+                  phone_number: "0638800120",
+                  instagram_account: "paqu_rette")
 
 attach_user_photo(marguerite, "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d29tYW4lMjBwb3J0cmFpdHxlbnwwfHwwfHw%3D&w=1000&q=80", "marguerite")
 
@@ -121,7 +127,8 @@ jean = User.new(first_name: "Jean",
                 email: "jeanavocat123@gmail.com",
                 password: "secretpassword",
                 score: 13,
-                social_media: "Insta : Jean Avocatt, numéro : 0695679085")
+                phone_number: "0695679085",
+                instagram_account: "jean_avocat")
 
 attach_user_photo(jean, "https://img.freepik.com/photos-premium/garcon-adolescent-hispanique-mains-oreilles-souffrant-maux-oreilles-isoles-fond-bleu_221194-1663.jpg", "jean")
 
