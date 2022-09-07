@@ -20,3 +20,14 @@
 .title-chatroom > h6{
   margin: 0px;
 }
+
+.chat-notif-request {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  color: white;
+  background-color: red;
+  position: absolute;
+  bottom: -8px;
+  left: -8px;
+}
