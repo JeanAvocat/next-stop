@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   def set_nickname
     male_or_femmale = rand(0..1) == 1 ? "MALE" : "FEMALE"
-    "User::#{male_or_femmale}_ADJECTIVE".constantize.sample + " " + "User::#{male_or_femmale}_NAME".constantize.sample
+    "User::#{male_or_femmale}_ADJECTIVE".constantize.sample + "User::#{male_or_femmale}_NAME".constantize.sample
   end
 
   devise :database_authenticatable, :registerable,

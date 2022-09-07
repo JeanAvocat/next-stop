@@ -11,7 +11,7 @@
 
   <div class="profil-number-points">
     <%= image_tag "svg/piece_icon.svg", class: "profil-header-piece-icon", data: { inject: { svg: "svg/piece_icon.svg" } }, :width => 20 %>
-    <h6>13</h6>
+    <h6><%= current_user.score %></h6>
   </div>
 </div>
 
@@ -30,7 +30,7 @@
     <%= image_tag "svg/instagram_icon.svg", class: "profil-instagram-icon", data: { inject: { svg: "svg/instagram_icon.svg" } }, :width => 30 %>
   </div>
   <div class="profil-informations-text">
-    <p>tu es <strong>200e</strong> au classement</p>
+    <p>tu es <strong><%= @rankuser %></strong> au classement</p>
     <p><%= current_user.email %></p>
     <p><%= current_user.social_media %></p>
   </div>

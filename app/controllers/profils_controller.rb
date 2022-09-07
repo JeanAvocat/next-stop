@@ -1,4 +1,15 @@
 class ProfilsController < ApplicationController
+  def my_profil
+    @users = User.all
+    @users.order(score: :desc)
+    @rankuser = 1
+    rank = 0
+     while current_user.email != @users[rank].email
+       @rankuser += 1
+       rank += 1
+     end
+  end
+
   def reveal_profil
     # find the game match and the trip session
     @game_match = GameMatch.find(params[:game_match_id])
