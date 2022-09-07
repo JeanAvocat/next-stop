@@ -1,5 +1,5 @@
 <%# PAGE DE JEUX %>
-<div class="trip-session-new" data-controller="button-trip-session-new">
+<div class="trip-session-new">
 
 <%# HEADER %>
   <div class="trip-session-new-profile-div">
@@ -53,12 +53,10 @@
         </div>
       <% end %>
   <% else %>
-  <div data-button_trip_session_new-target="button">
   <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
     <div class="trip-session-new-create">
       <p>Aucune partie de Morpion en attente</p>
       <h2>Creer une partie!</h2>
-    </div>
     </div>
     <% end %>
   <% end %>
