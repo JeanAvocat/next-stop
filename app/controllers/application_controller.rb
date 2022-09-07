@@ -13,12 +13,14 @@ class ApplicationController < ActionController::Base
   end
 
   def define_nickname
+    # Give a random nickname
     return unless current_user.random_nickname.nil?
     current_user.random_nickname = current_user.set_nickname
     current_user.save
   end
 
   def initiate_score
+    # intial score equal to 0
     return unless (current_user.score.nil? || current_user.score.zero?)
     current_user.score = 0
     current_user.save
