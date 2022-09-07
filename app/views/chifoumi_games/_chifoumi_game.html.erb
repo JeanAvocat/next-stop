@@ -17,7 +17,7 @@
 
   <%#= WHO HAVE TO PLAY  %>
   <div>
-    <% if @chifoumi_game.who_have_to_play == current_user %>
+    <% if @chifoumi_game.who_have_to_play(current_user) %>
       <h6>Choisi ton signe</h6>
     <% else %>
       <h6>Attends ton tour</h6>
