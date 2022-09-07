@@ -1,9 +1,9 @@
 <%# PAGE DE JEUX %>
-<div class="trip-session-new">
+<div class="trip-session-new" data-controller="button-trip-session-new">
 
 <%# HEADER %>
   <div class="trip-session-new-profile-div">
-    <div class="trip-session-new-profile-text"><h6><span style="font-family: Barlow;">Bienvenue</span> <br> Doucecracotte!</h6></div>
+    <div class="trip-session-new-profile-text"><h6><span style="font-family: Barlow;">Bienvenue</span> <br><%= current_user.random_nickname %></h6></div>
     <div class="trip-session-new-profil-picture">
       <%= link_to my_profil_path do %>
         <%= image_tag "svg/profil.svg", class: "trip-session-new-profil", data: { inject: { svg: "svg/profil.svg" } }, :width => 50 %>
@@ -53,10 +53,12 @@
         </div>
       <% end %>
   <% else %>
+  <div data-button_trip_session_new-target="button">
   <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
     <div class="trip-session-new-create">
       <p>Aucune partie de Morpion en attente</p>
       <h2>Creer une partie!</h2>
+    </div>
     </div>
     <% end %>
   <% end %>
