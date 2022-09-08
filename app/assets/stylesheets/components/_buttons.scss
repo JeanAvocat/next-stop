@@ -31,39 +31,6 @@
   border-color: black;
 }
 
-
-// ALERT BUTTONS (COLORED BACKGROUND)
-
-.white-red-btn {
-  font-family: $my-font;
-  color: white;
-  background-color: rgb(255, 0, 0);
-  border-color: white;
-  border-width: 2px;
-  border-radius: 5px;
-}
-
-.white-red-btn:focus-within {
-  background-color: white;
-  color: black;
-  border-color: black;
-}
-
-.white-grey-btn {
-  font-family: $my-font;
-  color: white;
-  background-color: $lightgray;
-  border-color: white;
-  border-width: 2px;
-  border-radius: 5px;
-}
-
-.white-grey-btn:focus-within {
-  background-color: $lightgray;
-  color: black;
-  border-color: black;
-}
-
 // BOUTONS SUR FOND BLANC
 .black-btn {
   font-family: $my-font;
