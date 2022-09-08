@@ -1,0 +1,22 @@
+.modal-quit {
+    border: solid black;
+    padding: 10px;
+    width: 60%;
+    position: fixed;
+    background: white;
+    z-index: 2;
+    left: calc(100%/5);
+}
+
+.modal-quit-container {
+  position: fixed;
+  background-color: white;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
+}
+
+.blurry {
+  filter: blur(1px);
+}
