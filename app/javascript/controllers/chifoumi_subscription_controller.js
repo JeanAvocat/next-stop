@@ -5,7 +5,7 @@ import { createConsumer } from "@rails/actioncable"
 export default class extends Controller {
   static values = { gameId: Number, userId: Number }
   static targets = ["rock", "paper", "scissors", "choices", "nextRound", "yourChoice", "displayYourChoice",
-   "roundResult", "competitorChoice", "displayCompetitorChoice", "infoSelectionPlayer"]
+   "roundResult", "competitorChoice", "displayCompetitorChoice", "infoSelectionPlayer", "endOfGameResult", "score"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -16,11 +16,6 @@ export default class extends Controller {
     console.log(`Subscribe to the game_match with the id ${this.gameIdValue}.`);
     console.log(`user id is ${this.userIdValue}.`);
     console.log(`coucou le chat`);
-    // console.log(this.roundResultTarget.classList);
-    // console.log(this.infoSelectionPlayerTarget.innerHTML.trim() === `<h6>Choisi ton signe</h6>`);
-    // console.log(this.infoSelectionPlayerTarget.innerHTML.trim());
-    // console.log(`<h6>Choisi ton signe</h6>`);
-    // console.log(this.infoSelectionPlayerTarget.innerHTML = `<h6>tu vas bientôt savoir le résultat</h6>`);
   }
 
   #nextAction(data) {
@@ -59,7 +54,6 @@ export default class extends Controller {
 
   #oddPlayRoundAction(data, currentUserIsPlayer, playRoundIsEven) {
     if (currentUserIsPlayer){
-      console.log(data);
       this.choicesTarget.classList.add("hidden");
       this.yourChoiceTarget.classList.remove("hidden");
       this.displayYourChoiceTarget.classList = "";
@@ -73,6 +67,7 @@ export default class extends Controller {
     this.nextRoundTarget.classList.remove("hidden");
     this.roundResultTarget.innerHTML = `<h6>${data.winner}</h6>`;
     this.roundResultTarget.classList.remove("hidden")
+    this.scoreTarget.innerText = data.score
     if (currentUserIsPlayer){
       this.choicesTarget.classList.add("hidden");
       this.yourChoiceTarget.classList.remove("hidden");
@@ -86,6 +81,9 @@ export default class extends Controller {
       this.displayCompetitorChoiceTarget.classList = "";
       this.displayCompetitorChoiceTarget.classList.add(`${data.choice}-gif`);
     }
+    if (data.result != null) {
+      this.endOfGameResultTarget.innerText = data.result
+    }
   }
 
   #displayInfo(data, currentUserIsPlayer, playRoundIsEven) {
@@ -95,14 +93,6 @@ export default class extends Controller {
       this.#updateInfo(data);
     }
   }
-
-  // #updateInfo() {
-  //   if (infoSelectionPlayerTarget.innerHTML === `<h6>Choisi ton signe</h6>`) {
-  //     infoSelectionPlayerTarget.innerHTML = `<h6>tu vas bientôt savoir le résultat</h6>`
-  //   } else {
-  //     infoSelectionPlayerTarget.innerHTML = `<h6>Choisi ton signe</h6>`
-  //   }
-  // }
 
   #updateInfo() {
     if (this.infoSelectionPlayerTarget.innerHTML.trim() === `<h6>Choisi ton signe</h6>`) {

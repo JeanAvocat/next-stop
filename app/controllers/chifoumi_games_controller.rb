@@ -20,7 +20,7 @@ class ChifoumiGamesController < ApplicationController
     # @game_match.update(winner: @chifoumi_game.result.split.last) if @chifoumi_game.end_of_a_game?
     # @chifoumi_game.round_paterns
     update_play_round
-    # update_score
+    update_score
     @game_match.update(winner: @chifoumi_game.result.split.last) if @chifoumi_game.end_of_a_game?
     broadcast_sign if params[:play] != "next-round"
   end
@@ -47,6 +47,7 @@ class ChifoumiGamesController < ApplicationController
       player: current_user.id,
       play_round: @chifoumi_game.play_round,
       winner: @chifoumi_game.round_winner,
+      score: @chifoumi_game.display_score,
       result: @chifoumi_game.result
     )
   end
@@ -60,7 +61,7 @@ class ChifoumiGamesController < ApplicationController
 
     if @chifoumi_game.first_player_choice == @chifoumi_game.winning_pattern
       @chifoumi_game.update(first_player_score: @chifoumi_game.first_player_score + 1)
-    else
+    elsif @chifoumi_game.second_player_choice == @chifoumi_game.winning_pattern
       @chifoumi_game.update(second_player_score: @chifoumi_game.second_player_score + 1)
     end
   end

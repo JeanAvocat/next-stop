@@ -67,10 +67,10 @@
       <div class="mt-5" data-chifoumi-subscription-target="roundResult"><h6><%= chifoumi_game.round_winner %></h6></div>
     <% end %>
     <% if chifoumi_game.play_round.positive? && chifoumi_game.play_round.even? %>
-      <div class="mt-5"><h6><%= chifoumi_game.display_score %></h6></div>
+      <div class="mt-5"><h6 data-chifoumi-subscription-target="score"><%= chifoumi_game.display_score %></h6></div>
     <% end %>
     <% if @chifoumi_game.end_of_a_game? %>
-      <div class="mt-5"><h6></h6><h3><%= chifoumi_game.result %> A gagner la partie Bravo !</h3></div>
+      <div class="mt-5"><h6 data-chifoumi-subscription-target="endOfGameResult"><%= chifoumi_game.result %></h6><h4>à gagner la partie Bravo !</h4></div>
       <div class="mt-5"><h6>Voulez vous rejouer ?</h6><h3>></div>
     <% end %>
   </div>
