@@ -93,17 +93,18 @@
                             <button class="white-btn" id="accept-request" type="button">Oui</button>
                           <% end %>
                         </div>
-                      <%# DECLINE %>
-                      <div id="decline-request">
-                        <%= link_to  decline_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
-                          <button class="white-btn" id="decline-request" type="button">Non</button>
-                        <% end %>
+                        <%# DECLINE %>
+                        <div id="decline-request">
+                          <%= link_to  decline_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
+                            <button class="white-btn" id="decline-request" type="button">Non</button>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  </div>
                 </div>
               </div>
+              <%# View Buddy profil another time %>
 
 
               <%# BOUTON D'ENVOI CHAT %>
