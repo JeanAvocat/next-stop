@@ -54,8 +54,8 @@
               <%# ASK TO REVEAL PROFILE %>
               <div class="request">
                 <div class="request" data-request-subscription-target="request">
-                  <div class="game-match-show-reveal-div">
-                    <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
+                  <div class="game-match-show-reveal-div" data-request-subscription-target="sendRequest" >
+                    <div class = <%= @requestclass %> >
                       <%= link_to  trip_session_requests_path(@trip_session), data: {turbo_method: :post} do %>
                         <button class="white-btn" id="révéler-mon-profil" type="button">Révéler mon profil</button>
                       <% end %>
