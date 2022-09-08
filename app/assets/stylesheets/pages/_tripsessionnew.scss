@@ -81,7 +81,8 @@
 
 .trip-session-new-games-cards {
   display: flex;
-  padding: 120px 5px 0px 5px;
+  justify-content: center;
+  padding: 70px 5px 0px 5px;
 }
 
 .trip-session-new-chifoumi-card {
@@ -93,9 +94,9 @@
 
 .trip-session-new-join {
   width: 140px;
-  position: relative;
-  top: -386px;
-  left: -153px;
+  position: absolute;
+  top: 180px;
+  left: 34px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -126,7 +127,7 @@
   width: 106px;
   height: 120px;
   background-image: url("gifs/gamer_bonhomme.gif");
-  background-size: 100%;
+  background-size: 90%;
   background-repeat: no-repeat;
   text-align: center;
   margin: 0px 0px 0px 0px;
@@ -135,9 +136,9 @@
 .trip-session-new-create {
   width: 130px;
   height: 270px;
-  position: relative;
-  top: -254px;
-  left: -150px;
+  position: absolute;
+  top: 310px;
+  left: 38px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -187,7 +188,7 @@ a {
 
 // EN CONSTRUCTION
 .trip-session-en-construction {
-  position: relative;
-  top: -474px;
-  left: 82px;
+  position: absolute;
+  top: 285px;
+  left: 190px;
 }
