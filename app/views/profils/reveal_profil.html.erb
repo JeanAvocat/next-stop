@@ -15,7 +15,7 @@
 
       <div class="reveal-profil-picture">
         <%= render "shared/avatar", owner: @trip_session.creator %>
-        <%= image_tag "svg/circle.svg", class: "reveal-profil-circle", data: { inject: { svg: "svg/circle.svg" } }, :width => 202 %>
+        <%# <%= image_tag "svg/circle.svg", class: "reveal-profil-circle", data: { inject: { svg: "svg/circle.svg" } }, :width => 202 %>
       </div>
 
       <p>C'est <br><span style="font-family: Oliver;"><%= @trip_session.creator.first_name %></span>!</p>
@@ -23,12 +23,12 @@
       <p class=<%=@class_for_creator_phone_existance%> ><span style="font-size: 18px; line-height: 10px;">Appelle ton partenaire au <br><strong><%= @trip_session.creator.phone_number %></strong></span></p>
 
     <% else %>
-    
+
       <h2>Mais qui est vraiment <%= @trip_session.joiner.random_nickname %></h2>
 
       <div class="reveal-profil-picture">
         <%= render "shared/avatar", owner: @trip_session.joiner %>
-        <%= image_tag "svg/circle.svg", class: "reveal-profil-circle", data: { inject: { svg: "svg/circle.svg" } }, :width => 202 %>
+        <%# <%= image_tag "svg/circle.svg", class: "reveal-profil-circle", data: { inject: { svg: "svg/circle.svg" } }, :width => 202 %>
       </div>
 
       <p>C'est <br><span style="font-family: Oliver;"><%= @trip_session.joiner.first_name %></span>!</p>
