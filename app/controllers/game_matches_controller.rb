@@ -9,6 +9,7 @@ class GameMatchesController < ApplicationController
       @chifoumi_game = @game_match.matchable
       @chifoumi_player = @chifoumi_game.first_player_id == current_user.id ? "first_player" : "second_player"
       @chifoumi_competitor = @chifoumi_game.first_player_id == current_user.id ? "second_player" : "first_player"
+      @btn_text = @chifoumi_game.play_round.zero? ? "démarrer la partie" : "prochaine manche"
     end
 
     # Chatroom

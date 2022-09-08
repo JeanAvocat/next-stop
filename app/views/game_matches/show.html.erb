@@ -11,7 +11,7 @@
 <div class="game-match-content">
   <div class="games-container">
     <% if @trip_session.game_matches.last.matchable_type == "ChifoumiGame" %>
-      <%= render "chifoumi_games/chifoumi_game", game_match: @game_match, chifoumi_game: @chifoumi_game, chifoumi_player: @chifoumi_player, chifoumi_competitor: @chifoumi_competitor%>
+      <%= render "chifoumi_games/chifoumi_game", game_match: @game_match, chifoumi_game: @chifoumi_game, chifoumi_player: @chifoumi_player, chifoumi_competitor: @chifoumi_competitor, btn_text: @btn_text%>
     <% else %>
       <%= render "tic_tac_toe_games/tic_tac_to_game", game_match: @game_match, tic_tac_toe_game: @tic_tac_toe_game %>
     <% end  %>

@@ -4,7 +4,11 @@ class ChifoumiGamesController < ApplicationController
     @game_match = GameMatch.find(params[:id])
     # create instance Tic tac toe about the game match
     @chifoumi_game = @game_match.matchable
-    return unless @chifoumi_game.who_have_to_play(current_user)
+    if params[:play] == "next-round"
+      @chifoumi_game.update(first_player_choice: params[:play], second_player_choice: params[:play])
+    end
+
+    return unless @chifoumi_game.who_have_to_play(current_user) && params[:choice]
 
     if current_user == @chifoumi_game.first_player
       @chifoumi_game.update(first_player_choice: params[:choice])
@@ -17,7 +21,7 @@ class ChifoumiGamesController < ApplicationController
     update_play_round
     update_score
     @game_match.update(winner: @chifoumi_game.result.split.last) if @chifoumi_game.end_of_a_game?
-    broadcast
+    broadcast if params[:play] != "next-round"
   end
 
   private
