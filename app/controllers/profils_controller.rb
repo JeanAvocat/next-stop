@@ -1,9 +1,9 @@
 class ProfilsController < ApplicationController
   def my_profil
     # target all the users
-    users = User.all
+    @users = User.all
     # order by score
-    tryusers = users.order(score: :desc)
+    tryusers = @users.order(score: :desc)
     # allow to now the ranking of the current user
     @rankuser = 1
     rank = 0
