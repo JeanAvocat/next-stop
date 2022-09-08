@@ -1,7 +1,14 @@
 class GameMatchesController < ApplicationController
   before_action :set_game_match, only: %i[show counter return]
   def show
+    # Tic_tac_toe
     @tic_tac_toe_game = @game_match.matchable
+
+    # Chifoumi
+    if @game_match.matchable_type == "ChifoumiGame"
+      @chifoumi_game = @game_match.matchable
+      @chifoumi_player = @chifoumi_game.first_player_id == current_user.id ? "first_player" : "second_player"
+    end
 
     # Chatroom
     @trip_session = @game_match.trip_session
@@ -93,8 +100,10 @@ class GameMatchesController < ApplicationController
   def tic_tac_toe_creation
     # assign cross player and circle player to new tic tac toe game
     tic_tac_toe_game = TicTacToeGame.new
-    tic_tac_toe_game.cross_player = find_last_trip_sessions.joiner
-    tic_tac_toe_game.circle_player = find_last_trip_sessions.creator
+    # define the cross and circle player with the
+    random_player = find_last_trip_sessions.joiner_or_creatore
+    tic_tac_toe_game.cross_player = find_last_trip_sessions.public_send(random_player[0])
+    tic_tac_toe_game.circle_player = find_last_trip_sessions.public_send(random_player[1])
     # save the new tic tac toe game instance in DB
     tic_tac_toe_game.save
     # return tic tac toe game

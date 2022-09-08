@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_101239) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_173401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,9 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_101239) do
   create_table "chifoumi_games", force: :cascade do |t|
     t.string "first_player_choice"
     t.string "second_player_choice"
-    t.integer "play_round"
-    t.integer "first_player_score"
-    t.integer "second_player_score"
+    t.integer "play_round", default: 0
+    t.integer "first_player_score", default: 0
+    t.integer "second_player_score", default: 0
     t.bigint "first_player_id", null: false
     t.bigint "second_player_id", null: false
     t.datetime "created_at", null: false
@@ -125,8 +125,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_101239) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "random_nickname"
-    t.string "social_media"
-    t.integer "score"
+    t.integer "score", default: 0
+    t.string "phone_number"
+    t.string "instagram_account"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

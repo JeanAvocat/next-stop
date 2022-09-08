@@ -5,13 +5,14 @@
   <% end %>
   </div>
 <div>
+
   <div class="dino-text">
     <h1>Salle d'attente</h1>
     <p>Ton coéquipier arrive...</p>
   </div>
     <%# Dino game below %>
     <div>
-    <h2 class="dino-text" data-joiner-listener-target="joinmessage"></h2>
+    <h2 class="dino-text-join" data-joiner-listener-target="joinmessage"></h2>
   <div>
     <head>
 
@@ -2615,6 +2616,33 @@
       </script>
       </div>
   </div>
+
+
+
+  <div class="bus-trex-div">
+    <%= image_tag "svg/bus_trex.svg", class: "bus-trex", data: { inject: { svg: "svg/bus_trex.svg" } }, :width => 130 %>
+  <div>
+  <style>
+    .bus-trex-div {
+      padding: 1px;
+    }
+
+    .bus-trex {
+      position: relative;
+      top: -86px;
+      right: 104px;
+      animation: drive 3s ease-in-out forwards;
+    }
+
+    @keyframes drive {
+        0% {
+          transform: translateY(0px) translateX(-10px) rotate(0deg);
+        }
+        100% {
+          transform: translateY(0px) translateX(400px) rotate(0deg);
+        }
+    }
+  </style>
 
   <div class="bottom-trex">
     <p><i>Travaille tes skills avec T-Rex en attendant</i></p>
