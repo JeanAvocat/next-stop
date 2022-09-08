@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between disable">
+  <%= link_to(select_weapon_chifoumi_game_path("choice": "rock"), data: { turbo_method: :patch }) do %>
+    <%# <button class="black-blue-btn" id="rock" value="rock"> Pierre <span class="fas fa-hand-rock"></span></button> %>
+    <div id="chifoumi-rock-svg" class="chifoumi-choices-svg"></div>
+  <% end %>
+  <%= link_to(select_weapon_chifoumi_game_path("choice": "paper"), data: { turbo_method: :patch }) do %>
+    <%# <button class="black-blue-btn" id="paper" value="paper"> Papier <span class="fas fa-hand-paper"></span></button> %>
+    <div id="chifoumi-paper-svg" class="chifoumi-choices-svg"></div>
+  <% end %>
+  <%= link_to(select_weapon_chifoumi_game_path("choice": "scissors"), data: { turbo_method: :patch }) do %>
+    <%# <button class="black-blue-btn" id="scissors" value="scissors"> Ciseaux <span class="fas fa-hand-scissors"></span></button> %>
+    <div id="chifoumi-scissors-svg" class="chifoumi-choices-svg"></div>
+  <% end %>
+</div>
