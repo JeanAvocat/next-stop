@@ -27,7 +27,7 @@
       <%= image_tag "svg/instagram_icon.svg", class: "profil-instagram-icon", data: { inject: { svg: "svg/instagram_icon.svg" } }, :width => 25 %>
     </span>
     <span class=<%= current_user.phone_number.empty? ? "d-none" : "d-block" %>>
-      <%# REPLACE THIS CODE LINE BY THE PHONE NUMBER PICTO %>
+      <%= image_tag "svg/telephone_icon.svg", class: "profil-telephone-icon", data: { inject: { svg: "svg/telephone_icon.svg" } }, :width => 20 %>
     </span>
   </div>
   <div class="profil-informations-text">
