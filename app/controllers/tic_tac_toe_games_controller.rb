@@ -2,12 +2,19 @@ class TicTacToeGamesController < ApplicationController
   def select_tile
     # catch id of game_match url
     @game_match = GameMatch.find(params[:id])
+    # find the trip session of the game match
+    @trip_session = @game_match.trip_session
     # create instance Tic tac toe about the game match
     @tic_tac_toe_game = @game_match.matchable
     # broadcast the tic_tac_toe_game_channel to send new information about tic tac toe
     broadcast if update_tile
     # update the result of game match if end of the game method is true
-    @game_match.update(winner: @tic_tac_toe_game.result.split.last) if @tic_tac_toe_game.end_of_a_game?
+    if @tic_tac_toe_game.end_of_a_game?
+      @game_match.winner = @tic_tac_toe_game.result.split.last
+      @game_match.save
+    end
+    # update the score of players (only if we have a winner)
+    add_score unless @game_match.winner.nil?
   end
 
   private
@@ -31,5 +38,22 @@ class TicTacToeGamesController < ApplicationController
       render_to_string(partial: "tic_tac_toe_games/selected_tile", locals: { tic_tac_toe_game: @tic_tac_toe_game, n: params[:tile] })
     )
     head :ok
+  end
+
+  def add_score
+    # creator win 3 points
+    if @game_match.winner == @trip_session.creator.random_nickname
+      @trip_session.creator.score += 3
+    # joiner win 3 points
+    elsif @game_match.winner == @trip_session.joiner.random_nickname
+      @trip_session.joiner.score += 3
+    # draw 1 point for both
+    elsif @game_match.winner == "égalité"
+      @trip_session.creator.score += 1
+      @trip_session.joiner.score += 1
+    end
+    # save points in the user database
+    @trip_session.creator.save
+    @trip_session.joiner.save
   end
 end
