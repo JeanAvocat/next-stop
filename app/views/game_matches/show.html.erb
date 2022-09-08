@@ -48,14 +48,18 @@
                   </div>
                 <% end %>
               </div>
+
+
               <%# REQUESTS %>
               <%# ASK TO REVEAL PROFILE %>
               <div class="request">
                 <div class="request" data-request-subscription-target="request">
-                  <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
-                    <%= link_to  trip_session_requests_path(@trip_session), data: {turbo_method: :post} do %>
-                      <button class="white-btn" id="révéler-mon-profil" type="button">Révéler mon profil</button>
-                    <% end %>
+                  <div class="game-match-show-reveal-div">
+                    <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
+                      <%= link_to  trip_session_requests_path(@trip_session), data: {turbo_method: :post} do %>
+                        <button class="white-btn" id="révéler-mon-profil" type="button">Révéler mon profil</button>
+                      <% end %>
+                    </div>
                   </div>
                   <%# ACCEPT %>
                   <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
@@ -78,7 +82,9 @@
                   </div>
                 </div>
               </div>
-              <%# REQUESTS %>
+
+
+              <%# BOUTON D'ENVOI CHAT %>
               <div>
                 <%= simple_form_for [@game_match, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
                   <%= f.input :content,
