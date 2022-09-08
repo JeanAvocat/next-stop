@@ -2,7 +2,8 @@ class TripSessionsController < ApplicationController
   before_action :set_trip_session, only: %i[join destroy waiting_room]
   def new
     if TripSession.last != nil
-      @active_people =  TripSession.where(status: "in game").count * 2 + TripSession.where(status: "waiting for joiner").count
+      @trip_session = TripSession.last if TripSession.last.status == "waiting for joiner"
+      @active_people = TripSession.where(status: "in game").count * 2 + TripSession.where(status: "waiting for joiner").count
     else
       @active_people = 0
     end
