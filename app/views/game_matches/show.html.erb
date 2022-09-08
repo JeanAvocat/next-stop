@@ -21,10 +21,12 @@
   </div>
 </div>
 
-<div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
-</div>
-<div class="message-leaving-game">
-  <h6  data-return-game-match-target="leavemessage"></h6>
+<div class="d-flex justify-centent-center p-3">
+  <div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
+    <div class="message-leaving-game">
+      <h6 class ="text-center" data-return-game-match-target="leavemessage"></h6>
+    </div>
+  </div>
 </div>
 
 <%# GAME CHOICE %>
