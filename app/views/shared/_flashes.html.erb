@@ -1,3 +1,4 @@
+<div data-controller="alert-disappear" data-alert-disappear-target="alertconnexion" class="alertjs">
 <% if notice %>
   <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
     <%= notice %>
@@ -6,6 +7,8 @@
     </button>
   </div>
 <% end %>
+</div>
+<div data-controller="alert-disappear" data-alert-disappear-target="alertdeconnexion" class="alertjs">
 <% if alert %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
     <%= alert %>
@@ -14,3 +17,4 @@
     </button>
   </div>
 <% end %>
+</div>
