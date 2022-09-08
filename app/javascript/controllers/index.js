@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AlertDisappearController from "./alert_disappear_controller"
+application.register("alert-disappear", AlertDisappearController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
