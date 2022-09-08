@@ -1,8 +1,27 @@
 <%# LEAVE THE GAME AND RETURN TO THE MENU %>
+<div data-controller="modal-quit">
+  <%= link_to "#", data: { "modal-quit-target": "arrow", action:"click->modal-quit#displayModal" } do %>
+      <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+  <% end %>
+
+
+  <div class="modal-quit d-none mt-3" data-modal-quit-target="modal">
+    <h5 class="text-center">Etes vous sur de vouloir quitter ?</h5>
+    <div class="d-flex justify-content-around align-items-center">
+      <%= link_to "Non", "#", class:"white-yellow-btn p-3", data: { action:"click->modal-quit#displayModal" } %>
+      <%= link_to return_game_match_path(@game_match), data: { turbo_method: :patch }, class:"white-yellow-btn p-3" do %>
+        Oui
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 <div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
-<%= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Êtes vous sûr? En quittant la partie, vous abandonnez aussi votre adversaire"} do %>
-    <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
-<% end %>
+<%#= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Etes vous sur?" } do %>
+    <%#= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+<%# end %>
+</div>
 <div class="message-leaving-game">
   <h6  data-return-game-match-target="leavemessage"></h6>
 </div>
