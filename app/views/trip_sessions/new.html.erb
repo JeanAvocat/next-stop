@@ -1,6 +1,5 @@
 <%# PAGE DE JEUX %>
 <div class="trip-session-new">
-
 <%# HEADER %>
   <div class="trip-session-new-profile-div">
     <div class="trip-session-new-profile-text"><h6><span style="font-family: Barlow;">Bienvenue</span> <br><%= current_user.random_nickname %></h6></div>
@@ -10,13 +9,11 @@
       <% end %>
     </div>
   </div>
-
 <%# LIGNE %>
   <div class="trip-session-new-inside-profile">
   <div class="trip-session-new-line">
     <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
   </div>
-
 <%# BLOC INFORMATION DE LA ROOM %>
   <div class="trip-session-new-infos-div">
     <div class="trip-session-new-icons">
@@ -28,39 +25,78 @@
     <div class="trip-session-new-details">
       <p>Bus  <span style="font-family: Oliver;">ligne 9</span></p>
       <p><span style="font-family: Oliver;"><%= @active_people  %></span> personnes connectées</p>
-    </div>
-  </div>
+     </div>
+   </div>
 
-<%# EN CONSTRUCTION %>
-  <div class="trip-session-en-construction">
-    <%= image_tag "svg/en_construction.svg", class: "trip-session-en-construction-img", data: { inject: { svg: "svg/en_construction.svg" } }, :height => 310 %>
-  </div>
+ <%# EN CONSTRUCTION %>
+   <div class="trip-session-en-construction">
+     <%= image_tag "svg/en_construction.svg", class: "trip-session-en-construction-img", data: { inject: { svg: "svg/en_construction.svg" } }, :height => 310 %>
+   </div>
 
-<%# CARDS DE JEUX %>
-  <div class="trip-session-new-games-cards">
-      <div class="trip-session-new-morpion-card">
-        <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-morpions-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
-      </div>
-      <div class="trip-session-new-chifoumi-card">
-        <%= image_tag "svg/chifoumi_card.svg", class: "trip-session-new-chifoumi-card", data: { inject: { svg: "svg/chifoumi_card.svg" } }, :height => 270 %>
-      </div>
-  </div>
+ <%# CARDS DE JEUX %>
+   <div class="trip-session-new-games-cards">
+       <div class="trip-session-new-morpion-card">
+         <%= image_tag "svg/morpions_card.svg", class: "trip-session-new-morpions-card", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
 
-   <% if @trip_session != nil  %>
-      <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
-        <div class="trip-session-new-join">
-          <div class="trip-session-new-gamer-bonhomme"></div>
-          <div class="trip-session-new-button-join">
-            <h2>Rejoins la partie!</h2>
-          </div>
-        </div>
-      <% end %>
-  <% else %>
-  <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
-    <div class="trip-session-new-create">
-      <p>Aucune partie de Morpion en attente</p>
-      <h2>Créer une partie!</h2>
-    </div>
-    <% end %>
-  <% end %>
-</div>
+   <%# MORPION CARD %>
+     <div class="trip-session-new-morpion-card">
+
+       <div class="image">
+         <%= image_tag "svg/morpions_card.svg", class: "", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
+       </div>
+       <div class="trip-session-new-chifoumi-card">
+         <%= image_tag "svg/chifoumi_card.svg", class: "trip-session-new-chifoumi-card", data: { inject: { svg: "svg/chifoumi_card.svg" } }, :height => 270 %>
+       <% if @trip_session != nil  %>
+         <div class="trip-session-gamer-bonhomme"></div>
+       <% end %>
+       <div class="button">
+         <% if @trip_session != nil  %>
+           <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
+             <div class="trip-session-new-join">
+               <div class="">
+                 <h2>Rejoins la partie!</h2>
+               </div>
+             </div>
+           <% end %>
+         <% else %>
+           <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
+             <div class="trip-session-new-create">
+               <p>Aucune partie de Morpion en attente</p>
+               <h2>Créer une partie!</h2>
+             </div>
+           <% end %>
+         <% end %>
+       </div>
+   </div>
+     </div>
+
+    <% if @trip_session != nil  %>
+       <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
+         <div class="trip-session-new-join">
+           <div class="trip-session-new-gamer-bonhomme"></div>
+           <div class="trip-session-new-button-join">
+             <h2>Rejoins la partie!</h2>
+           </div>
+         </div>
+       <% end %>
+   <% else %>
+   <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
+     <div class="trip-session-new-create">
+       <p>Aucune partie de Morpion en attente</p>
+       <h2>Créer une partie!</h2>
+   <%# CHIFOUMI CARD %>
+     <div class="trip-session-new-chifoumi-card">
+
+       <%= image_tag "svg/chifoumi_card.svg", class: "trip-session-new-chifoumi-card", data: { inject: { svg: "svg/chifoumi_card.svg" } }, :height => 270 %>
+
+       <%# EN CONSTRUCTION %>
+       <div class="trip-session-en-construction">
+         <%= image_tag "svg/en_construction.svg", class: "trip-session-en-construction-img", data: { inject: { svg: "svg/en_construction.svg" } }, :height => 310 %>
+       </div>
+     </div>
+     <% end %>
+   <% end %>
+
+
+   </div>
+ </div>
