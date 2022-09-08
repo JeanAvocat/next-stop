@@ -1,9 +1,11 @@
 <%# LEAVE THE GAME AND RETURN TO THE MENU %>
-<div data-controller="modal-quit">
+<div class="modal-container" data-controller="modal-quit">
   <%= link_to "#", data: { "modal-quit-target": "arrow", action:"click->modal-quit#displayModal" } do %>
       <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
   <% end %>
 
+  <div class="modal-quit-container d-none" data-modal-quit-target="modalQuitContainer">
+  </div>
 
   <div class="modal-quit d-none mt-3" data-modal-quit-target="modal">
     <h5 class="text-center">Etes vous sur de vouloir quitter ?</h5>
@@ -14,7 +16,9 @@
       <% end %>
     </div>
   </div>
+
 </div>
+
 
 
 <div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">

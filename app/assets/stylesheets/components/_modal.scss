@@ -1,5 +1,4 @@
 .modal-quit {
-
     border: solid black;
     padding: 10px;
     width: 60%;
@@ -10,7 +9,7 @@
 }
 
 .modal-quit-container {
-  filter: blur(1px);
+  filter: blur(100px);
   position: fixed;
   z-index: 1;
   width: 100vw;
