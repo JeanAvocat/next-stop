@@ -8,6 +8,14 @@ class ChifoumiGame < ApplicationRecord
     next_player_to_play == current_user
   end
 
+  # def who_are_you(current_user)
+  #   return first_player if current_user.chifoumi_games_as_second_player.empty?
+
+  #   return second_player if current_user.chifoumi_games_as_first_player.empty?
+
+  #   current_user.chifoumi_games_as_first_player.last.id > current_user.chifoumi_games_as_second_player.last.id ? first_player : second_player
+  # end
+
   def end_of_a_game?
     return if play_round <= 4
 
@@ -51,7 +59,8 @@ class ChifoumiGame < ApplicationRecord
 
   def winner?
     # should return true if there is a final winner
-    # (first_player_score - second_player_score).abs >= 2 &&
-    first_player_score >= 3 || second_player_score >= 3
+    two_points_difference = (first_player_score - second_player_score).abs >= 2
+    minimal_score = first_player_score >= 3 || second_player_score >= 3
+    minimal_score && two_points_difference
   end
 end

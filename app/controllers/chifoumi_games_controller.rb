@@ -35,7 +35,7 @@ class ChifoumiGamesController < ApplicationController
   end
 
   def update_score
-    return unless @chifoumi_game.play_round.even?
+    return unless @chifoumi_game.play_round.even? && @chifoumi_game.play_round.positive?
 
     if @chifoumi_game.first_player_choice == @chifoumi_game.winning_pattern
       @chifoumi_game.update(first_player_score: @chifoumi_game.first_player_score + 1)

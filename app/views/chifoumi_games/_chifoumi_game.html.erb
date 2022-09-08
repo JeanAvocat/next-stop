@@ -2,15 +2,26 @@
   <div class="chifoumi-game-player-info">
     <div class="d-flex justify-content-around mb-4">
       <div>
-        <h5 class="gray-text-h6">salut <%= current_user.random_nickname %></h5>
+        <h5 class="gray-text-h6">Tu as Choisi <%= current_user.random_nickname %></h5>
+        <div class="<%=if chifoumi_game.public_send("#{chifoumi_player}_choice") == "rock"
+          "rock-gif"
+        elsif chifoumi_game.public_send("#{chifoumi_player}_choice") == "paper"
+          "paper-gif"
+        else
+          "scissors-gif"
+        end
+        %>"></div>
       </div>
       <div>
-        <h6 class="gray-text-h6">tu joues contre</h6>
-        <% if chifoumi_game.first_player == current_user %>
-          <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.second_player.random_nickname %></h6>
-        <% else %>
-          <h6 class="competitor" data-chifoumi-game-subscription-target="competitor"><%= chifoumi_game.first_player.random_nickname %></h6>
-        <% end %>
+        <h6 class="gray-text-h6"><%= chifoumi_game.public_send("#{chifoumi_competitor}").random_nickname %> A choisi</h6>
+        <div class="<%=if chifoumi_game.public_send("#{chifoumi_competitor}_choice") == "rock"
+          "rock-gif"
+        elsif chifoumi_game.public_send("#{chifoumi_competitor}_choice") == "paper"
+          "paper-gif"
+        else
+          "scissors-gif"
+        end
+        %>"></div>
       </div>
     </div>
   </div>
@@ -46,7 +57,9 @@
     <%# <%= render "chifoumi_games/be_ready_counter", chifoumi_game: chifoumi_game %>
     <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game %>
     <%# chifoumi_game.round_paterns %>
-    <div class="mt-5"><h6>winner is   <%= chifoumi_game.round_winner %></h6></div>
+    <% if @chifoumi_game.play_round.even? && @chifoumi_game.play_round.positive? %>
+      <div class="mt-5"><h6>winner is   <%= chifoumi_game.round_winner %></h6></div>
+    <% end %>
     <div class="mt-5"><h6>real play round</h6> <h3><%= chifoumi_game.play_round %></h3></div>
     <% if @chifoumi_game.end_of_a_game? %>
       <div class="mt-5"><h6>winner is</h6> <h3><%= chifoumi_game.result %></h3></div>
