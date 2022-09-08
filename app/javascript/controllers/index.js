@@ -7,6 +7,9 @@ import { application } from "./application"
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
+import ChifoumiSubscriptionController from "./chifoumi_subscription_controller"
+application.register("chifoumi-subscription", ChifoumiSubscriptionController)
+
 import DisplayChatController from "./display_chat_controller"
 application.register("display-chat", DisplayChatController)
 

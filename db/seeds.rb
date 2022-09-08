@@ -14,6 +14,7 @@ Message.destroy_all
 GameMatch.destroy_all
 ChifoumiGame.destroy_all
 TicTacToeGame.destroy_all
+ChifoumiGame.destroy_all
 TripSession.destroy_all
 User.destroy_all
 
@@ -411,12 +412,11 @@ Request.create(status:"pending",
 
 puts "details session 5"
 
-play1session5 = TicTacToeGame.create(position_6:"cross",
-                        position_9:"circle",
-                        cross_player_id: session5.creator_id,
-                        circle_player_id: session5.joiner_id)
+play1session5 = ChifoumiGame.create(
+                        first_player_id: session5.creator_id,
+                        second_player_id: session5.joiner_id)
 
-gamematch1session5 = GameMatch.create(matchable_type:"TicTacToeGame",
+gamematch1session5 = GameMatch.create(matchable_type:"ChifoumiGame",
                       matchable_id: play1session5.id,
                       trip_session_id: session5.id)
 
@@ -598,6 +598,8 @@ puts "Finished! All the seeds have been created."
 puts " "
 puts "******************************************"
 puts " "
+
+
 
 
 
