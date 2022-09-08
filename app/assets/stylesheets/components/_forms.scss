@@ -105,17 +105,53 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0 0;
 }
 
-// Chat
-#message_content {
-  font-family: $my-font;
-  height: 28px;
+#user_instagram_account {
+  background-color: white;
   border-radius: 5px;
-  padding: 0px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 28px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
 }
 
-#message_content:focus {
-font-family: $my-font;
+#user_instagram_account:focus {
+  border: 3px solid black;
 }
+
+#user_phone_number {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  height: 28px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
+}
+
+#user_phone_number:focus {
+  border: 3px solid black;
+}
+
+#user_user_photo {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  text-align: center;
+  color: $gray;
+  font-size: 16px;
+}
+
+#user_user_photo:focus {
+  border: 3px solid black;
+}
+
+
+
+
 // SUBMIT BUTTON
 
 //PINK
@@ -196,6 +232,22 @@ font-family: $my-font;
 .btn {
   padding: 0px 10px 0px 10px;
   line-height: 20px;
+}
+
+
+// Chat
+#message_content {
+  font-family: $my-font;
+  height: 28px;
+  margin: 0px;
+}
+
+#message_content:focus {
+font-family: $my-font;
+}
+
+#new_message {
+  margin: 4px 10px 2px 10px;
 }
 
 #user_instagram_account {

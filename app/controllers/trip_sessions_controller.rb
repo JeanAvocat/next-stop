@@ -4,9 +4,9 @@ class TripSessionsController < ApplicationController
     # Know if there is session available to join and give the active people
     if TripSession.last != nil
       @active_people = TripSession.where(status: "in game").count * 2 + TripSession.where(status: "waiting for joiner").count
-      @session_tic_tac_toe_game = GameMatch.where(:matchable_type == "TicTacToeGame").last.trip_session
+      @session_tic_tac_toe_game = GameMatch.where(matchable_type: "TicTacToeGame").last.trip_session
       @trip_session_tic_tac_toe_game = @session_tic_tac_toe_game if @session_tic_tac_toe_game.status == "waiting for joiner"
-      @session_chifoumi = GameMatch.where(:matchable_type == "ChifoumiGame").last.trip_session
+      @session_chifoumi = GameMatch.where(matchable_type: "ChifoumiGame").last.trip_session
       @trip_session_chifoumi = @session_chifoumi if @session_chifoumi.status == "waiting for joiner"
     else
       @active_people = 0
@@ -48,7 +48,7 @@ class TripSessionsController < ApplicationController
 
   def join_tic_tac_toe
     # Complete infos from the trip session
-    @trip_session = GameMatch.where(:matchable_type == "TicTacToeGame").last.trip_session
+    @trip_session = GameMatch.where(matchable_type: "TicTacToeGame").last.trip_session
     @trip_session.joiner = current_user
     @trip_session.status = "in game"
     @trip_session.save
@@ -70,7 +70,7 @@ class TripSessionsController < ApplicationController
 
   def join_chifoumi
     # Complete infos from the trip session
-    @trip_session = GameMatch.where(:matchable_type == "ChifoumiGame").last.trip_session
+    @trip_session = GameMatch.where(matchable_type: "ChifoumiGame").last.trip_session
     @trip_session.joiner = current_user
     @trip_session.status = "in game"
     @trip_session.save

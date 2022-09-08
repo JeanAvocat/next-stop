@@ -16,7 +16,15 @@
   font-family: $my-font;
   color: white;
   background-color: black;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+
+  h6 {
+    margin: 0px;
+  }
 }
 
 #accept-or-decline {
