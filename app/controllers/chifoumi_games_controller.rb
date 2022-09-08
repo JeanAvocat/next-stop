@@ -46,6 +46,7 @@ class ChifoumiGamesController < ApplicationController
       other_choice: other_player_choice,
       player: current_user.id,
       play_round: @chifoumi_game.play_round,
+      winner: @chifoumi_game.round_winner,
       result: @chifoumi_game.result
     )
   end

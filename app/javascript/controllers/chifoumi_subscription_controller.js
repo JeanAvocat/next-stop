@@ -46,9 +46,6 @@ export default class extends Controller {
     this.roundResultTarget.classList.add("hidden");
     this.yourChoiceTarget.classList.add("hidden");
     this.competitorChoiceTarget.classList.add("hidden");
-    // if (this.hasroundResultTarget) { this.roundResultTarget.classList.add("hidden"); }
-    // if (this.hasyourChoiceTarget) { this.yourChoiceTarget.classList.add("hidden"); }
-    // if (this.hascompetitorChoiceTarget) { this.competitorChoiceTarget.classList.add("hidden"); }
   }
 
   #selectChoice(data, currentUserIsPlayer, playRoundIsEven) {
@@ -74,7 +71,8 @@ export default class extends Controller {
   #evenPlayRoundAction(data, currentUserIsPlayer) {
     this.infoSelectionPlayerTarget.classList.add("hidden");
     this.nextRoundTarget.classList.remove("hidden");
-    this.roundResultTarget.classList.remove("hidden");
+    this.roundResultTarget.innerHTML = `<h6>${data.winner}</h6>`;
+    this.roundResultTarget.classList.remove("hidden")
     if (currentUserIsPlayer){
       this.choicesTarget.classList.add("hidden");
       this.yourChoiceTarget.classList.remove("hidden");
