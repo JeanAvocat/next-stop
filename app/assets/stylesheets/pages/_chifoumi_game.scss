@@ -1,0 +1,17 @@
+#chifoumi-rock-svg {
+ background-image:  asset-url("svg/circle.svg");
+}
+
+#chifoumi-paper-svg {
+  background-image:  asset-url("svg/email_icon.svg");
+}
+
+#chifoumi-scissors-svg {
+  background-image:  asset-url("svg/ligne.svg");
+}
+
+.chifoumi-choices-svg {
+  background-repeat: no-repeat;
+  height: 72px;
+  width: 72px;
+}
