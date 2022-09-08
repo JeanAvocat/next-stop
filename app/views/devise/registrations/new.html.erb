@@ -17,28 +17,39 @@
                   autofocus: true,
                   :label => false,
                   input_html: { autocomplete: "Prénom :" }%>
-      <%= f.input :social_media,
-                  placeholder: 'réseau sociaux',
-                  required: true,
+      <%= f.input :instagram_account,
+                  placeholder: 'Instagram',
+                  required: false,
                   autofocus: true,
                   :label => false,
-                  input_html: { autocomplete: "Comment me contacter :" }%>
+                  input_html: { autocomplete: "Mon compte Instagram" }%>
+      <%= f.input :phone_number,
+                  placeholder: 'numéro de téléphone',
+                  required: false,
+                  autofocus: true,
+                  :label => false,
+                  input_html: { autocomplete: "Mon numéro pour retrouver mes voisins de rame" }%>
       <%= f.input :email,
                   placeholder: 'email',
                   required: false,
                   autofocus: true,
                   :label => false,
                   input_html: { autocomplete: "Email :" }%>
+     <%= f.input :user_photo, as: :file,
+                 label: "Photo de profil",
+                 required: true,
+                 autofocus: true,
+                 input_html: { autocomplete: "ajouter une photo de profil" }%>
       <%= f.input :password,
                   placeholder: 'mot de passe',
                   required: true,
                   :label => false,
-                  input_html: { autocomplete: "new-password" } %>
+                  input_html: { autocomplete: "Nouveau mot de passe" } %>
       <%= f.input :password_confirmation,
-                  placeholder: 'confirmer le mot de passe',
+                  placeholder: 'mot de passe (confirmer)',
                   required: true,
                   :label => false,
-                  input_html: { autocomplete: "new-password" } %>
+                  input_html: { autocomplete: "Confirmation du mot de passe" } %>
     </div>
 
     <button id="submit-green-btn" type="button"><%= f.button :submit, "S'inscrire" %></button>

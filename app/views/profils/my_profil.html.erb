@@ -13,9 +13,7 @@
   </div>
 </div>
 
-<div class="profil-picture">
-  <%= image_tag "svg/profil.svg", class: "profil-picture", data: { inject: { svg: "svg/profil.svg" } }, :width => 200 %>
-</div>
+  <%= render "shared/avatar", owner: current_user %>
 
 <div class="profil-welcome-message">
   <h2><span style="font-family: Barlow;">Bonjour</span> <br> <%= current_user.random_nickname %></h2>
@@ -25,12 +23,18 @@
   <div class="profil-informations-icons">
     <%= image_tag "svg/classement_icon.svg", class: "profil-classement-icon", data: { inject: { svg: "svg/classement_icon.svg" } }, :width => 30 %>
     <%= image_tag "svg/email_icon.svg", class: "profil-email-icon", data: { inject: { svg: "svg/email_icon.svg" } }, :width => 30 %>
-    <%= image_tag "svg/instagram_icon.svg", class: "profil-instagram-icon", data: { inject: { svg: "svg/instagram_icon.svg" } }, :width => 25 %>
+    <span class=<%= current_user.instagram_account.empty? ? "d-none" : "d-block" %>>
+      <%= image_tag "svg/instagram_icon.svg", class: "profil-instagram-icon", data: { inject: { svg: "svg/instagram_icon.svg" } }, :width => 25 %>
+    </span>
+    <span class=<%= current_user.phone_number.empty? ? "d-none" : "d-block" %>>
+      <%# REPLACE THIS CODE LINE BY THE PHONE NUMBER PICTO %>
+    </span>
   </div>
   <div class="profil-informations-text">
     <p>tu es <strong><%= @rankuser %>/<%=@users.count%></strong> au classement</p>
     <p><%= current_user.email %></p>
-    <p><%= current_user.social_media %></p>
+    <p class=<%= current_user.instagram_account.empty? ? "d-none" : "d-block" %>> <%= current_user.instagram_account %></p>
+    <p class=<%= current_user.phone_number.empty? ? "d-none" : "d-block" %>> <%= current_user.phone_number %></p>
   </div>
 </div>
 

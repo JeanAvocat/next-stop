@@ -1,0 +1,9 @@
+<% if owner.user_photo.attached? %>
+  <div class="reveal-identity-div img">
+   <%= cl_image_tag owner.user_photo.key %>
+  </div>
+ <% else %>
+  <div class="profil-picture">
+  <%= image_tag "svg/profil.svg", class: "profil-picture", data: { inject: { svg: "svg/profil.svg" } }, :width => 200 %>
+</div>
+ <% end %>
