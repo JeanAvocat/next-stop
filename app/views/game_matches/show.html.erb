@@ -1,6 +1,6 @@
 <%# LEAVE THE GAME AND RETURN TO THE MENU %>
 <div class="modal-container" data-controller="modal-quit">
-  <%= link_to "#", data: { "modal-quit-target": "arrow", action:"click->modal-quit#displayModal" } do %>
+  <%= link_to "#", data: { action:"click->modal-quit#displayModal" } do %>
       <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
   <% end %>
 
@@ -16,15 +16,12 @@
       <% end %>
     </div>
   </div>
-
 </div>
 
-
-
 <div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
-<%#= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Etes vous sur?" } do %>
-    <%#= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
-<%# end %>
+  <%#= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Etes vous sur?" } do %>
+      <%#= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+  <%# end %>
 </div>
 <div class="message-leaving-game">
   <h6  data-return-game-match-target="leavemessage"></h6>
