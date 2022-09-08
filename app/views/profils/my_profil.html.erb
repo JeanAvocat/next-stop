@@ -13,9 +13,7 @@
   </div>
 </div>
 
-<div class="profil-picture">
-  <%= image_tag "svg/profil.svg", class: "profil-picture", data: { inject: { svg: "svg/profil.svg" } }, :width => 200 %>
-</div>
+  <%= render "shared/avatar", owner: current_user %>
 
 <div class="profil-welcome-message">
   <h2><span style="font-family: Barlow;">Bonjour</span> <br> <%= current_user.random_nickname %></h2>

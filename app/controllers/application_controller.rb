@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :initiate_score, if: :user_signed_in?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name random_nickname instagram_account phone_number score])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name random_nickname instagram_account phone_number user_photo score])
   end
 
   def default_url_options
