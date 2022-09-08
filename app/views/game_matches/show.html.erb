@@ -61,13 +61,12 @@
                   <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
                     <div class="info-request">
                       <h6>Veux-tu révéler ton profil ?</h6>
-                    </div>
-                    <div id="accept-or-decline">
-                      <div id="accept-request">
-                        <%= link_to  accept_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
-                          <button class="white-btn" id="accept-request" type="button">Oui</button>
-                        <% end %>
-                      </div>
+                      <div id="accept-or-decline">
+                        <div id="accept-request">
+                          <%= link_to  accept_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
+                            <button class="white-btn" id="accept-request" type="button">Oui</button>
+                          <% end %>
+                        </div>
                       <%# DECLINE %>
                       <div id="decline-request">
                         <%= link_to  decline_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
@@ -75,6 +74,7 @@
                         <% end %>
                       </div>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
