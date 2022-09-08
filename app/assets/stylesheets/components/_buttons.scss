@@ -101,27 +101,38 @@
 .btn-to-display-or-hide-chat {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .btn-fix-to-bottom {
   position:fixed;
   bottom:0;
-  left: 50%;
 }
 
 #btn-chat-submit {
   height: 39px;
+  padding: 0px 4px;
+  margin: 0px 0px 0px 10px;
 }
 
 // REQUEST BTN
+.game-match-show-reveal-div {
+  width: 100%;
+  background-color: black;
+  border-radius: 0px;
+  border-color: black;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #révéler-mon-profil {
-  width: 100%;
-  border: none;
+  border-color: white;
+  text-align: center;
 }
 
 #accept-request, #decline-request {
-  border: none;
-  display:inline-block;
-  margin-bottom: 16px;
+  margin: 0px 4px;
+  font-size: 14px;
 }
