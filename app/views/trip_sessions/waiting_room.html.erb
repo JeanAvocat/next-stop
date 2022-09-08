@@ -2632,14 +2632,17 @@
       top: -86px;
       right: 104px;
       animation: drive 3s ease-in-out forwards;
+      overflow: hidden;
     }
 
     @keyframes drive {
         0% {
           transform: translateY(0px) translateX(-10px) rotate(0deg);
+          opacity: 1;
         }
         100% {
-          transform: translateY(0px) translateX(400px) rotate(0deg);
+          transform: translateY(0px) translateX(370px) rotate(0deg);
+          visibility: hidden;
         }
     }
   </style>
