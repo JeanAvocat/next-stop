@@ -8,7 +8,7 @@ class ChifoumiGamesController < ApplicationController
       @chifoumi_game.update(first_player_choice: params[:play], second_player_choice: params[:play])
     end
 
-    return unless @chifoumi_game.who_have_to_play(current_user) && params[:choice]
+    return unless @chifoumi_game.who_can_play(current_user) && params[:choice]
 
     if current_user == @chifoumi_game.first_player
       @chifoumi_game.update(first_player_choice: params[:choice])

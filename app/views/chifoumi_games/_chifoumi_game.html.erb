@@ -1,7 +1,7 @@
 <div data-controller="chifoumi-subscription" data-chifoumi-subscription-game-id-value="<%= game_match.id %>">
   <div class="chifoumi-game-player-info">
     <div class="chifoumi-game-choosen-weapons">
-      <% if chifoumi_game.play_round.zero? %>
+      <% if chifoumi_game.play_round.zero? && !chifoumi_game.start_round? %>
         <h5>La partie commence</h5>
       <% elsif chifoumi_game.play_round.odd? %>
         <div class="text-center mb-4">
@@ -15,7 +15,7 @@
     </div>
     <div class="<%= "hidden" if chifoumi_game.play_round.zero? %>">
       <div class="d-flex justify-content-around mb-4">
-        <div class="<%= "hidden" if chifoumi_game.play_round.odd? && chifoumi_player == "second_player" %>" %>
+        <div class="<%= "hidden" if chifoumi_game.who_can_play(current_user) %>">
           <h5 class="gray-text-h6">Tu as Choisi</h5>
           <div class="<%=if chifoumi_game.public_send("#{chifoumi_player}_choice") == "rock"
               "rock-gif"
@@ -34,7 +34,7 @@
                 "rock-gif"
               elsif chifoumi_game.public_send("#{chifoumi_competitor}_choice") == "paper"
                 "paper-gif"
-              elsif chifoumi_game.public_send("#{chifoumi_player}_choice") == "scissors"
+              elsif chifoumi_game.public_send("#{chifoumi_competitor}_choice") == "scissors"
                 "scissors-gif"
               end
               %>">
@@ -47,24 +47,24 @@
 
   <%#= WHO HAVE TO PLAY  %>
   <div>
-    <% if @chifoumi_game.who_have_to_play(current_user) %>
+    <% if @chifoumi_game.who_can_play(current_user) %>
       <h6>Choisi ton signe</h6>
     <% elsif chifoumi_game.play_round.odd? %>
-      <h6>tu vas bientôt savoir ce que ton adversaire à choisi...</h6>
-    <% else %>
-      <h6>Réfléchis à ton signe</h6>
+      <h6>tu vas bientôt savoir le résultat</h6>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center <%= "hidden" if chifoumi_game.start_round? || chifoumi_game.end_of_a_game? || chifoumi_game.play_round.odd? %>">
+    <%= link_to(select_weapon_chifoumi_game_path("play": "next-round"), data: { turbo_method: :patch }) do %>
+      <button class="black-blue-btn"> <%= btn_text %>  </button>
     <% end %>
   </div>
 
-  <%= link_to(select_weapon_chifoumi_game_path("play": "next-round"), data: { turbo_method: :patch }) do %>
-    <button class="black-blue-btn" id="scissors" value="scissors"> <%= btn_text %>  </button>
-  <% end %>
-
   <div class="container">
     <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game %>
-    <% if @chifoumi_game.play_round.even? && @chifoumi_game.play_round.positive? %>
-      <div class="mt-5"><h6><%= chifoumi_game.round_winner %>gagne cette manche</h6></div>
+    <% if chifoumi_game.end_of_a_round? %>
+      <div class="mt-5"><h6><%= chifoumi_game.round_winner %></h6></div>
     <% end %>
+      <div class="mt-5"><h6><%= chifoumi_game.display_score %></h6></div>
     <% if @chifoumi_game.end_of_a_game? %>
       <div class="mt-5"><h6></h6><h3><%= chifoumi_game.result %> A gagner la partie Bravo !</h3></div>
       <div class="mt-5"><h6>Voulez vous rejouer ?</h6><h3>></div>

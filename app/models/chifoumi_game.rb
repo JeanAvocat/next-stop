@@ -3,18 +3,30 @@ class ChifoumiGame < ApplicationRecord
   belongs_to :second_player, foreign_key: :second_player_id, class_name: "User"
   has_many :game_matches, as: :matchable
 
-  def who_have_to_play(current_user)
-    next_player_to_play = play_round.even? ? first_player : second_player
-    next_player_to_play == current_user
+  def who_can_play(current_user)
+    player = which_player(current_user)
+    public_send("#{player}_choice") == "next-round"
   end
 
-  # def who_are_you(current_user)
-  #   return first_player if current_user.chifoumi_games_as_second_player.empty?
+  def which_player(current_user)
+    first_player == current_user ? "first_player" : "second_player"
+  end
 
-  #   return second_player if current_user.chifoumi_games_as_first_player.empty?
+  def which_competitor(current_user)
+    first_player == current_user ? "second_player" : "first_player"
+  end
 
-  #   current_user.chifoumi_games_as_first_player.last.id > current_user.chifoumi_games_as_second_player.last.id ? first_player : second_player
-  # end
+  def start_round?
+    [first_player_choice, second_player_choice].uniq.join == "next-round"
+  end
+
+  def end_of_a_round?
+    play_round.even? && [first_player_choice, second_player_choice].uniq.join != "next-round"
+  end
+
+  def display_score
+    "#{first_player.random_nickname} à #{first_player_score} points et #{second_player.random_nickname} à #{second_player_score} points"
+  end
 
   def end_of_a_game?
     return if play_round <= 4
@@ -36,9 +48,13 @@ class ChifoumiGame < ApplicationRecord
   end
 
   def round_winner
-    return "égalité" if winning_pattern == "tie"
-
-    first_player_choice == winning_pattern ? first_player.random_nickname : second_player.random_nickname
+    if first_player_choice == winning_pattern
+      "#{first_player.random_nickname} à gagné cette manche"
+    elsif second_player_choice == winning_pattern
+      "#{second_player.random_nickname} à gagné cette manche"
+    else
+      "égalité"
+    end
   end
 
   def round_pattern

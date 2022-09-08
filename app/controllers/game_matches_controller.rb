@@ -7,8 +7,8 @@ class GameMatchesController < ApplicationController
     # Chifoumi
     if @game_match.matchable_type == "ChifoumiGame"
       @chifoumi_game = @game_match.matchable
-      @chifoumi_player = @chifoumi_game.first_player_id == current_user.id ? "first_player" : "second_player"
-      @chifoumi_competitor = @chifoumi_game.first_player_id == current_user.id ? "second_player" : "first_player"
+      @chifoumi_player = @chifoumi_game.which_player(current_user)
+      @chifoumi_competitor = @chifoumi_game.which_competitor(current_user)
       @btn_text = @chifoumi_game.play_round.zero? ? "démarrer la partie" : "prochaine manche"
     end
 
