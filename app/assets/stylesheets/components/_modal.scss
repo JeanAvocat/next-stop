@@ -5,7 +5,7 @@
     position: fixed;
     background: white;
     z-index: 2;
-    left: 77px;
+    left: calc(100%/5);
 }
 
 .modal-quit-container {
