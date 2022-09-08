@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :define_nickname, if: :user_signed_in?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name random_nickname social_media score])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name random_nickname instagram_account phone_number score])
   end
 
   def default_url_options
