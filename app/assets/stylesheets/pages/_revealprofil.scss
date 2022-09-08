@@ -27,7 +27,12 @@
   }
 }
 
-.reveal-profil-circle {
-  position: absolute;
-  top: 160px;
+.reveal-profil-picture {
+  position: relative;
+
+  .reveal-profil-circle {
+    position: absolute;
+    top: -10px;
+    z-index: 3;
+  }
 }
