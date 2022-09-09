@@ -23,6 +23,5 @@ export default class extends Controller {
       setTimeout(() => {  location.replace(`/trip_sessions/new`) }, 7000)
       this.leavemessageTarget.innerText = "Oups, ton adversaire est arrivé à bon port et a quitté la partie"
       setTimeout(() => {  this.leavemessageTarget.innerText = "Tu vas être redirigé pour jouer avec un nouveau voisin de rame"}, 4000)
-
     }
 }
