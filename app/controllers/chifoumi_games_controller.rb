@@ -32,6 +32,7 @@ class ChifoumiGamesController < ApplicationController
     ChifoumiGameChannel.broadcast_to(
       @game_match,
       next: params[:play],
+      play_round: @chifoumi_game.play_round,
       player: current_user.id
     )
   end

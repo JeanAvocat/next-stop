@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between <%= "hidden" if chifoumi_game.end_of_a_round? || !chifoumi_game.who_can_play(current_user) %>" data-chifoumi-subscription-target="choices">
+<div class="d-flex justify-content-between <%= "d-none" if chifoumi_game.end_of_a_round? || !chifoumi_game.who_can_play(current_user) %>" data-chifoumi-subscription-target="choices">
   <%= link_to(select_weapon_chifoumi_game_path("choice": "rock"), data: { turbo_method: :patch }) do %>
     <%# <button class="black-blue-btn" id="rock" value="rock"> Pierre <span class="fas fa-hand-rock"></span></button> %>
     <div id="chifoumi-rock-svg" class="chifoumi-choices-svg"></div>
