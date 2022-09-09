@@ -74,14 +74,20 @@
 
               <%# REQUESTS %>
               <%# ASK TO REVEAL PROFILE %>
-              <div class="request">
+              <div class="request game-match-show-reveal-div">
                 <div class="request" data-request-subscription-target="request">
-                  <div class="game-match-show-reveal-div" data-request-subscription-target="sendRequest" >
+                  <div data-request-subscription-target="sendRequest" >
                     <div class = <%= @requestclass %> >
                       <%= link_to  trip_session_requests_path(@trip_session), data: {turbo_method: :post} do %>
                         <button class="white-btn" id="révéler-mon-profil" type="button">Révéler mon profil</button>
                       <% end %>
                     </div>
+                  </div>
+                  <%# View Buddy profil another time (when request already accepted) %>
+                  <div id="already-accepted-request" class= <%= @class_return_to_reveal_profil %> >
+                    <%= link_to game_match_reveal_profil_path(@game_match) do %>
+                      <button class="white-btn">Revoir le profil de <%= @buddy %> </button>
+                    <% end %>
                   </div>
                   <%# ACCEPT %>
                   <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
@@ -104,7 +110,6 @@
                   </div>
                 </div>
               </div>
-              <%# View Buddy profil another time %>
 
 
               <%# BOUTON D'ENVOI CHAT %>
