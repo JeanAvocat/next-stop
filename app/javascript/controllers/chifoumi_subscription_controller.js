@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="chifoumi-subscription"
 export default class extends Controller {
   static values = { gameId: Number, userId: Number }
-  static targets = ["rock", "paper", "scissors", "choices", "nextRound", "yourChoice", "displayYourChoice",
+  static targets = ["rock", "paper", "scissors", "choices", "nextRound", "textBtn", "yourChoice", "displayYourChoice",
    "roundResult", "competitorChoice", "displayCompetitorChoice", "infoSelectionPlayer", "endOfGameResult", "score"]
 
   connect() {
@@ -19,6 +19,7 @@ export default class extends Controller {
   }
 
   #nextAction(data) {
+    console.log(data.result === null);
     this.signs = ["rock", "paper", "scissors"]
     const currentUserIsPlayer = this.userIdValue === data.player
     const playRoundIsEven = data.play_round % 2 === 0
@@ -63,15 +64,22 @@ export default class extends Controller {
   }
 
   #evenPlayRoundAction(data, currentUserIsPlayer) {
+    if (data.play_round === 2) {
+      this.nextRoundTarget.classList.remove("hidden");
+      this.scoreTarget.classList.remove("hidden");
+      this.textBtnTarget.innerText = "prochaine manche"
+    }
     this.infoSelectionPlayerTarget.classList.add("hidden");
     this.nextRoundTarget.classList.remove("hidden");
     this.roundResultTarget.innerHTML = `<h6>${data.winner}</h6>`;
-    this.roundResultTarget.classList.remove("hidden")
-    this.scoreTarget.innerText = data.score
+    this.roundResultTarget.classList.remove("hidden");
+    this.scoreTarget.innerHTML = `<h6>${data.score}</h6>`;
     if (currentUserIsPlayer){
       this.choicesTarget.classList.add("hidden");
-      this.yourChoiceTarget.classList.remove("hidden");
+      // this.yourChoiceTarget.classList.remove("hidden");
+      this.yourChoiceTarget.classList = "";
       this.displayYourChoiceTarget.classList = "";
+      this.yourChoiceTarget.classList.remove("hidden");
       this.displayYourChoiceTarget.classList.add(`${data.choice}-gif`);
       this.competitorChoiceTarget.classList.remove("hidden");
       this.displayCompetitorChoiceTarget.classList = "";
@@ -82,7 +90,9 @@ export default class extends Controller {
       this.displayCompetitorChoiceTarget.classList.add(`${data.choice}-gif`);
     }
     if (data.result != null) {
-      this.endOfGameResultTarget.innerText = data.result
+      this.endOfGameResultTarget.classList.remove("hidden");
+      this.endOfGameResultTarget.innerHTML = `<h6>${data.result}</h6><h4>à gagner la partie Bravo !</h4>`;
+      this.nextRoundTarget.classList.add("hidden");
     }
   }
 

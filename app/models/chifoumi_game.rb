@@ -8,6 +8,10 @@ class ChifoumiGame < ApplicationRecord
     public_send("#{player}_choice") == "next-round"
   end
 
+  def play_round_zero?
+    play_round.zero?
+  end
+
   def which_player(current_user)
     first_player == current_user ? "first_player" : "second_player"
   end
@@ -32,7 +36,7 @@ class ChifoumiGame < ApplicationRecord
     return if play_round <= 4
 
     # return true if there is a winner
-    first_player_score >= 3 || second_player_score >= 3
+    winner?
   end
 
   def result

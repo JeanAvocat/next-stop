@@ -16,9 +16,6 @@ class ChifoumiGamesController < ApplicationController
     else
       @chifoumi_game.update(second_player_choice: params[:choice])
     end
-    # update the result of game match if end of the game method is true
-    # @game_match.update(winner: @chifoumi_game.result.split.last) if @chifoumi_game.end_of_a_game?
-    # @chifoumi_game.round_paterns
     update_play_round
     update_score
     @game_match.update(winner: @chifoumi_game.result.split.last) if @chifoumi_game.end_of_a_game?

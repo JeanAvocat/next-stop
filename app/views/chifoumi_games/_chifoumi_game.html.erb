@@ -13,9 +13,9 @@
         </div>
       <% end %>
     </div>
-    <div class="<%= "hidden" if chifoumi_game.play_round.zero? %>">
+    <div class="<%#= "hidden" if chifoumi_game.play_round.zero? %>">
       <div class="d-flex justify-content-around mb-4">
-        <div class="<%= "hidden" if chifoumi_game.who_can_play(current_user) %>" data-chifoumi-subscription-target="yourChoice">
+        <div class="<%= "hidden" if chifoumi_game.who_can_play(current_user) || chifoumi_game.play_round_zero? %>" data-chifoumi-subscription-target="yourChoice">
           <h5 class="gray-text-h6">Tu as Choisi</h5>
           <div class="<%=if chifoumi_game.public_send("#{chifoumi_player}_choice") == "rock"
               "rock-gif"
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div>
-          <div class="<%= "hidden" if !chifoumi_game.end_of_a_round? %>" data-chifoumi-subscription-target="competitorChoice">
+          <div class="<%= "hidden" if !chifoumi_game.end_of_a_round? || chifoumi_game.play_round_zero? %>" data-chifoumi-subscription-target="competitorChoice">
             <h6 class="gray-text-h6"><%= chifoumi_game.public_send("#{chifoumi_competitor}").random_nickname %> A choisi</h6>
             <div class="<%=if chifoumi_game.public_send("#{chifoumi_competitor}_choice") == "rock"
                 "rock-gif"
@@ -57,21 +57,21 @@
     <%= "hidden" if chifoumi_game.start_round? || chifoumi_game.end_of_a_game? || chifoumi_game.play_round.odd? %>"
     data-chifoumi-subscription-target="nextRound">
       <%= link_to(select_weapon_chifoumi_game_path("play": "next-round"), data: { turbo_method: :patch }) do %>
-        <button class="black-blue-btn"> <%= btn_text %>  </button>
+        <button class="black-blue-btn" data-chifoumi-subscription-target="textBtn"> <%= btn_text %>  </button>
       <% end %>
   </div>
 
   <div class="container">
     <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game %>
-    <% if chifoumi_game.end_of_a_round? && chifoumi_game.play_round.positive? %>
-      <div class="mt-5" data-chifoumi-subscription-target="roundResult"><h6><%= chifoumi_game.round_winner %></h6></div>
-    <% end %>
-    <% if chifoumi_game.play_round.positive? && chifoumi_game.play_round.even? %>
-      <div class="mt-5"><h6 data-chifoumi-subscription-target="score"><%= chifoumi_game.display_score %></h6></div>
-    <% end %>
-    <% if @chifoumi_game.end_of_a_game? %>
-      <div class="mt-5"><h6 data-chifoumi-subscription-target="endOfGameResult"><%= chifoumi_game.result %></h6><h4>à gagner la partie Bravo !</h4></div>
+    <div class="<%= "hidden" if !chifoumi_game.end_of_a_round? || chifoumi_game.play_round.zero? %>" data-chifoumi-subscription-target="roundResult">
+      <h6><%= chifoumi_game.round_winner %></h6>
+    </div>
+    <div class="<%= "hidden" if chifoumi_game.play_round.zero? && chifoumi_game.play_round < 2 %>" data-chifoumi-subscription-target="score">
+      <h6><%= chifoumi_game.display_score %></h6>
+    </div>
+    <div class="<%= "hidden" if !@chifoumi_game.end_of_a_game? %>" data-chifoumi-subscription-target="endOfGameResult">
+      <div class="mt-5"><h6><%= chifoumi_game.result %></h6><h4>à gagner la partie Bravo !</h4></div>
       <div class="mt-5"><h6>Voulez vous rejouer ?</h6><h3>></div>
-    <% end %>
+    </div>
   </div>
 </div>
