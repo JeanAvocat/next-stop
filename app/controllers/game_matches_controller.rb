@@ -22,6 +22,7 @@ class GameMatchesController < ApplicationController
     class_for_send_request
     class_for_answer_request
     class_return_to_reveal_profil
+    class_left_buddy_announcement
   end
 
   def create
@@ -91,6 +92,10 @@ class GameMatchesController < ApplicationController
     else
       @class_return_to_reveal_profil = "d-none"
     end
+  end
+
+  def class_left_buddy_announcement
+    @class_left_buddy_announcement = @trip_session.status == "closed" ? "d-block" : "d-none"
   end
 
   def find_last_trip_sessions

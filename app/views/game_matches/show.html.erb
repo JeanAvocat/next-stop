@@ -29,6 +29,7 @@
   </div>
 </div>
 
+
 <%# GAME CHOICE %>
 <div class="game-match-content">
   <div class="games-container">
@@ -39,6 +40,7 @@
       <%= render "tic_tac_toe_games/tic_tac_to_game", game_match: @game_match, tic_tac_toe_game: @tic_tac_toe_game %>
     <% end  %>
   </div>
+
 
   <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @game_match.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
     <div class="chat-overlay-game" data-controller="display-chat">
@@ -71,6 +73,13 @@
                 <% end %>
               </div>
 
+  <%# Announce closed session when buddy left %>
+  <div class= <%= @class_left_buddy_announcement %> >
+    <div class="text-center p-4">
+      <h5>Ton adversaire a quitté la partie.</h5>
+      <p>Tu peux revoir son profil depuis le bouton ci-dessous pour le rencontrer ultérieurement.</p>
+    </div>
+  </div>
 
               <%# REQUESTS %>
               <%# ASK TO REVEAL PROFILE %>
