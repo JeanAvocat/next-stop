@@ -11,7 +11,7 @@ en:
       locked: "Ton compte est bloqué."
       last_attempt: "Il ne te reste qu'un essai avant le blocage de ton compte."
       not_found_in_database: "%{authentication_keys} ou mot de passe invalide."
-      timeout: "Ta session à expiré. Reconnecte-toi pour continuer."
+      timeout: "Ta session a expiré. Reconnecte-toi pour continuer."
       unauthenticated: "Tu dois te connecter ou t'inscrire pour accéder à cette page."
       unconfirmed: "Tu dois confirmer ton adresse email avant de continuer."
     mailer:
