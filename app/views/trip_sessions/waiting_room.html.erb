@@ -2578,7 +2578,7 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
-        <div class="onlyforchrome" style="font-size: 30px;text-align: center;font-family: Helvetica;">Aide T-rex à rattraper son bus.</div>
+        <div class="onlyforchrome" style="font-size: 30px;text-align: center;font-family: Barlow;">Aide T-rex à rattraper son bus.</div>
         <div id="offline-resources" jstcache="0">
         <div id="offline-resources-1x" jstcache="0">
           <img id="1x-obstacle-large" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAyCAMAAACJUtIoAAAACVBMVEX////39/dTU1OabbyfAAAAAXRSTlMAQObYZgAAAXhJREFUeF7t2NGqAjEMANGM///RlwvaYQndULuFPJgHUYaEI6IPhgNAOA8HZ+3U6384F5y1U6YzAZTWG+dZamnFEstBFtCKJZSHWMADLJ18z+JqpQeLdKoDC8siC5iFCQs4znIxB5B1t6F3lQWkL4N0JsF+u6GXJdbI+FKW+yWr3lhgCZ2VSag3Nlk/FnRkIRbasLCO0oulikMsvmGpeiGLZ1jOMgtIP5bODivYYUXEIVbwFCt4khVssRgsgidZwQaLd2A8m7MYLGTl4KeQQs2y4kMAMGGlmQViDIb5O6xZnnLD485dIBzqDSE1yyFdL4Iqu4XJqUUWl/NVAFSZq1P6a5aqbAUM2epQbBioWflUBABiUyhYyZoCBev8XyMAObDNOhOAfiyxmHU0YNlldGAphGjFCjA3YkUn1o/1Y3EkZFZ5isCC6NUgwDBn1RuXH96doNfAhDXfsIyJ2AnolcCVhay0kcYbW0HvCO8OwIcJ3GzkORpkFuUP/1Ec8FW1qJkAAAAASUVORK5CYII=" jstcache="0">
@@ -2621,31 +2621,36 @@
 
   <div class="bus-trex-div">
     <%= image_tag "svg/bus_trex.svg", class: "bus-trex", data: { inject: { svg: "svg/bus_trex.svg" } }, :width => 130 %>
-  <div>
-  <style>
-    .bus-trex-div {
-      padding: 1px;
-    }
-
-    .bus-trex {
-      position: relative;
-      top: -86px;
-      right: 104px;
-      animation: drive 3s ease-in-out forwards;
-    }
-
-    @keyframes drive {
-        0% {
-          transform: translateY(0px) translateX(-10px) rotate(0deg);
+    <div>
+      <style>
+        .bus-trex-div {
+          padding: 1px;
         }
-        100% {
-          transform: translateY(0px) translateX(400px) rotate(0deg);
-        }
-    }
-  </style>
 
+        .bus-trex {
+          position: relative;
+          top: -86px;
+          right: 104px;
+          animation: drive 3s ease-in-out forwards;
+          overflow: hidden;
+        }
+
+        @keyframes drive {
+            0% {
+              transform: translateY(0px) translateX(-10px) rotate(0deg);
+              opacity: 1;
+            }
+            99.9% {
+              width: 30vw;
+            }
+            100% {
+              transform: translateY(0px) translateX(370px) rotate(0deg);
+              width: 0px;
+            }
+        }
+      </style>
+    </div>
+  </div>
   <div class="bottom-trex">
     <p><i>Travaille tes skills avec T-Rex en attendant</i></p>
   </div>
-</div>
-</div>

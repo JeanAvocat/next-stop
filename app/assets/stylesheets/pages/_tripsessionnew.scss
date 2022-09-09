@@ -81,63 +81,66 @@
 
 .trip-session-new-games-cards {
   display: flex;
-  padding: 120px 5px 0px 5px;
+  justify-content: center;
+  padding: 70px 5px 0px 5px;
 }
 
 .trip-session-new-chifoumi-card {
   padding: 0px 0px 0px 12px;
+  position: relative;
+
+  // EN CONSTRUCTION
+  .trip-session-en-construction {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-42%);
+    z-index: 3;
+  }
 }
 
 
 // JOIN OU CREER UNE PARTIE
 
-.trip-session-new-join {
-  width: 140px;
+.trip-session-new-morpion-card {
   position: relative;
-  top: -386px;
-  left: -153px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  h2 {
-    font-size: 18px;
-    background-color: white;
-    border-color: black;
-    border: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    padding: 5px 0px;
-    margin: 0px;
-    width: 100px;
-    text-align: center;
-    color: black;
+  .button {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-52%);
   }
 
-  p {
+  .trip-session-gamer-bonhomme {
+    position: absolute;
+    top: -104px;
+    width: 106px;
+    height: 120px;
+    background-image: url("gifs/gamer_bonhomme.gif");
+    background-size: 90%;
+    background-repeat: no-repeat;
+    text-align: center;
     margin: 0px 0px 0px 0px;
-    font-size: 15px;
-    color: black;
   }
 }
 
-.trip-session-new-gamer-bonhomme {
-  width: 106px;
-  height: 120px;
-  background-image: url("gifs/gamer_bonhomme.gif");
-  background-size: 100%;
-  background-repeat: no-repeat;
+.trip-session-new-join h2 {
+  font-size: 18px;
+  background-color: white;
+  border-color: black;
+  border: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  padding: 5px 0px;
+  margin: 0px;
+  width: 100px;
   text-align: center;
-  margin: 0px 0px 0px 0px;
+  color: black;
 }
 
 .trip-session-new-create {
   width: 130px;
-  height: 270px;
-  position: relative;
-  top: -254px;
-  left: -150px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -170,17 +173,12 @@
 
 .bouton-relou {
   border: none;
-  background-color: white;
-  height: 0px;
-  width: 0px;
+  background-color: transparent;
+  margin: 0px;
   color: black;
 }
 
 a {
   text-decoration: none;
   color: black;
-}
-
-.trip-session-new-button-join {
-  margin: 225px;
 }

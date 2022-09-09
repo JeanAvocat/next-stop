@@ -1,10 +1,32 @@
 <%# LEAVE THE GAME AND RETURN TO THE MENU %>
-<div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
-<%= link_to return_game_match_path(@game_match), data: {turbo_method: :patch, turbo_confirm: "Êtes vous sûr? En quittant la partie, vous abandonnez aussi votre adversaire"} do %>
-    <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
-<% end %>
-<div class="message-leaving-game">
-  <h6  data-return-game-match-target="leavemessage"></h6>
+<div class="modal-container" data-controller="modal-quit">
+  <%= link_to "#", data: { action:"click->modal-quit#displayModal" } do %>
+      <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+  <% end %>
+
+  <div class="modal-quit-container d-none" data-modal-quit-target="modalQuitContainer">
+  </div>
+
+  <div class="modal-quit d-none mt-3" data-modal-quit-target="modal">
+    <div class="text-center">
+      <h5 >Es-tu sûr de vouloir quitter ?<br></h5>
+      <p>Tu vas perdre définitivement ton adversaire.</p>
+    </div>
+    <div class="d-flex justify-content-around align-items-center">
+      <%= link_to "Non", "#", class:"white-yellow-btn p-3", data: { action:"click->modal-quit#displayModal" } %>
+      <%= link_to return_game_match_path(@game_match), data: { turbo_method: :patch }, class:"white-yellow-btn p-3" do %>
+        Oui
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-centent-center p-3">
+  <div data-controller="return-game-match"  data-return-game-match-gameid-value= "<%= @game_match.id %>">
+    <div class="message-leaving-game">
+      <h6 class ="text-center" data-return-game-match-target="leavemessage"></h6>
+    </div>
+  </div>
 </div>
 
 <%# GAME CHOICE %>
@@ -47,37 +69,44 @@
                   </div>
                 <% end %>
               </div>
+
+
               <%# REQUESTS %>
               <%# ASK TO REVEAL PROFILE %>
               <div class="request">
                 <div class="request" data-request-subscription-target="request">
-                  <div data-request-subscription-target="sendRequest", class = <%= @requestclass %> >
-                    <%= link_to  trip_session_requests_path(@trip_session), data: {turbo_method: :post} do %>
-                      <button class="white-btn" id="révéler-mon-profil" type="button">Révéler mon profil</button>
-                    <% end %>
+                  <div class="game-match-show-reveal-div" data-request-subscription-target="sendRequest" >
+                    <div class = <%= @requestclass %> >
+                      <%= link_to  trip_session_requests_path(@trip_session), data: {turbo_method: :post} do %>
+                        <button class="white-btn" id="révéler-mon-profil" type="button">Révéler mon profil</button>
+                      <% end %>
+                    </div>
                   </div>
                   <%# ACCEPT %>
                   <div id="answer-request" data-request-subscription-target="answerRequest" class = <%= @answerrequestclass %> >
                     <div class="info-request">
                       <h6>Veux-tu révéler ton profil ?</h6>
-                    </div>
-                    <div id="accept-or-decline">
-                      <div id="accept-request">
-                        <%= link_to  accept_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
-                          <button class="white-btn" id="accept-request" type="button">Oui</button>
-                        <% end %>
-                      </div>
-                      <%# DECLINE %>
-                      <div id="decline-request">
-                        <%= link_to  decline_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
-                          <button class="white-btn" id="decline-request" type="button">Non</button>
-                        <% end %>
+                      <div id="accept-or-decline">
+                        <div id="accept-request">
+                          <%= link_to  accept_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
+                            <button class="white-btn" id="accept-request" type="button">Oui</button>
+                          <% end %>
+                        </div>
+                        <%# DECLINE %>
+                        <div id="decline-request">
+                          <%= link_to  decline_request_path, data: {turbo_method: :patch, action: 'click->request-subscription#disableAnswerRequest'} do %>
+                            <button class="white-btn" id="decline-request" type="button">Non</button>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <%# REQUESTS %>
+              <%# View Buddy profil another time %>
+
+
+              <%# BOUTON D'ENVOI CHAT %>
               <div>
                 <%= simple_form_for [@game_match, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
                   <%= f.input :content,

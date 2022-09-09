@@ -23,6 +23,7 @@ class GameMatchesController < ApplicationController
     @lastrequest = @trip_session.requests.exists? ? @trip_session.requests.last.status : nil
     class_for_send_request
     class_for_answer_request
+    class_return_to_reveal_profil
   end
 
   def create
@@ -83,6 +84,14 @@ class GameMatchesController < ApplicationController
     elsif @lastrequest == "accepted"
       # There was a request that was accepted
       @answerrequestclass = "d-none"
+    end
+  end
+
+  def class_return_to_reveal_profil
+    if @lastrequest
+      @class_return_to_reveal_profil = @lastrequest == "accepted" ? "d-block" : "d-none"
+    else
+      @class_return_to_reveal_profil = "d-none"
     end
   end
 

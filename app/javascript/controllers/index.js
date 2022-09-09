@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AlertDisappearController from "./alert_disappear_controller"
+application.register("alert-disappear", AlertDisappearController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
@@ -21,6 +24,9 @@ application.register("hello", HelloController)
 
 import JoinerListenerController from "./joiner_listener_controller"
 application.register("joiner-listener", JoinerListenerController)
+
+import ModalQuitController from "./modal_quit_controller"
+application.register("modal-quit", ModalQuitController)
 
 import RequestSubscriptionController from "./request_subscription_controller"
 application.register("request-subscription", RequestSubscriptionController)

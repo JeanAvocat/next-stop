@@ -1,5 +1,4 @@
 <%# PROFIL PAGE %>
-
 <div class="profil-header">
   <div class="profil-header-back-button">
     <%= link_to new_trip_session_path do %>
@@ -13,9 +12,7 @@
   </div>
 </div>
 
-<div class="profil-picture">
-  <%= image_tag "svg/profil.svg", class: "profil-picture", data: { inject: { svg: "svg/profil.svg" } }, :width => 200 %>
-</div>
+  <%= render "shared/avatar", owner: current_user %>
 
 <div class="profil-welcome-message">
   <h2><span style="font-family: Barlow;">Bonjour</span> <br> <%= current_user.random_nickname %></h2>
@@ -29,7 +26,7 @@
       <%= image_tag "svg/instagram_icon.svg", class: "profil-instagram-icon", data: { inject: { svg: "svg/instagram_icon.svg" } }, :width => 25 %>
     </span>
     <span class=<%= current_user.phone_number.empty? ? "d-none" : "d-block" %>>
-      <%# REPLACE THIS CODE LINE BY THE PHONE NUMBER PICTO %>
+      <%= image_tag "svg/telephone_icon.svg", class: "profil-telephone-icon", data: { inject: { svg: "svg/telephone_icon.svg" } }, :width => 20 %>
     </span>
   </div>
   <div class="profil-informations-text">

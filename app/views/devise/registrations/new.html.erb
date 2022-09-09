@@ -35,6 +35,13 @@
                   autofocus: true,
                   :label => false,
                   input_html: { autocomplete: "Email :" }%>
+      <%= f.input :user_photo, as: :file,
+                  label: false,
+                  :include_blank => false,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "ajouter une photo de profil" },
+                  class: "form-control"%>
       <%= f.input :password,
                   placeholder: 'mot de passe',
                   required: true,
