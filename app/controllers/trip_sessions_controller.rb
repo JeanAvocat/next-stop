@@ -91,6 +91,7 @@ class TripSessionsController < ApplicationController
   end
 
   def destroy
+    @trip_session.game_matches.last.destroy
     @trip_session.destroy
     redirect_to new_trip_session_path, status: :see_other
   end
