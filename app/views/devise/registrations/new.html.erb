@@ -14,13 +14,13 @@
 
     <div class="formulaire">
       <%= f.input :first_name,
-                  placeholder: 'prénom',
+                  placeholder: 'prénom *',
                   required: true,
                   autofocus: true,
                   :label => false,
                   input_html: { autocomplete: "Prénom :" }%>
       <%= f.input :instagram_account,
-                  placeholder: 'Instagram',
+                  placeholder: 'pseudo Instagram',
                   required: false,
                   autofocus: true,
                   :label => false,
@@ -32,11 +32,11 @@
                   :label => false,
                   input_html: { autocomplete: "Mon numéro pour retrouver mes voisins de rame" }%>
       <%= f.input :email,
-                  placeholder: 'email',
+                  placeholder: 'e-mail *',
                   required: false,
                   autofocus: true,
                   :label => false,
-                  input_html: { autocomplete: "Email :" }%>
+                  input_html: { autocomplete: "E-mail :" }%>
       <%= f.input :user_photo, as: :file,
                   label: false,
                   :include_blank => false,
@@ -45,12 +45,12 @@
                   input_html: { autocomplete: "ajouter une photo de profil" },
                   class: "form-control"%>
       <%= f.input :password,
-                  placeholder: 'mot de passe',
+                  placeholder: 'mot de passe *',
                   required: true,
                   :label => false,
                   input_html: { autocomplete: "Nouveau mot de passe" } %>
       <%= f.input :password_confirmation,
-                  placeholder: 'mot de passe (confirmer)',
+                  placeholder: 'confirmation du mot de passe *',
                   required: true,
                   :label => false,
                   input_html: { autocomplete: "Confirmation du mot de passe" } %>
