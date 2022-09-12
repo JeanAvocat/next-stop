@@ -29,14 +29,14 @@ class GameMatchesController < ApplicationController
   def create
     # find the previous game match of both players together before to save the next one
     @previous_game_match = find_last_trip_sessions.game_matches.last
-    # create the new tic tac toe game
-    tic_tac_toe_game = tic_tac_toe_creation
+    # create the new tic tac toe game or chifoumi game
+    new_game = game_creation
     # creation of new instance of game_match and tic tac toe game
     @game_match = GameMatch.new
     # find the last trip_sessions from the last trip_sessions of current user
     @game_match.trip_session = find_last_trip_sessions
     # add the tic tac toe game id to the game match
-    @game_match.matchable = tic_tac_toe_game
+    @game_match.matchable = new_game
     # save the new game_match instance in DB
     @game_match.save
     # send info to other player to restart the game
@@ -97,15 +97,15 @@ class GameMatchesController < ApplicationController
 
   def find_last_trip_sessions
     # define last trip_sessions_as_creator
-    creator_id = current_user.trip_sessions_as_creator.last.id if current_user.trip_sessions_as_creator.last
+    last_trip_session_as_creator_id = current_user.trip_sessions_as_creator.last.id if current_user.trip_sessions_as_creator.last
     # define last trip_sessions_as_joiner
-    joiner_id = current_user.trip_sessions_as_joiner.last.id if current_user.trip_sessions_as_joiner.last
+    last_trip_session_as_joiner_id = current_user.trip_sessions_as_joiner.last.id if current_user.trip_sessions_as_joiner.last
     # return last TripSession if joiner_id or creator_id is nil
-    return TripSession.find(creator_id) if joiner_id.nil?
-    return TripSession.find(joiner_id) if creator_id.nil?
+    return TripSession.find(last_trip_session_as_creator_id) if last_trip_session_as_joiner_id.nil?
+    return TripSession.find(last_trip_session_as_joiner_id) if last_trip_session_as_creator_id.nil?
 
     # return the last trip sessions of players
-    creator_id > joiner_id ? TripSession.find(creator_id) : TripSession.find(joiner_id)
+    last_trip_session_as_creator_id > last_trip_session_as_joiner_id ? TripSession.find(last_trip_session_as_creator_id) : TripSession.find(last_trip_session_as_joiner_id)
   end
 
   def tic_tac_toe_creation
@@ -121,10 +121,38 @@ class GameMatchesController < ApplicationController
     tic_tac_toe_game
   end
 
+  def chifoumi_creation
+    # create a new chifoumi game
+    chifoumi_game = ChifoumiGame.new
+    # define the first and second player with the random trip session or creator
+    random_player = find_last_trip_sessions.joiner_or_creatore
+    chifoumi_game.first_player = find_last_trip_sessions.public_send(random_player[0])
+    chifoumi_game.second_player = find_last_trip_sessions.public_send(random_player[1])
+    # save the new tic tac toe game instance in DB
+    chifoumi_game.save
+    # return tic tac toe game
+    chifoumi_game
+  end
+
+  def game_creation
+    if @previous_game_match.matchable_type == "TicTacToeGame"
+      tic_tac_toe_creation
+    else
+      chifoumi_creation
+    end
+  end
+
   def broadcast_previous_game_match
-    TicTacToeGameChannel.broadcast_to(
-      @previous_game_match,
-      @previous_game_match.id
-    )
+    if @previous_game_match.matchable_type == "TicTacToeGame"
+      TicTacToeGameChannel.broadcast_to(
+        @previous_game_match,
+        @previous_game_match.id
+      )
+    else
+      ChifoumiGameChannel.broadcast_to(
+        @previous_game_match,
+        @previous_game_match.id
+      )
+    end
   end
 end

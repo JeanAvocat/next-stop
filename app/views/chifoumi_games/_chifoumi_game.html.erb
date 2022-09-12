@@ -64,6 +64,11 @@
         <button class="black-blue-btn" data-chifoumi-subscription-target="textBtn"> <%= btn_text %>  </button>
       <% end %>
   </div>
+  <div class="<%= 'd-none' unless chifoumi_game.end_of_a_game? %> chifoumi-replay" data-chifoumi-subscription-target="restart">
+    <%= link_to game_matches_path, data: {turbo_method: :post} do %>
+      <button class="white-yellow-btn" type="button">Rejouer</button>
+    <% end %>
+  </div>
 
   <div class="container">
     <%= render "chifoumi_games/weapon_to_select", chifoumi_game: chifoumi_game %>

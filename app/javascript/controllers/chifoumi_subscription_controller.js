@@ -6,7 +6,7 @@ export default class extends Controller {
   static values = { gameId: Number, userId: Number }
   static targets = ["rock", "paper", "scissors", "choices", "nextRound", "textBtn", "yourChoice", "displayYourChoice",
    "roundResult", "competitorChoice", "displayCompetitorChoice", "infoSelectionPlayer", "endOfGameResult", "score",
-   "infoStart", "roundCounter"]
+   "infoStart", "roundCounter", "restart"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -29,11 +29,10 @@ export default class extends Controller {
       this.#startRound(data);
     } else if (this.signs.includes(data.choice)){
       this.#selectChoice(data, currentUserIsPlayer, playRoundIsEven);
-    } else {
+    } else if (data === this.gameIdValue) {
       this.#restartGame();
     }
   }
-
 
   #startRound(data) {
     if (this.hasInfoStartTarget) {
@@ -104,6 +103,7 @@ export default class extends Controller {
       this.endOfGameResultTarget.classList.remove("d-none");
       this.endOfGameResultTarget.innerHTML = `<h6>${data.result}</h6><h4>à gagner la partie Bravo !</h4>`;
       this.nextRoundTarget.classList.add("d-none");
+      this.restartTarget.classList.remove("d-none");
     }
   }
 
@@ -124,6 +124,6 @@ export default class extends Controller {
   }
 
   #restartGame() {
-
+    location.replace(`/game_matches/${this.gameIdValue + 1}`)
   }
 }
