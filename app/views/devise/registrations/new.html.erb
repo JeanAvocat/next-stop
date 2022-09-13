@@ -8,7 +8,9 @@
   </div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-    <%= f.error_notification %>
+    <div data-controller="alert-disappear" data-alert-disappear-target="alertdeconnexion" >
+      <%= f.error_notification %>
+    </div>
 
     <div class="formulaire">
       <%= f.input :first_name,

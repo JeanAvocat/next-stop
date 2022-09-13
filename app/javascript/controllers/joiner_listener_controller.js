@@ -18,11 +18,7 @@ export default class extends Controller {
      )
   }
   #changeMessage(data) {
-    this.joinmessageTarget.innerText = "Vous allez rejoindre votre binôme de jeu"
+    this.joinmessageTarget.innerText = "Ton adversaire est sur le point de rejoindre la partie"
     setTimeout(() => {  location.replace(`/game_matches/${data}/counter`) }, 3000)
-
   }
-
-
-
 }

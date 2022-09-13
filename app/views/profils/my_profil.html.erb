@@ -37,7 +37,15 @@
   </div>
 </div>
 
-<div class="profil-modification-bouton">
-  <button class = "black-blue-btn">Changer mes informations</button>
-  <p><%= link_to "se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
+<div class="anonyma-info">
+  <p><strong>A propos de ton anonymat</strong></p>
+  <p><em>Seuls ton prénom, ta photo, ton compte Instagram et ton numéro de téléphone seront révélés à ton partenaire de jeu</em></p>
+  <p><em>(à la condition que toi <strong>et</strong> ton partenaire acceptez mutuellement de révéler vos profils).</em></p>
+</div>
+
+<div class="pb-4">
+  <div class="profil-modification-bouton">
+    <%# <button class = "black-blue-btn">Changer mes informations</button> %>
+    <p><%= link_to "se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
+  </div>
 </div>

@@ -31,6 +31,12 @@
   border-color: black;
 }
 
+.white-yellow-btn:active {
+  background-color: $yellow;
+  color: black;
+  border-color: black;
+}
+
 // BOUTONS SUR FOND BLANC
 .black-btn {
   font-family: $my-font;
