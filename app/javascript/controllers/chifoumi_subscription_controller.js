@@ -6,7 +6,7 @@ export default class extends Controller {
   static values = { gameId: Number, userId: Number }
   static targets = ["rock", "paper", "scissors", "choices", "nextRound", "textBtn", "yourChoice", "displayYourChoice",
    "roundResult", "competitorChoice", "displayCompetitorChoice", "infoSelectionPlayer", "endOfGameResult", "score",
-   "infoStart", "roundCounter"]
+   "infoStart", "roundCounter", "restart"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -24,16 +24,15 @@ export default class extends Controller {
     this.signs = ["rock", "paper", "scissors"]
     const currentUserIsPlayer = this.userIdValue === data.player
     const playRoundIsEven = data.play_round % 2 === 0
-    // check if the received data is to restart the game or to update tic tac toe tile
+    // check if the received data is to restart the game or to update chifoumi choice of player
     if (data.next === "next-round") {
       this.#startRound(data);
     } else if (this.signs.includes(data.choice)){
       this.#selectChoice(data, currentUserIsPlayer, playRoundIsEven);
-    } else {
+    } else if (data === this.gameIdValue) {
       this.#restartGame();
     }
   }
-
 
   #startRound(data) {
     if (this.hasInfoStartTarget) {
@@ -87,7 +86,6 @@ export default class extends Controller {
     this.scoreTarget.innerHTML = `<h6>${data.score}</h6>`;
     if (currentUserIsPlayer){
       this.choicesTarget.classList.add("d-none");
-      // this.yourChoiceTarget.classList.remove("d-none");
       this.yourChoiceTarget.classList = "";
       this.displayYourChoiceTarget.classList = "";
       this.yourChoiceTarget.classList.remove("d-none");
@@ -104,6 +102,7 @@ export default class extends Controller {
       this.endOfGameResultTarget.classList.remove("d-none");
       this.endOfGameResultTarget.innerHTML = `<h6>${data.result}</h6><h4>à gagner la partie Bravo !</h4>`;
       this.nextRoundTarget.classList.add("d-none");
+      this.restartTarget.classList.remove("d-none");
     }
   }
 
@@ -124,6 +123,6 @@ export default class extends Controller {
   }
 
   #restartGame() {
-
+    location.replace(`/game_matches/${this.gameIdValue + 1}`)
   }
 }
