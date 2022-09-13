@@ -3,16 +3,40 @@ class ChifoumiGame < ApplicationRecord
   belongs_to :second_player, foreign_key: :second_player_id, class_name: "User"
   has_many :game_matches, as: :matchable
 
-  def who_have_to_play(current_user)
-    next_player_to_play = play_round.even? ? first_player : second_player
-    next_player_to_play == current_user
+  def who_can_play(current_user)
+    player = which_player(current_user)
+    public_send("#{player}_choice") == "next-round"
+  end
+
+  def play_round_zero?
+    play_round.zero?
+  end
+
+  def which_player(current_user)
+    first_player == current_user ? "first_player" : "second_player"
+  end
+
+  def which_competitor(current_user)
+    first_player == current_user ? "second_player" : "first_player"
+  end
+
+  def start_round?
+    [first_player_choice, second_player_choice].uniq.join == "next-round"
+  end
+
+  def end_of_a_round?
+    play_round.even? && [first_player_choice, second_player_choice].uniq.join != "next-round"
+  end
+
+  def display_score
+    "#{first_player.random_nickname} à #{first_player_score} points et #{second_player.random_nickname} à #{second_player_score} points"
   end
 
   def end_of_a_game?
     return if play_round <= 4
 
     # return true if there is a winner
-    first_player_score >= 3 || second_player_score >= 3
+    winner?
   end
 
   def result
@@ -28,9 +52,13 @@ class ChifoumiGame < ApplicationRecord
   end
 
   def round_winner
-    return "égalité" if winning_pattern == "tie"
-
-    first_player_choice == winning_pattern ? first_player.random_nickname : second_player.random_nickname
+    if first_player_choice == winning_pattern
+      "#{first_player.random_nickname} à gagné cette manche"
+    elsif second_player_choice == winning_pattern
+      "#{second_player.random_nickname} à gagné cette manche"
+    else
+      "égalité"
+    end
   end
 
   def round_pattern
@@ -51,7 +79,8 @@ class ChifoumiGame < ApplicationRecord
 
   def winner?
     # should return true if there is a final winner
-    # (first_player_score - second_player_score).abs >= 2 &&
-    first_player_score >= 3 || second_player_score >= 3
+    two_points_difference = (first_player_score - second_player_score).abs >= 2
+    minimal_score = first_player_score >= 3 || second_player_score >= 3
+    minimal_score && two_points_difference
   end
 end
