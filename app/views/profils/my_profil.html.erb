@@ -46,6 +46,7 @@
 <div class="pb-4">
   <div class="profil-modification-bouton">
     <%# <button class = "black-blue-btn">Changer mes informations</button> %>
+    <p><%= link_to "Contact", about_path, data: {turbo_method: :get}, class: "dropdown-item" %></p>
     <p><%= link_to "se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
   </div>
 </div>
