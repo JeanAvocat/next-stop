@@ -1,3 +1,15 @@
+<%# BACK BUTTON %>
+<div class="profil-header-back-button">
+  <%= link_to my_profil_path do %>
+    <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+  <% end %>
+</div>
+
+  <%= image_tag "svg/chef.svg", class: "bonhomme-chef", data: { inject: { svg: "svg/chef.svg" } }, :width => 200 %>
+  <%= image_tag "svg/ange.svg", class: "bonhomme-ange", data: { inject: { svg: "svg/ange.svg" } }, :width => 200 %>
+  <%= image_tag "svg/photocopieuse.svg", class: "bonhomme-photocopieuse", data: { inject: { svg: "svg/photocopieuse.svg" } }, :width => 200 %>
+    <%= image_tag "svg/paquerette.svg", class: "bonhomme-paquerette", data: { inject: { svg: "svg/paquerette.svg" } }, :width => 200 %>
+
 <p id="dynamic-title">Mail :</p>
 <p class="profil-informations-text">Développeurs</p>
 <p class="profil-informations-text">Alou du 49</p>
