@@ -8,9 +8,7 @@
   </div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-    <div data-controller="alert-disappear" data-alert-disappear-target="alertdeconnexion" >
-      <%= f.error_notification %>
-    </div>
+    <%= f.error_notification %>
 
     <div class="formulaire">
       <%= f.input :first_name,
@@ -37,17 +35,13 @@
                   autofocus: true,
                   :label => false,
                   input_html: { autocomplete: "Email :" }%>
-      <div>
-      <label for="image_uploads">Choose images to upload (PNG, JPG)</label>
       <%= f.input :user_photo, as: :file,
-                  id: "image_uploads",
-                  name: "image_uploads",
+                  label: false,
                   :include_blank => false,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "ajouter une photo de profil" },
                   class: "form-control"%>
-      </div>
       <%= f.input :password,
                   placeholder: 'mot de passe',
                   required: true,
