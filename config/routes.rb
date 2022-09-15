@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "about", to: "pages#about"
   get "my_profil", to: "profils#my_profil"
+  post "create_tic_tac_toe", to: "trip_sessions#create_tic_tac_toe"
+  post "create_chifoumi", to: "trip_sessions#create_chifoumi"
   resources :trip_sessions, only: %i[show create new destroy] do
     member do
-      patch :join
+      patch :join_tic_tac_toe
+      patch :join_chifoumi
       patch :leave
       get :waiting_room
     end

@@ -1,6 +1,6 @@
 class TicTacToeGame < ApplicationRecord
-  belongs_to :cross_player, foreign_key: :cross_player_id, class_name: "User"
-  belongs_to :circle_player, foreign_key: :circle_player_id, class_name: "User"
+  belongs_to :cross_player, foreign_key: :cross_player_id, class_name: "User", optional: true
+  belongs_to :circle_player, foreign_key: :circle_player_id, class_name: "User", optional: true
   has_many :game_matches, as: :matchable
 
   def end_of_a_game?

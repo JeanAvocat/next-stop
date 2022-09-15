@@ -41,12 +41,12 @@
       <div class="image">
         <%= image_tag "svg/morpions_card.svg", class: "", data: { inject: { svg: "svg/morpions_card.svg" } }, :height => 270 %>
       </div>
-      <% if @trip_session != nil  %>
+      <% if @trip_session_tic_tac_toe_game != nil  %>
         <div class="trip-session-gamer-bonhomme"></div>
       <% end %>
       <div class="button">
-        <% if @trip_session != nil  %>
-          <%= button_to join_trip_session_path(@trip_session), class: "bouton-relou", method: :patch do %>
+        <% if @trip_session_tic_tac_toe_game != nil  %>
+          <%= button_to join_tic_tac_toe_trip_session_path(@trip_session_tic_tac_toe_game), class: "bouton-relou", method: :patch do %>
             <div class="trip-session-new-join">
               <div class="">
                 <h2>Rejoins la partie!</h2>
@@ -54,7 +54,7 @@
             </div>
           <% end %>
         <% else %>
-          <%= button_to trip_sessions_path, class: "bouton-relou", method: :post do %>
+          <%= button_to create_tic_tac_toe_path, class: "bouton-relou", method: :post do %>
             <div class="trip-session-new-create">
               <p>Aucune partie de Morpion en attente</p>
               <h2>Créer une partie!</h2>
@@ -67,12 +67,32 @@
   <%# CHIFOUMI CARD%>
     <div class="trip-session-new-chifoumi-card">
 
-      <%= image_tag "svg/chifoumi_card.svg", class: "trip-session-new-chifoumi-card", data: { inject: { svg: "svg/chifoumi_card.svg" } }, :height => 270 %>
-
-      <%# EN CONSTRUCTION %>
-      <div class="trip-session-en-construction">
-        <%= image_tag "svg/en_construction.svg", class: "trip-session-en-construction-img", data: { inject: { svg: "svg/en_construction.svg" } }, :height => 310 %>
+      <div class="image">
+        <%= image_tag "svg/chifoumi_card.svg", class: "", data: { inject: { svg: "svg/chifoumi_card.svg" } }, :height => 270 %>
       </div>
+      <% if @trip_session_chifoumi != nil  %>
+        <div class="trip-session-gamer-bonhomme"></div>
+      <% end %>
+
+      <div class="button">
+        <% if @trip_session_chifoumi != nil  %>
+          <%= button_to join_chifoumi_trip_session_path(@trip_session_chifoumi), class: "bouton-relou", method: :patch do %>
+            <div class="trip-session-new-join">
+              <div class="">
+                <h2>Rejoins la partie!</h2>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <%= button_to create_chifoumi_path, class: "bouton-relou", method: :post do %>
+            <div class="trip-session-new-create">
+              <p>Aucune partie de Chifoumi en attente</p>
+              <h2>Créer une partie!</h2>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>
