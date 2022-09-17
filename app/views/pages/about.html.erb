@@ -5,11 +5,27 @@
   <% end %>
 </div>
 
-  <%= image_tag "svg/chef.svg", class: "bonhomme-chef", data: { inject: { svg: "svg/chef.svg" } }, :width => 200 %>
-  <%= image_tag "svg/ange.svg", class: "bonhomme-ange", data: { inject: { svg: "svg/ange.svg" } }, :width => 200 %>
-  <%= image_tag "svg/photocopieuse.svg", class: "bonhomme-photocopieuse", data: { inject: { svg: "svg/photocopieuse.svg" } }, :width => 200 %>
-    <%= image_tag "svg/paquerette.svg", class: "bonhomme-paquerette", data: { inject: { svg: "svg/paquerette.svg" } }, :width => 200 %>
+<h1 class="about-title">L'équipe</h1>
 
-<p id="dynamic-title">Mail :</p>
-<p class="profil-informations-text">Développeurs</p>
-<p class="profil-informations-text">Alou du 49</p>
+<div class="bonhommes-container">
+  <div class="bonhomme-part">
+    <%= image_tag "svg/chef.svg", class: "bonhomme-picture", data: { inject: { svg: "svg/chef.svg" } }, :width => 70 %>
+    <h6>Jean </br><span style="font-size: 12px;">aka "Chef"</span></h6>
+    <p>jean.avocat@audencia.com</p>
+  </div>
+  <div class="bonhomme-part">
+    <%= image_tag "svg/ange.svg", class: "bonhomme-picture", data: { inject: { svg: "svg/ange.svg" } }, :width => 80 %>
+    <h6>Benoit </br><span style="font-size: 12px;">aka "Ben"</span></h6>
+    <p>benoit.07@hotmail.com</p>
+  </div>
+  <div class="bonhomme-part">
+    <%= image_tag "svg/photocopieuse.svg", class: "bonhomme-picture", data: { inject: { svg: "svg/photocopieuse.svg" } }, :width => 80 %>
+    <h6>Alfred </br><span style="font-size: 12px;">aka "Alou"</span></h6>
+    <p>gaudin.all@gmail.com</p>
+  </div>
+  <div class="bonhomme-part">
+    <%= image_tag "svg/paquerette.svg", class: "bonhomme-picture", data: { inject: { svg: "svg/paquerette.svg" } }, :width => 80 %>
+    <h6>Marguerite </br><span style="font-size: 12px;">aka "Paquerette"</span></h6>
+    <p>margueritechoyer@gmail.com</p>
+  </div>
+</div>
