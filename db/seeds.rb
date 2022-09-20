@@ -1,3 +1,9 @@
+ChifoumiGame.destroy_all
+TicTacToeGame.destroy_all
+GameMatch.destroy_all
+Message.destroy_all
+Request.destroy_all
+TripSession.destroy_all
 User.destroy_all
 
 
