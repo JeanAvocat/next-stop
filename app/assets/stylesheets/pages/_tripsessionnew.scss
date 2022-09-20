@@ -58,7 +58,7 @@
 }
 
 .trip-session-new-infos-div {
-  background-color: #DADADA;
+  background-color: #eaeaea;
   width: 220px;
   height: 100px;
   text-align: center;
@@ -77,6 +77,8 @@
   margin: 4px 0px 0px 0px;
 }
 
+
+
 // CARDS DE JEUX
 
 .trip-session-new-games-cards {
@@ -85,31 +87,24 @@
   padding: 70px 5px 0px 5px;
 }
 
-.trip-session-new-chifoumi-card {
-  padding: 0px 0px 0px 12px;
-  position: relative;
 
-  // EN CONSTRUCTION
-  .trip-session-en-construction {
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-42%);
-    z-index: 3;
-  }
-}
 
 
 // JOIN OU CREER UNE PARTIE
 
-.trip-session-new-morpion-card {
+.trip-session-new-game-card {
   position: relative;
+  padding: 0px 8px;
 
   .button {
     position: absolute;
-    bottom: -20px;
+    bottom: -30px;
     left: 50%;
     transform: translateX(-52%);
+    background-color: transparent;
+    border: none;
+    margin: 0px;
+    color: black;
   }
 
   .trip-session-gamer-bonhomme {
@@ -171,7 +166,7 @@
   }
 }
 
-.bouton-relou {
+.bouton-create-game {
   border: none;
   background-color: transparent;
   margin: 0px;
@@ -181,4 +176,15 @@
 a {
   text-decoration: none;
   color: black;
+}
+
+
+// EN CONSTRUCTION
+
+.trip-session-en-construction {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-42%);
+  z-index: 3;
 }
