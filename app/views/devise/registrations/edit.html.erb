@@ -6,38 +6,63 @@
   <div class="session-new-line">
     <%= image_tag "svg/ligne.svg", class: "session-new-ligne", data: { inject: { svg: "svg/ligne.svg" } }, :width => 300 %>
   </div>
+  <%= link_to my_profil_path do %>
+      <%= image_tag "svg/back_button.svg", class: "profil-header-return", data: { inject: { svg: "svg/back_button.svg" } }, :width => 27 %>
+    <% end %>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="formulaire">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, required: true, label: "Email :", autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>En attente de confirmation pour: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :first_name,
+                  placeholder: 'prénom',
+                  required: false,
+                  autofocus: true,
+                  label: "Prénom :",
+                  input_html: { autocomplete: "Prénom :" }%>
+    <%= f.input :instagram_account,
+                  placeholder: 'Instagram',
+                  required: false,
+                  autofocus: true,
+                  label: "Compte instagram :",
+                  input_html: { autocomplete: "Mon compte Instagram" }%>
+    <%= f.input :phone_number,
+                  placeholder: 'numéro de téléphone',
+                  required: false,
+                  autofocus: true,
+                  label: "Numéro de téléphone :",
+                  input_html: { autocomplete: "Mon numéro pour retrouver mes voisins de rame" }%>
+      <%= f.input :user_photo, as: :file,
+                  :include_blank => false,
+                  required: true,
+                  label: "Photo :",
+                  input_html: { autocomplete: "ajouter une photo de profil" },
+                  class: "form-control"%>
     <%= f.input :password,
                 hint: "Laissez vide si vous ne voulez pas le changer",
                 required: false,
+                label: "Mot de passe :",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
+                label: "Confirmation mot de passe :",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
                 hint: "Nous avons besoin de votre mot de passe pour confirmer vos changements",
                 required: true,
+                label: "Mot de passe actuel :",
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
-  <button id="submit-btn" type="button"><%= f.button :submit, "Changer" %></button>
+  <button id="submit-green-btn" type="button"><%= f.button :submit, "Changer" %></button>
 <% end %>
 
-  <h3>Supprimer mon compte</h3>
-
 <div class="d-flex align-items-center">
-  <div>Pas content?</div>
-  <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Vous êtes sur?" }, method: :delete, class: "btn btn-link" %>
+  <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Vous êtes sur?" }, method: :delete, class: "btn btn-link" %>
 </div>
-
-<%= link_to "Back", :back %>
