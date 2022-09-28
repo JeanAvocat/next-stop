@@ -3,7 +3,7 @@
     <div class="chifoumi-game-choosen-weapons">
       <% if chifoumi_game.play_round.zero? && !chifoumi_game.start_round? %>
         <div data-chifoumi-subscription-target="infoStart">
-          <h5>La partie commence</h5>
+          <h3 class="party-begin">Ton coéquipier est arrivé!</h3>
         </div>
       <% end %>
       <% if chifoumi_game.play_round.odd? %>
